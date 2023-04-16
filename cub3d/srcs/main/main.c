@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/04/16 01:55:39 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/16 17:01:54 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ int main(void)
     t_cub3d cub3d;
     
     ft_map_init(&cub3d);
-	cub3d.mlx = mlx_init(1900, 1000, "cub3d", true);
+	cub3d.mlx = mlx_init(cub3d.map->lenght * 100, cub3d.map->height * 100, "cub3d", true);
 	if (!cub3d.mlx)
 	    perror("Error opening mlx");
 	// ft_pamam_init(&game);
-	
 	// ft_read_map(&game);
 	mlx_key_hook(cub3d.mlx, key_hook, &cub3d);
 	// mlx_loop_hook(game.mlx, ft_loop, &game);
