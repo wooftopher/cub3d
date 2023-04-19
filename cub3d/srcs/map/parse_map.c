@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:54:39 by christo           #+#    #+#             */
-/*   Updated: 2023/04/16 03:24:40 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/19 02:40:58 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./map.h"
-# include "../main/struct.h"
+// # include "../main/struct.h"
 
 void fd_error(t_cub3d *cub3d, int fd)
 {
@@ -161,6 +161,9 @@ void	ft_map_init(t_cub3d *cub3d)
 	ft_write_map(file, &map);
 	ft_print_map(&map);
 	cub3d->map = &map;
-	// ft_create_map(cub3d);
+	cub3d->mlx = mlx_init(map.lenght * 100, map.height * 100, "cub3d", true);
+	if (!cub3d->mlx)
+	    perror("Error opening mlx");
+	ft_create_map(cub3d->map, cub3d);
 	// free(&map);
 }
