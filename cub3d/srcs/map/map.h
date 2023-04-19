@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 00:10:33 by christo           #+#    #+#             */
-/*   Updated: 2023/04/16 14:43:24 by cperron          ###   ########.fr       */
+/*   Updated: 2023/04/19 16:02:28 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define MAP_H
 
 # include "../main/cub3d.h"
-#include "../main/struct.h"
+# include "../main/struct.h"
+
+void	ft_create_map(t_map *map, t_cub3d *cub3d);
 
 // typedef struct map
 // {
