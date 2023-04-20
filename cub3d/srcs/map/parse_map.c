@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:54:39 by christo           #+#    #+#             */
-/*   Updated: 2023/04/19 16:31:23 by cperron          ###   ########.fr       */
+/*   Updated: 2023/04/20 01:47:30 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,33 +95,6 @@ char	*ft_read_map(t_cub3d *cub3d)
 	return (map);
 }
 
-void set_map_height(t_map *map, char *str)
-{
-	int	i;
-	int	x;
-
-	i = 0;
-	x = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			x++;
-		i++;
-	}
-	x++;
-	map->height = x;
-}
-
-void set_map_lenght(t_map *map, char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\n')
-		i++;
-	map->lenght = i;
-}
-
 void	malloc_map(t_map *map)
 {
 	int i;
@@ -129,12 +102,12 @@ void	malloc_map(t_map *map)
 	
 	i = 0;
 	j = 0;
-	map->map = malloc(map->lenght * sizeof(char*));
+	map->map = calloc(map->lenght, sizeof(char*));
     if (map == NULL) 
         fprintf(stderr, "Error: failed to allocate memory.\n");
 	while (i < map->lenght)
 	{
-		map->map[i] = (char*) malloc(map->height * sizeof(char));
+		map->map[i] = (char*) calloc(map->height, sizeof(char));
 		if (map->map[i] == NULL)
 		{
             fprintf(stderr, "Error: failed to allocate memory.\n");
@@ -152,19 +125,20 @@ void	malloc_map(t_map *map)
 void	ft_map_init(t_cub3d *cub3d)
 {
 	char	*file;
-	t_map	map;
+	// t_map	map;
 
+	// cub3d->map = &map;
 	file = ft_read_map(cub3d);
-	set_map_lenght(&map, file);
-	set_map_height(&map, file);
-	malloc_map(&map);
-	ft_write_map(file, &map);
-	ft_print_map(&map);
-	cub3d->map = &map;
-	cub3d->mlx = mlx_init(map.lenght * 100, map.height * 100, "cub3d", true);
+	set_map_lenght(cub3d->map, file);
+	set_map_height(cub3d->map, file);
+	count_wall(cub3d->map, file);
+	malloc_map(cub3d->map);
+	ft_write_map(file, cub3d->map);
+	free(file);
+	ft_print_map(cub3d->map);
+	cub3d->mlx->mlx = mlx_init(cub3d->map->lenght * 100, cub3d->map->height * 100, "cub3d", true);
 	if (!cub3d->mlx)
 	    perror("Error opening mlx");
-	cub3d->xpm_wall = NULL;
+	cub3d->mlx->xpm_wall = NULL;
 	ft_create_map(cub3d->map, cub3d);
-	// free(&map);
 }
