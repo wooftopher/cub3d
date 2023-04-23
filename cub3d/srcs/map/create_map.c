@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/04/20 02:38:17 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/23 04:03:34 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx)
     mlx->img_player->instances[0].z = 18;
 	player->pos_x = mlx->img_player->instances[0].x + 10;
 	player->pos_y = mlx->img_player->instances[0].y + 10;
+	player->angle = 180;
+	player->speed = 5;
+	player->col_x = 0;
+	player->col_y = 0;
 	return (0);
 }
 

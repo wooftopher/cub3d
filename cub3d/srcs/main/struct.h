@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/20 02:12:33 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/23 04:12:58 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ typedef struct player
 {
     int		pos_x;
     int		pos_y;
-	float	direction;
-	int		speed_x;
-	int		speed_y;
+	int		d_x;
+	int		d_y;
+	int		angle;
+	int		speed;
+	bool	col_x;
+	bool	col_y;
 }   t_player;
 
 typedef struct mlx_struc
@@ -42,18 +45,14 @@ typedef struct mlx_struc
     xpm_t           *xpm_wall;
 	mlx_image_t		*img_player;
     mlx_image_t		*img_wall;
+	mlx_image_t		*img_dir_ind;
 }	t_mlx_struc;
 
 typedef struct cub3d
 {
-//     mlx_t			*mlx;
-//     xpm_t           *xpm_player;
-//     xpm_t           *xpm_wall;
 	t_mlx_struc		*mlx;
 	t_player		*player;
     t_map           *map;
-    // mlx_image_t*	img_player;
-    // mlx_image_t*	img_wall;
 }   t_cub3d;
 
 
