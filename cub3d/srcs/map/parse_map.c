@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:54:39 by christo           #+#    #+#             */
-/*   Updated: 2023/04/20 01:47:30 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/23 18:42:30 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*ft_read_map(t_cub3d *cub3d)
 	int		fd;
 	char 	*map; //trop variable
 	
-	fd = open("map/0.ber", O_RDONLY);
+	fd = open("map/1.ber", O_RDONLY);
     if (fd == -1)
 		fd_error(cub3d, fd);
 	//read until EOF
@@ -125,9 +125,7 @@ void	malloc_map(t_map *map)
 void	ft_map_init(t_cub3d *cub3d)
 {
 	char	*file;
-	// t_map	map;
 
-	// cub3d->map = &map;
 	file = ft_read_map(cub3d);
 	set_map_lenght(cub3d->map, file);
 	set_map_height(cub3d->map, file);
@@ -136,9 +134,4 @@ void	ft_map_init(t_cub3d *cub3d)
 	ft_write_map(file, cub3d->map);
 	free(file);
 	ft_print_map(cub3d->map);
-	cub3d->mlx->mlx = mlx_init(cub3d->map->lenght * 100, cub3d->map->height * 100, "cub3d", true);
-	if (!cub3d->mlx)
-	    perror("Error opening mlx");
-	cub3d->mlx->xpm_wall = NULL;
-	ft_create_map(cub3d->map, cub3d);
 }

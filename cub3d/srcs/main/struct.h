@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/23 04:12:58 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/23 17:52:09 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ typedef struct map
 	int		wall_count;
     
 }   t_map;
+
+typedef struct ray
+{
+	int		min_dist;
+	int		dist;
+	float	dir_x;
+	float	dir_y;
+	int		fov;
+	int		angle;
+	int		inter_x;
+	int		inter_y;
+}	t_ray;
 
 typedef struct player
 {
@@ -53,8 +65,9 @@ typedef struct cub3d
 	t_mlx_struc		*mlx;
 	t_player		*player;
     t_map           *map;
+	t_ray			*ray;
+	int				tic;
 }   t_cub3d;
-
 
 typedef struct wall
 {
