@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/04/23 17:44:57 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/23 23:47:43 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <math.h>
 # include <limits.h>
+# include <float.h>
 
 #include "../map/map.h"
 #include "./struct.h"
