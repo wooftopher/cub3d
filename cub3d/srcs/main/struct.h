@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/24 01:55:50 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/24 20:41:37 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct ray
 	float	dir_y;
 	int		fov;
 	int		angle;
-	int		inter_x;
-	int		inter_y;
+	int		xn;
+	int		yn;
 }	t_ray;
 
 typedef struct player

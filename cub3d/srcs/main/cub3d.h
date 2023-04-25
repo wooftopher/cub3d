@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/04/23 23:47:43 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/24 22:29:50 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 #include "../map/map.h"
 #include "./struct.h"
+#include "../object/object.h"
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"
