@@ -6,14 +6,14 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/04/24 23:46:22 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 04:00:22 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//cacul the minimum distance between
-//the player and a wall with the player angle
+// cacul the minimum distance between
+// the player and a wall with the player angle
 void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 {
 	int	j;
@@ -24,8 +24,37 @@ void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 		ray_hor_up(player, map, ray, j);
 	else
 		ray_hor_down(player, map, ray, j);
-	// printf("hor :%d\n", hor_inter);
-	// printf("dist minm :%d\n", ray->min_dist);
+	if (sin(player->angle * M_PI / 180) > 0)
+		ray_ver_right(player, map, ray, j);
+	else
+		ray_ver_left(player, map, ray, j);
+}
+
+void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
+{
+	int	j;
+	int fov_angle;
+
+	j = 0;
+	ray->fov_count = 0;
+	fov_angle = -ray->fov_angle;
+	while(fov_angle <= ray->fov_angle)
+	{
+		// player->angle += fov_angle;
+	ray->min_dist_fov[ray->fov_count] = INT_MAX;
+	if (cos(player->angle * M_PI / 180) < 0)
+		ray_hor_up(player, map, ray, j);
+	else
+		ray_hor_down(player, map, ray, j);
+	if (sin(player->angle * M_PI / 180) > 0)
+		ray_ver_right(player, map, ray, j);
+	else
+		ray_ver_left(player, map, ray, j);
+	// player->angle -= ray->fov_angle;
+	ray->fov_count++;
+	fov_angle++;
+	}
+	ray->fov_angle = 5;
 }
 
 void ft_loop(void *param)
@@ -34,13 +63,16 @@ void ft_loop(void *param)
 
 	ft_move(cub3d);
 	ft_rotate(cub3d);
-	if (cub3d->tic == 10)
-	{
-		calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
-		cub3d->tic = 0;
-	}
+	// if (cub3d->tic == 10)
+	// {
+	// 	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
+	// 	cub3d->tic = 0;
+	// }
 	// set_direction_indicator(cub3d->player, cub3d->mlx);
+	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
+	// calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
 	set_direction_indicator_2(cub3d->player, cub3d->mlx, cub3d->ray);
+	// set_direction_indicator_3(cub3d->player, cub3d->mlx, cub3d->ray);
 	cub3d->tic++;
 }
 
@@ -75,6 +107,7 @@ int main(void)
 	cub3d.map = &map;
 	cub3d.player = &player;
 	cub3d.ray = &ray;
+	cub3d.ray->fov_angle = 5;
 	cub3d.tic = 0;
     ft_map_init(&cub3d);
 	cub3d.mlx->mlx = mlx_init(cub3d.map->lenght * 100, cub3d.map->height * 100, "cub3d", true);

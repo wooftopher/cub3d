@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/24 20:41:37 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 03:22:25 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct map
 typedef struct ray
 {
 	int		min_dist;
+	int		min_dist_fov[100];
 	int		dist;
 	float	dir_x;
 	float	dir_y;
-	int		fov;
+	int		fov_angle;
+	int		fov_count;
 	int		angle;
 	int		xn;
 	int		yn;
@@ -46,6 +48,7 @@ typedef struct player
 	int		d_y;
 	int		angle;
 	int		speed;
+	int		rot_speed;
 	bool	col_x;
 	bool	col_y;
 }   t_player;

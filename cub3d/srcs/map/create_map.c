@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/04/24 22:14:33 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 02:44:10 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,18 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx)
 
 int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx)
 {
-	mlx->xpm_player = mlx_load_xpm42("./img/eye.xpm42");
-	mlx->img_player = mlx_texture_to_image(mlx->mlx, &mlx->xpm_player->texture);
-	mlx_delete_xpm42(mlx->xpm_player);
-	mlx_image_to_window(mlx->mlx, mlx->img_player, x * 100 + 40, y * 100 + 40);
-    mlx->img_player->instances[0].z = 18;
-	player->pos_x = mlx->img_player->instances[0].x + 10;
-	player->pos_y = mlx->img_player->instances[0].y + 10;
-	player->angle = 350;
+	player->pos_x = x * 100 + 50;
+	player->pos_y = y * 100 + 50;
+	player->angle = 300;
+	player->rot_speed = 3;
 	player->speed = 5;
 	player->col_x = 0;
 	player->col_y = 0;
+	mlx->xpm_player = mlx_load_xpm42("./img/eye.xpm42");
+	mlx->img_player = mlx_texture_to_image(mlx->mlx, &mlx->xpm_player->texture);
+	mlx_delete_xpm42(mlx->xpm_player);
+	mlx_image_to_window(mlx->mlx, mlx->img_player,
+		player->pos_x - 10, player->pos_y - 10);
 	return (0);
 }
 

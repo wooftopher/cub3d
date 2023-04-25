@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_hor.c                                          :+:      :+:    :+:   */
+/*   ray_ver.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 23:40:34 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 03:59:13 by christo          ###   ########.fr       */
+/*   Created: 2023/04/25 02:45:21 by christo           #+#    #+#             */
+/*   Updated: 2023/04/25 03:58:53 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./object.h"
+# include "./object.h"
 
-void	check_ray_col_hor_up(t_map *map, t_player *player, t_ray *ray, int j)
+void	check_ray_col_ver_right(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
 	int	y;
 	
 	i = 0;
-	y = (player->pos_y) / 100 - j - 1;
+	y = (player->pos_x) / 100 + j + 1;
 	while (i < map->wall_count)
 	{
-		if (map->wall_py[i] != y *  100)
+		if (map->wall_px[i] != y *  100)
 			i++;
-		else if (player->pos_x + ray->xn >= map->wall_px[i] - 3 //to fix float?
+		else if (player->pos_x + ray->xn == map->wall_px[i]
 				&& player->pos_x + ray->xn <= map->wall_px[i] + 100
-				&& player->pos_y - ray->yn >= map->wall_py[i]
-				&& player->pos_y - ray->yn == map->wall_py[i] + 100)
+				&& player->pos_y - ray->yn >= map->wall_py[i] + 1
+				&& player->pos_y - ray->yn <= map->wall_py[i] + 100)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
@@ -40,20 +40,21 @@ void	check_ray_col_hor_up(t_map *map, t_player *player, t_ray *ray, int j)
 	}
 }
 
-void	check_ray_col_hor_down(t_map *map, t_player *player, t_ray *ray, int j)
+void	check_ray_col_ver_left(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
 	int	y;
 	
 	i = 0;
-	y = (player->pos_y) / 100 + j + 1;
+	y = (player->pos_x) / 100 - j - 1;
 	while (i < map->wall_count)
 	{
-		if (map->wall_py[i] != y *  100)
+		if (map->wall_px[i] != y *  100)
 			i++;
-		else if (player->pos_x - ray->xn >= map->wall_px[i]
-				&& player->pos_x - ray->xn <= map->wall_px[i] + 103 //to fix
-				&& player->pos_y + ray->yn == map->wall_py[i]
+		else
+		 if (player->pos_x - ray->xn >= map->wall_px[i]
+				&& player->pos_x - ray->xn == map->wall_px[i] + 100
+				&& player->pos_y + ray->yn >= map->wall_py[i] - 1
 				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
@@ -68,41 +69,40 @@ void	check_ray_col_hor_down(t_map *map, t_player *player, t_ray *ray, int j)
 	}
 }
 
-void ray_hor_down(t_player *player, t_map *map, t_ray *ray, int j)
+void	ray_ver_left(t_player *player, t_map *map, t_ray *ray, int j)
 {
 	int ys;
 	int xs;
 	int nb_inter;
 	
-	ys = 100;
-	xs = ys / (tan((player->angle - 90) * M_PI / 180));
-	ray->yn = ((player->pos_y  / 100) + 1) * 100 - player->pos_y ;
-	ray->xn = ray->yn / (tan((player->angle - 90) * M_PI / 180));
-	nb_inter = (map->height - player->pos_y / 100) - 1;
+	xs = 100;
+	ys = xs * (tan((player->angle - 90) * M_PI / 180));
+	ray->xn = player->pos_x - ((player->pos_x  / 100)) * 100;
+	ray->yn = ray->xn * (tan((player->angle - 90) * M_PI / 180));
+	nb_inter = player->pos_x / 100;
 	while (j < nb_inter)
 	{
-		check_ray_col_hor_down(map, player, ray, j);
+		check_ray_col_ver_left(map, player, ray, j);
 		ray->yn += ys;
 		ray->xn += xs;
 		j++;
 	}
-	
 }
 
-void ray_hor_up(t_player *player, t_map *map, t_ray *ray, int j)
+void	ray_ver_right(t_player *player, t_map *map, t_ray *ray, int j)
 {
 	int ys;
 	int xs;
 	int nb_inter;
 	
-	ys = 100;
-	xs = ys / (tan((player->angle - 90) * M_PI / 180));
-	ray->yn = player->pos_y - (player->pos_y  / 100) * 100;
-	ray->xn = ray->yn / (tan((player->angle - 90) * M_PI / 180));
-	nb_inter = player->pos_y / 100;
+	xs = 100;
+	ys = xs * (tan((player->angle - 90) * M_PI / 180));
+	ray->xn = ((player->pos_x  / 100) + 1) * 100 - player->pos_x;
+	ray->yn = ray->xn * (tan((player->angle - 90) * M_PI / 180));
+	nb_inter = map->lenght - (player->pos_x / 100)- 1;
 	while (j < nb_inter)
 	{
-		check_ray_col_hor_up(map, player, ray, j);
+		check_ray_col_ver_right(map, player, ray, j);
 		ray->yn += ys;
 		ray->xn += xs;
 		j++;
