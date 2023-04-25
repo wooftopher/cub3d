@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:54:39 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 01:28:19 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:22:52 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_print_map(t_map *map)
 	}
 }
 
-void	*ft_write_map(char *str, t_map *map)
+void	ft_write_map(char *str, t_map *map)
 {
 	int		x;
 	int		y;

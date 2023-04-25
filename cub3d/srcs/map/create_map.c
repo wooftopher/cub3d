@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 02:44:10 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:44:48 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	
 	x = 0;
 	y = 0;
+	cub3d->mlx->xpm_wall = NULL;
 	while (x < map->lenght)
 	{
 		while (y < map->height)
