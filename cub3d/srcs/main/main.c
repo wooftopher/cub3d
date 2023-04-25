@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 14:27:44 by cperron          ###   ########.fr       */
+/*   Updated: 2023/04/25 17:37:11 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 
 	j = 0;
 	ray->min_dist = INT_MAX;
-	if (cos(player->angle * M_PI / 180) < 0)
+	if (cos(player->angle * M_PI / 180) < 0 && player->angle != 270)
 		ray_hor_up(player, map, ray, j);
-	else
+	else if(player->angle != 90)
 		ray_hor_down(player, map, ray, j);
 	if (sin(player->angle * M_PI / 180) > 0)
 		ray_ver_right(player, map, ray, j);
@@ -42,9 +42,10 @@ void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 	{
 		// player->angle += fov_angle;
 	ray->min_dist_fov[ray->fov_count] = INT_MAX;
-	if (cos(player->angle * M_PI / 180) < 0)
+	
+	if (cos(player->angle * M_PI / 180) < 0 && player->angle != 270)
 		ray_hor_up(player, map, ray, j);
-	else
+	else if(player->angle != 90)
 		ray_hor_down(player, map, ray, j);
 	if (sin(player->angle * M_PI / 180) > 0)
 		ray_ver_right(player, map, ray, j);
@@ -63,11 +64,12 @@ void ft_loop(void *param)
 
 	ft_move(cub3d);
 	ft_rotate(cub3d);
-	// if (cub3d->tic == 10)
-	// {
-	// 	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
-	// 	cub3d->tic = 0;
-	// }
+	if (cub3d->tic == 10)
+	{
+	// // 	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
+	printf("cos(player->angle * M_PI / 180); %f\n", cos(cub3d->player->angle * M_PI / 180));
+		cub3d->tic = 0;
+	}
 	// set_direction_indicator(cub3d->player, cub3d->mlx);
 	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
 	// calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
@@ -90,6 +92,7 @@ void key_hook(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
+
 		usleep(10);
 		// calcul_ray_to_object_hor(cub3d->player,cub3d->map, cub3d->ray);
 	}
