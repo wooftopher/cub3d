@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/04/26 03:41:39 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:26:46 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void ft_render_fov(t_ray *ray, t_mlx_struc *mlx)
 	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 900);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
-		wall_height = 15000 / ray->min_dist_fov[k];
+		wall_height = 50000 / ray->min_dist_fov[k];
 		i = -wall_height;
 		if (i < -450)
 			i = -450;
@@ -125,15 +125,19 @@ void ft_loop(void *param)
 	if (cub3d->vision == 2)
 	{
 		calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
-		// set_direction_indicator_2(cub3d->player, cub3d->mlx, cub3d->ray);
+		set_direction_indicator_2(cub3d->player, cub3d->mlx, cub3d->ray);
 	}
 	if (cub3d->vision == 3)
 	{
 		calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
-		// set_direction_indicator_3(cub3d->player, cub3d->mlx, cub3d->ray);
+		set_direction_indicator_3(cub3d->player, cub3d->mlx, cub3d->ray);
+	}
+	if (cub3d->vision == 4)
+	{
+		calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
+		ft_render_fov(cub3d->ray, cub3d->mlx);
 	}
 	// ft_render(cub3d->ray, cub3d->mlx);
-	ft_render_fov(cub3d->ray, cub3d->mlx);
 	cub3d->tic++;
 }
 
@@ -160,6 +164,8 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		cub3d->vision = 2;
 	if (keydata.key == MLX_KEY_3 && keydata.action == MLX_PRESS)
 		cub3d->vision = 3;
+	if (keydata.key == MLX_KEY_4 && keydata.action == MLX_PRESS)
+		cub3d->vision = 4;
 }
 
 int main(void)
@@ -180,7 +186,7 @@ int main(void)
 	cub3d.ray->fov_angle = 25;
 	cub3d.ray->angle_div = 0.2f;
 	cub3d.tic = 0;
-	cub3d.vision = 3;
+	cub3d.vision = 4;
     ft_map_init(&cub3d);
 	// mlx_get_monitor_size(0, &width, &height);
 	// cub3d.mlx->mlx->width = width;
