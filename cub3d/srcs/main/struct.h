@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 20:28:31 by cperron          ###   ########.fr       */
+/*   Updated: 2023/04/26 02:40:03 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ typedef struct map
 typedef struct ray
 {
 	float		min_dist;
-	float		min_dist_fov[100];
+	float		min_dist_fov[1024];
 	float		dist;
 	float		dir_x;
 	float		dir_y;
 	float		fov_angle;
 	int			angle_count;
+	float		angle_div;
 	float		angle;
 	float		xn;
 	float		yn;
@@ -61,6 +62,7 @@ typedef struct mlx_struc
 	mlx_image_t		*img_player;
     mlx_image_t		*img_wall;
 	mlx_image_t		*img_dir_ind;
+	mlx_image_t		*img_wall_3d;
 }	t_mlx_struc;
 
 typedef struct cub3d
@@ -70,6 +72,7 @@ typedef struct cub3d
     t_map           *map;
 	t_ray			*ray;
 	int				tic;
+	int				vision;
 }   t_cub3d;
 
 typedef struct wall

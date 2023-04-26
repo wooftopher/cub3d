@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 20:33:02 by cperron          ###   ########.fr       */
+/*   Updated: 2023/04/26 03:44:27 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx)
 {
 	player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
-	player->angle = 180;
+	player->angle = 0;
 	player->rot_speed = 3;
-	player->speed = 5;
+	player->speed = 4;
 	player->col_x = 0;
 	player->col_y = 0;
 	mlx->xpm_player = mlx_load_xpm42("./img/eye.xpm42");

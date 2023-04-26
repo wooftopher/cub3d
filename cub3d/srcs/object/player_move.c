@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 01:47:14 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/26 03:26:47 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void	ft_rotate(t_cub3d *cub3d)
 {
 	if (mlx_is_key_down(cub3d->mlx->mlx, MLX_KEY_RIGHT))
 	{
-		cub3d->player->angle -= cub3d->player->rot_speed;
+		cub3d->player->angle += cub3d->player->rot_speed;
 	}
 	if (mlx_is_key_down(cub3d->mlx->mlx, MLX_KEY_LEFT))
 	{
-		cub3d->player->angle += cub3d->player->rot_speed;
+		cub3d->player->angle -= cub3d->player->rot_speed;
 	}
 }

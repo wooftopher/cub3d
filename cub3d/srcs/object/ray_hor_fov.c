@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hor_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/04/25 22:19:53 by cperron          ###   ########.fr       */
+/*   Updated: 2023/04/26 00:19:34 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 	{
 		if (map->wall_py[i] != y * 100)
 			i++;
-		else if (player->pos_x + ray->xn >= map->wall_px[i] - 3 //to fix float?
-				&& player->pos_x + ray->xn <= map->wall_px[i] + 100
-				&& player->pos_y - ray->yn >= map->wall_py[i]
-				&& player->pos_y - ray->yn <= map->wall_py[i] + 100)
+		else if (player->pos_x + ray->xn >= map->wall_px[i] - 1 //3
+				&& player->pos_x + ray->xn <= map->wall_px[i] + 101
+				&& player->pos_y - ray->yn >= map->wall_py[i] - 1
+				&& player->pos_y - ray->yn <= map->wall_py[i] + 101)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
@@ -58,10 +58,10 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 	{
 		if (map->wall_py[i] != y * 100)
 			i++;
-		else if (player->pos_x - ray->xn >= map->wall_px[i]
-				&& player->pos_x - ray->xn <= map->wall_px[i] + 103 //to fix
-				&& player->pos_y + ray->yn == map->wall_py[i]
-				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
+		else if (player->pos_x - ray->xn >= map->wall_px[i] - 1
+				&& player->pos_x - ray->xn <= map->wall_px[i] + 101 //3
+				&& player->pos_y + ray->yn == map->wall_py[i] 
+				&& player->pos_y + ray->yn <= map->wall_py[i] + 101)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
