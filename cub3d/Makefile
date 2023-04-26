@@ -9,10 +9,13 @@ LIBS = $(LIBMLX)/build/libmlx42.a -I /include -lglfw -pthread -L "/Users/$(USER)
 SRCS	:= $(shell find ./srcs -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}
 
-all: libmlx $(NAME)
+all: libmlx lib $(NAME)
 
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
+Libft:
+	@make -s -C libs/Libft
 
 %.o: %.c
 	@$(CC) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
