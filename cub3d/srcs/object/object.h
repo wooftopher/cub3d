@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:36:09 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 02:59:52 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 22:44:10 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,20 @@ void	set_direction_indicator_2(t_player *player, t_mlx_struc *mlx, t_ray *ray);
 void	set_direction_indicator_3(t_player *player, t_mlx_struc *mlx, t_ray *ray);
 
 //ray_hor
-void ray_hor_up(t_player *player, t_map *map, t_ray *ray, int j);
-void ray_hor_down(t_player *player, t_map *map, t_ray *ray, int j);
+void 	ray_hor_up(t_player *player, t_map *map, t_ray *ray, int j);
+void 	ray_hor_down(t_player *player, t_map *map, t_ray *ray, int j);
+
+//ray_hor_fov
+void 	ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j);
+void 	ray_hor_down_fov(t_player *player, t_map *map, t_ray *ray, int j);
 
 //ray_ver
 void	ray_ver_right(t_player *player, t_map *map, t_ray *ray, int j);
 void	ray_ver_left(t_player *player, t_map *map, t_ray *ray, int j);
+
+//ray_ver_fov
+void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j);
+void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j);
+
 
 #endif

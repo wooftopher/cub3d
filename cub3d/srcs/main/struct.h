@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 03:22:25 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/25 20:28:31 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,40 @@
 
 typedef struct map
 {
-    char    **map;
-    int     lenght;
-    int     height;
-	int		*wall_px;
-    int		*wall_py;
-	int		wall_count;
+    char   		**map;
+    int    		lenght;
+    int    		height;
+	float		*wall_px;
+    float		*wall_py;
+	int			wall_count;
     
 }   t_map;
 
 typedef struct ray
 {
-	int		min_dist;
-	int		min_dist_fov[100];
-	int		dist;
-	float	dir_x;
-	float	dir_y;
-	int		fov_angle;
-	int		fov_count;
-	int		angle;
-	int		xn;
-	int		yn;
+	float		min_dist;
+	float		min_dist_fov[100];
+	float		dist;
+	float		dir_x;
+	float		dir_y;
+	float		fov_angle;
+	int			angle_count;
+	float		angle;
+	float		xn;
+	float		yn;
 }	t_ray;
 
 typedef struct player
 {
-    int		pos_x;
-    int		pos_y;
-	int		d_x;
-	int		d_y;
-	int		angle;
-	int		speed;
-	int		rot_speed;
-	bool	col_x;
-	bool	col_y;
+    float		pos_x;
+    float		pos_y;
+	float		d_x;
+	float		d_y;
+	float		angle;
+	int			speed;
+	float		rot_speed;
+	bool		col_x;
+	bool		col_y;
 }   t_player;
 
 typedef struct mlx_struc
