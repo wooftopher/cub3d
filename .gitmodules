@@ -1,0 +1,3 @@
+[submodule "cub3d/lib/Libft"]
+	path = cub3d/lib/Libft
+	url = https://github.com/Producks/Libft-42.git
