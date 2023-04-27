@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/04/26 03:26:47 by christo          ###   ########.fr       */
+/*   Updated: 2023/04/26 17:07:00 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	set_new_pos(t_player *player, t_mlx_struc *mlx)
 	if (player->col_x == 0)
 	{
 		player->pos_x += player->d_x;
-		mlx->img_player->instances[0].x = player->pos_x - 10;
+		// mlx->img_player->instances[0].x = player->pos_x - 10;
 	}
 	else
 		player->col_x = 0;
 	if (player->col_y == 0)
 	{
 		player->pos_y += player->d_y;
-		mlx->img_player->instances[0].y = player->pos_y - 10;
+		// mlx->img_player->instances[0].y = player->pos_y - 10;
 	}
 	else
 		player->col_y = 0;
