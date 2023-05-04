@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/05/01 23:28:16 by christo          ###   ########.fr       */
+/*   Updated: 2023/05/04 16:48:14 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,18 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx_s)
 
 void	init_minimap(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 {
-	if (!mlx_s->text_wall)
-	    mlx_s->text_wall = mlx_load_png("./img/wall.png");
-	mlx_s->img_wall
-        = mlx_texture_to_image(mlx_s->mlx, mlx_s->text_wall);
-	mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 50, y * 50);
+	int i;
+
+	i = 0;
+	// while (i < map->wall_count)
+	// {
+		if (!mlx_s->text_wall)
+			mlx_s->text_wall = mlx_load_png("./img/wall.png");
+		mlx_s->img_wall[i]
+			= mlx_texture_to_image(mlx_s->mlx, mlx_s->text_wall);
+		mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall[i], x * 50, y * 50);
+		// i++;
+	// }
 }
 
 void	ft_create_map(t_map *map, t_cub3d *cub3d)

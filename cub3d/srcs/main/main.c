@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/05/01 23:26:39 by christo          ###   ########.fr       */
+/*   Updated: 2023/05/04 16:24:44 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,9 +197,9 @@ int main(void)
 	cub3d.mlx_s->mlx = mlx_init(1900, 900, "cub3d", true);
 	
 	
-	mlx_texture_t* texture = mlx_load_png("./img/duck.png");
-	mlx_image_t* img = mlx_texture_to_image(mlx_s.mlx, texture);
-	mlx_image_to_window(mlx_s.mlx, img, 0, 0);
+	// mlx_texture_t* texture = mlx_load_png("./img/duck.png");
+	// mlx_image_t* img = mlx_texture_to_image(mlx_s.mlx, texture);
+	// mlx_image_to_window(mlx_s.mlx, img, 0, 0);
        
 	ft_create_map(cub3d.map, &cub3d);
 	// ft_minimap_init(cub3d.map);
