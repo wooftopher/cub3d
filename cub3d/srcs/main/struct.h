@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/05/04 16:26:53 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/04 17:52:45 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct mlx_struc
     xpm_t			*xpm_wall;
 	mlx_texture_t   *text_wall;
 	mlx_image_t		*img_player;
-    mlx_image_t		*img_wall[200];
+    mlx_image_t		*img_wall;
 	mlx_image_t		*img_dir_ind;
 	mlx_image_t		*img_wall_3d;
 }	t_mlx_struc;
