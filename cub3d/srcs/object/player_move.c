@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/04/26 17:07:00 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/01 22:23:22 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ void	calcul_new_pos(t_player *player, int d)
 	player->d_x = d * player->speed * sin(player->angle * M_PI / 180);
 }
 
-void	set_new_pos(t_player *player, t_mlx_struc *mlx)
+void	set_new_pos(t_player *player, t_mlx_struc *mlx_s)
 {
 	if (player->col_x == 0)
 	{
 		player->pos_x += player->d_x;
-		// mlx->img_player->instances[0].x = player->pos_x - 10;
+		mlx_s->img_player->instances[0].x = player->pos_x - 10;
 	}
 	else
 		player->col_x = 0;
 	if (player->col_y == 0)
 	{
 		player->pos_y += player->d_y;
-		// mlx->img_player->instances[0].y = player->pos_y - 10;
+		mlx_s->img_player->instances[0].y = player->pos_y - 10;
 	}
 	else
 		player->col_y = 0;
@@ -59,27 +59,27 @@ void	set_new_pos(t_player *player, t_mlx_struc *mlx)
 
 void	ft_move(t_cub3d *cub3d)
 {
-	if (mlx_is_key_down(cub3d->mlx->mlx, MLX_KEY_UP))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP))
 	{
 		calcul_new_pos(cub3d->player, 1);
 		check_col(cub3d->map, cub3d->player);
-		set_new_pos(cub3d->player, cub3d->mlx);
+		set_new_pos(cub3d->player, cub3d->mlx_s);
 	}
-	if (mlx_is_key_down(cub3d->mlx->mlx, MLX_KEY_DOWN))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN))
 	{
 		calcul_new_pos(cub3d->player, -1);
 		check_col(cub3d->map, cub3d->player);
-		set_new_pos(cub3d->player, cub3d->mlx);
+		set_new_pos(cub3d->player, cub3d->mlx_s);
 	}
 }
 
 void	ft_rotate(t_cub3d *cub3d)
 {
-	if (mlx_is_key_down(cub3d->mlx->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_RIGHT))
 	{
 		cub3d->player->angle += cub3d->player->rot_speed;
 	}
-	if (mlx_is_key_down(cub3d->mlx->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_LEFT))
 	{
 		cub3d->player->angle -= cub3d->player->rot_speed;
 	}

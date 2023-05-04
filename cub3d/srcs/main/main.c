@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/04/26 20:56:15 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/01 23:26:39 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void ft_render_fov(t_ray *ray, t_mlx_struc *mlx)
 	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 900);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
-		wall_height = 50000 / ray->min_dist_fov[k];
+		wall_height = 40000 / ray->min_dist_fov[k];
 		i = -wall_height;
 		if (i < -450)
 			i = -450;
@@ -120,22 +120,22 @@ void ft_loop(void *param)
 	if (cub3d->vision == 1)
 	{
 		calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
-		set_direction_indicator(cub3d->player, cub3d->mlx);
+		set_direction_indicator(cub3d->player, cub3d->mlx_s);
 	}
 	if (cub3d->vision == 2)
 	{
 		calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
-		set_direction_indicator_2(cub3d->player, cub3d->mlx, cub3d->ray);
+		set_direction_indicator_2(cub3d->player, cub3d->mlx_s, cub3d->ray);
 	}
 	if (cub3d->vision == 3)
 	{
 		calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
-		set_direction_indicator_3(cub3d->player, cub3d->mlx, cub3d->ray);
+		set_direction_indicator_3(cub3d->player, cub3d->mlx_s, cub3d->ray);
 	}
 	if (cub3d->vision == 4)
 	{
 		calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
-		ft_render_fov(cub3d->ray, cub3d->mlx);
+		ft_render_fov(cub3d->ray, cub3d->mlx_s);
 	}
 	// ft_render(cub3d->ray, cub3d->mlx);
 	cub3d->tic++;
@@ -147,7 +147,7 @@ void key_hook(mlx_key_data_t keydata, void *param)
 
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx_terminate(cub3d->mlx->mlx);
+		mlx_terminate(cub3d->mlx_s->mlx);
 		free(cub3d->map->wall_px);
 		free(cub3d->map->wall_py);
 		free(cub3d->map->map);
@@ -171,7 +171,7 @@ void key_hook(mlx_key_data_t keydata, void *param)
 int main(void)
 {
     t_cub3d 	cub3d;
-	t_mlx_struc mlx;
+	t_mlx_struc mlx_s;
 	t_map		map;
 	t_player	player;
 	t_ray		ray;
@@ -179,7 +179,7 @@ int main(void)
 	int32_t width;
 	int32_t height;
     
-	cub3d.mlx = &mlx;
+	cub3d.mlx_s = &mlx_s;
 	cub3d.map = &map;
 	cub3d.player = &player;
 	cub3d.ray = &ray;
@@ -188,18 +188,23 @@ int main(void)
 	cub3d.tic = 0;
 	cub3d.vision = 4;
     ft_map_init(&cub3d);
-	// mlx_get_monitor_size(0, &width, &height);
+	// mlx_get_monit-or_size(0, &width, &height);
 	// cub3d.mlx->mlx->width = width;
 	// cub3d.mlx->mlx->height = height;
 	// cub3d.mlx->mlx = mlx_init(width,
 	// 	height, "cub3d", true);
 	// cub3d.mlx->mlx = mlx_init(cub3d.map->lenght * 100, cub3d.map->height * 100, "cub3d", true);
-	cub3d.mlx->mlx = mlx_init(1900, 900, "cub3d", true);
-	if (!cub3d.mlx)
-	    perror("Error opening mlx");
+	cub3d.mlx_s->mlx = mlx_init(1900, 900, "cub3d", true);
+	
+	
+	mlx_texture_t* texture = mlx_load_png("./img/duck.png");
+	mlx_image_t* img = mlx_texture_to_image(mlx_s.mlx, texture);
+	mlx_image_to_window(mlx_s.mlx, img, 0, 0);
+       
 	ft_create_map(cub3d.map, &cub3d);
-	mlx_key_hook(cub3d.mlx->mlx, key_hook, &cub3d);
-	mlx_loop_hook(cub3d.mlx->mlx, ft_loop, &cub3d);
-	mlx_loop(cub3d.mlx->mlx);
+	// ft_minimap_init(cub3d.map);
+	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
+	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
+	mlx_loop(cub3d.mlx_s->mlx);
 	return (0);
 }

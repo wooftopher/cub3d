@@ -6,7 +6,7 @@
 /*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/04/26 02:40:03 by christo          ###   ########.fr       */
+/*   Updated: 2023/05/01 23:24:48 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ typedef struct mlx_struc
 {
 	mlx_t			*mlx;
     xpm_t           *xpm_player;
-    xpm_t           *xpm_wall;
+    xpm_t			*xpm_wall;
+	mlx_texture_t   *text_wall;
 	mlx_image_t		*img_player;
     mlx_image_t		*img_wall;
 	mlx_image_t		*img_dir_ind;
@@ -67,7 +68,7 @@ typedef struct mlx_struc
 
 typedef struct cub3d
 {
-	t_mlx_struc		*mlx;
+	t_mlx_struc		*mlx_s;
 	t_player		*player;
     t_map           *map;
 	t_ray			*ray;
