@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/05/04 16:24:44 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/24 05:07:58 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,11 @@ void ft_render_fov(t_ray *ray, t_mlx_struc *mlx)
 	int k;
 	int	wall_height;
 	
-	// i = 0;
 	k = 0;
 	j = -ray->fov_angle;
 	if (mlx->img_wall_3d)
 		mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
-	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 900);
+	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1400, 900);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
 		wall_height = 40000 / ray->min_dist_fov[k];
@@ -96,13 +95,13 @@ void ft_render_fov(t_ray *ray, t_mlx_struc *mlx)
 			i = -450;
 		while (i < floor(wall_height) && i < 450)
 		{
-			mlx_put_pixel(mlx->img_wall_3d, 950 + j * 4, 450 + i, 0xFFFFFF);
+			mlx_put_pixel(mlx->img_wall_3d, k, 450 + i, 0xFFFFFF);
 			i++;
 		}
 		k++;
 		j++;
 	}
-	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
+	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 500, 0);
 }
 
 void ft_loop(void *param)
@@ -183,19 +182,14 @@ int main(void)
 	cub3d.map = &map;
 	cub3d.player = &player;
 	cub3d.ray = &ray;
-	cub3d.ray->fov_angle = 25;
-	cub3d.ray->angle_div = 0.2f;
+	cub3d.ray->fov_angle = 30;
+	// cub3d.ray->angle_div = 0.035714f;
+	cub3d.ray->angle_div = 0.042857f;
 	cub3d.tic = 0;
 	cub3d.vision = 4;
     ft_map_init(&cub3d);
-	// mlx_get_monit-or_size(0, &width, &height);
-	// cub3d.mlx->mlx->width = width;
-	// cub3d.mlx->mlx->height = height;
-	// cub3d.mlx->mlx = mlx_init(width,
-	// 	height, "cub3d", true);
 	// cub3d.mlx->mlx = mlx_init(cub3d.map->lenght * 100, cub3d.map->height * 100, "cub3d", true);
 	cub3d.mlx_s->mlx = mlx_init(1900, 900, "cub3d", true);
-	
 	
 	// mlx_texture_t* texture = mlx_load_png("./img/duck.png");
 	// mlx_image_t* img = mlx_texture_to_image(mlx_s.mlx, texture);

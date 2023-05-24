@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/05/04 17:52:45 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/24 04:02:33 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct map
 typedef struct ray
 {
 	float		min_dist;
-	float		min_dist_fov[1024];
+	float		min_dist_fov[1500];
 	float		dist;
 	float		dir_x;
 	float		dir_y;
@@ -59,8 +59,13 @@ typedef struct mlx_struc
 	mlx_t			*mlx;
     xpm_t           *xpm_player;
     xpm_t			*xpm_wall;
-	mlx_texture_t   *text_wall;
+	mlx_texture_t   *txt_sky;
+	mlx_texture_t   *txt_floor;
+	mlx_texture_t   *txt_img;
 	mlx_image_t		*img_player;
+	mlx_image_t		*img_sky;
+	mlx_image_t		*img_floor;
+	mlx_image_t		*img_img;
     mlx_image_t		*img_wall;
 	mlx_image_t		*img_dir_ind;
 	mlx_image_t		*img_wall_3d;

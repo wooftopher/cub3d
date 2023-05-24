@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hor_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/04/26 00:19:34 by christo          ###   ########.fr       */
+/*   Updated: 2023/05/24 05:02:55 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 	{
 		if (map->wall_py[i] != y * 100)
 			i++;
-		else if (player->pos_x - ray->xn >= map->wall_px[i] - 1
+		else if (player->pos_x - ray->xn >= map->wall_px[i] - 1 
 				&& player->pos_x - ray->xn <= map->wall_px[i] + 101 //3
 				&& player->pos_y + ray->yn == map->wall_py[i] 
 				&& player->pos_y + ray->yn <= map->wall_py[i] + 101)
