@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:45:21 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 22:15:22 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/26 22:33:52 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ void	check_ray_col_ver_right(t_map *map, t_player *player, t_ray *ray, int j)
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
 					if (ray->dist < ray->min_dist)
-						ray->min_dist = ray->dist;
+					{
+							ray->min_dist = ray->dist;
+							ray->ray_angle_s->min_dist_fov = ray->dist;
+							ray->ray_angle_s->orientation = 4;
+							ray->ray_angle_s->pos_on_texture
+								= player->pos_y - ray->yn - map->wall_py[i];
+					}
 					i++;
 				}	
 		else
@@ -59,7 +65,13 @@ void	check_ray_col_ver_left(t_map *map, t_player *player, t_ray *ray, int j)
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
 					if (ray->dist < ray->min_dist)
-						ray->min_dist = ray->dist;
+					{
+							ray->min_dist = ray->dist;
+							ray->ray_angle_s->min_dist_fov = ray->dist;
+							ray->ray_angle_s->orientation = 3;
+							ray->ray_angle_s->pos_on_texture
+								= player->pos_y + ray->yn - map->wall_py[i];
+					}
 					i++;
 				}	
 		else

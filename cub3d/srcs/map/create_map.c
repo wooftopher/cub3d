@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/05/24 05:33:14 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/27 02:41:10 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 
 	map->wall_px[wall_count] = x * 100;
 	map->wall_py[wall_count] = y * 100;
-    // if (!mlx_s->xpm_wall)
-	//     mlx_s->xpm_wall = mlx_load_xpm42("./img/0.xpm42");
-	// mlx_s->img_wall
-    //     = mlx_texture_to_image(mlx_s->mlx, &mlx_s->xpm_wall->texture);
-	// mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 100, y * 100);
+    if (!mlx_s->xpm_wall)
+	    mlx_s->xpm_wall = mlx_load_xpm42("./img/0.xpm42");
+	mlx_s->img_wall
+        = mlx_texture_to_image(mlx_s->mlx, &mlx_s->xpm_wall->texture);
+	mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 100, y * 100);
 	wall_count++;
 	return (0);
 }
@@ -32,8 +32,8 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx_s)
 {
 	player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
-	player->angle = 0;
-	player->rot_speed = 4;
+	player->angle = 180;
+	player->rot_speed = 1;
 	player->speed = 5;
 	player->col_x = 0;
 	player->col_y = 0;
@@ -77,7 +77,31 @@ void	init_background(t_cub3d *cub3d)
 	cub3d->mlx_s->txt_img = mlx_load_png("./img/warluigi.png");
 	cub3d->mlx_s->img_img = mlx_texture_to_image(cub3d->mlx_s->mlx, cub3d->mlx_s->txt_img);
 	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_img, 0, 500);
-	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_img, 0, 0);
+	// mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_img, 0, 0);
+}
+
+char	*read_wall_xpm(t_cub3d *cub3d)
+{
+	char 	buffer[1024];
+    size_t	num_read;
+    int		offset;
+	int		fd;
+	char 	*xpm; //trop variable
+	
+	fd = open("img/test1.xpm42", O_RDONLY);
+    if (fd == -1)
+		fd_error(cub3d, fd);
+	//read until EOF
+    xpm = malloc(1024 * sizeof(char));
+	offset = 0;
+	num_read = 0;
+    while ((num_read = read(fd, buffer, sizeof(buffer))) > 0)
+	{
+        memcpy(xpm + offset, buffer, num_read); // libft
+        offset += num_read;
+	}
+	close(fd);
+	return (xpm);
 }
 
 void	ft_create_map(t_map *map, t_cub3d *cub3d)
@@ -89,6 +113,8 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	y = 0;
 	cub3d->mlx_s->xpm_wall = NULL;
 	init_background(cub3d);
+	map->wall_xpm = read_wall_xpm(cub3d);
+	printf("xpm : %s\n", map->wall_xpm);
 	while (x < map->lenght)
 	{
 		while (y < map->height)

@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/05/24 05:07:58 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/27 03:33:34 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 {
 	int	j;
-
+	t_ray_angle_s *ray_angle_s;
+	
+	ray_angle_s = calloc(1, sizeof(t_ray_angle_s));
+	ray->ray_angle_s = ray_angle_s;
 	j = 0;
 	ray->min_dist = INT_MAX;
 	if (cos(player->angle * M_PI / 180) < 0 && player->angle != 270)
@@ -33,14 +36,24 @@ void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 {
 	int	j;
+	int	i;
 	float fov_angle;
-
+	t_ray_angle_s *ray_angle_fov_s[1500];
+	
+	// ray_angle_fov_s = calloc(1500, sizeof(t_ray_angle_fov_s));
+	i = 0;
+	while (i <= 1400)
+	{
+		ray_angle_fov_s[i] = calloc(1, sizeof(t_ray_angle_fov_s));
+		i++;
+	}
 	j = 0;
 	ray->angle_count = 0;
 	fov_angle = -ray->fov_angle;
 	ray->angle = player->angle - ray->fov_angle;
 	while(fov_angle <= ray->fov_angle)
 	{
+		ray->ray_angle_fov_s[ray->angle_count] = ray_angle_fov_s[ray->angle_count];
 		ray->min_dist_fov[ray->angle_count] = INT_MAX;
 		if (cos(ray->angle * M_PI / 180) < 0 && ray->angle != 270)
 			ray_hor_up_fov(player, map, ray, j);
@@ -61,7 +74,6 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	int	i;
 	float	wall_height;
 	
-	// i = 0;
 	wall_height = 4000 / ray->min_dist;
 	if (mlx->img_wall_3d)
 		mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
@@ -75,7 +87,12 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 
-void ft_render_fov(t_ray *ray, t_mlx_struc *mlx)
+// int	find_pixel_color()
+// {
+	
+// }
+
+void ft_render_fov(t_player *player, t_ray *ray, t_mlx_struc *mlx)
 {
 	int	i;
 	float j;
@@ -84,24 +101,27 @@ void ft_render_fov(t_ray *ray, t_mlx_struc *mlx)
 	
 	k = 0;
 	j = -ray->fov_angle;
-	if (mlx->img_wall_3d)
-		mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
-	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1400, 900);
+	// if (mlx->img_wall_3d)
+	// 	mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
+	// mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 1000);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
-		wall_height = 40000 / ray->min_dist_fov[k];
+		// wall_height = 50000 / ray->min_dist_fov[k];
+		wall_height = 50000 / ray->ray_angle_fov_s[k]->min_dist_fov;
 		i = -wall_height;
 		if (i < -450)
 			i = -450;
 		while (i < floor(wall_height) && i < 450)
 		{
-			mlx_put_pixel(mlx->img_wall_3d, k, 450 + i, 0xFFFFFF);
+			mlx_put_pixel(mlx->img_wall_3d, k + 500, 450 + i, 0xFFFFFF);
 			i++;
 		}
 		k++;
 		j++;
 	}
-	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 500, 0);
+	// mlx_image_to_window(mlx->mlx, mlx->img_dir_ind,
+	// 	player->pos_x - 500, player->pos_y - 500);
+	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 
 void ft_loop(void *param)
@@ -110,22 +130,26 @@ void ft_loop(void *param)
 
 	ft_move(cub3d);
 	ft_rotate(cub3d);
-	// if (cub3d->tic == 10)
-	// {
-	// // // 	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
+	if (cub3d->tic == 60)
+	{
+	// // 	calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
 	// printf("cos(player->angle * M_PI / 180); %f\n", cos(cub3d->player->angle * M_PI / 180));
-	// 	cub3d->tic = 0;
-	// }
+	// printf("pos: %d\n", cub3d->ray->ray_angle_s->pos_on_texture);
+	// printf("pos: %d\n", cub3d->ray->ray_angle_fov_s[700]->pos_on_texture);
+	// printf("ori: %d\n", cub3d->ray->ray_angle_fov_s[700]->orientation);
+		pixel_color(cub3d->map->wall_xpm, 0 , 0);
+		cub3d->tic = 0;
+	}
 	if (cub3d->vision == 1)
 	{
 		calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
 		set_direction_indicator(cub3d->player, cub3d->mlx_s);
 	}
-	if (cub3d->vision == 2)
-	{
+	// if (cub3d->vision == 2)
+	// {
 		calcul_ray_to_wall(cub3d->player,cub3d->map, cub3d->ray);
 		set_direction_indicator_2(cub3d->player, cub3d->mlx_s, cub3d->ray);
-	}
+	// }
 	if (cub3d->vision == 3)
 	{
 		calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
@@ -134,7 +158,7 @@ void ft_loop(void *param)
 	if (cub3d->vision == 4)
 	{
 		calcul_ray_to_wall_fov(cub3d->player,cub3d->map, cub3d->ray);
-		ft_render_fov(cub3d->ray, cub3d->mlx_s);
+		ft_render_fov(cub3d->player, cub3d->ray, cub3d->mlx_s);
 	}
 	// ft_render(cub3d->ray, cub3d->mlx);
 	cub3d->tic++;

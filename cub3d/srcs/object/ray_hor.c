@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:40:34 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 22:14:12 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/26 22:33:44 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ void	check_ray_col_hor_up(t_map *map, t_player *player, t_ray *ray, int j)
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
 					if (ray->dist < ray->min_dist)
-						ray->min_dist = ray->dist;
+						{
+							ray->min_dist = ray->dist;
+							ray->ray_angle_s->min_dist_fov = ray->dist;
+							ray->ray_angle_s->orientation = 1;
+							ray->ray_angle_s->pos_on_texture
+								= player->pos_x + ray->xn - map->wall_px[i];
+						}
 					i++;
 				}	
 		else
@@ -58,7 +64,13 @@ void	check_ray_col_hor_down(t_map *map, t_player *player, t_ray *ray, int j)
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
 					if (ray->dist < ray->min_dist)
+					{
 						ray->min_dist = ray->dist;
+						ray->ray_angle_s->min_dist_fov = ray->dist;
+						ray->ray_angle_s->orientation = 2;
+						ray->ray_angle_s->pos_on_texture
+							= player->pos_x - ray->xn - map->wall_px[i];
+					}
 					i++;
 				}	
 		else

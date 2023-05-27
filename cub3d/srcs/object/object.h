@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:36:09 by christo           #+#    #+#             */
-/*   Updated: 2023/04/25 22:44:10 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/27 03:44:00 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 // # include "../main/cub3d.h"
 # include "../main/struct.h"
 # include <math.h>
+# include <stdlib.h>
+# include <strings.h>
 
 //player_move
 void	ft_move(t_cub3d *cub3d);
@@ -42,5 +44,7 @@ void	ray_ver_left(t_player *player, t_map *map, t_ray *ray, int j);
 void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j);
 void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j);
 
+//find_pixel_color
+int		pixel_color(char *xpm, int x, int y);
 
 #endif

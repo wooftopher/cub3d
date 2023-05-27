@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/05/24 05:03:00 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/26 23:40:57 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 					while (k <= ray->angle_count)
 					{
 						if (ray->dist < ray->min_dist_fov[ray->angle_count])
+						{
 							ray->min_dist_fov[ray->angle_count] = ray->dist;
-							k++;
+							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->orientation = 4;
+							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
+								= player->pos_y - ray->yn - map->wall_py[i];
+						}
+						k++;
 					}
 					i++;
 				}	
@@ -69,7 +75,13 @@ void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 					while (k <= ray->angle_count)
 					{
 						if (ray->dist < ray->min_dist_fov[ray->angle_count])
+						{
 							ray->min_dist_fov[ray->angle_count] = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->orientation = 3;
+							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
+								= player->pos_y + ray->yn - map->wall_py[i];
+						}
 							k++;
 					}
 					i++;
