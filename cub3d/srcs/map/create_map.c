@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/05/27 02:41:10 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/30 17:43:58 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx_s)
 	player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
 	player->angle = 180;
-	player->rot_speed = 1;
+	player->rot_speed = 4;
 	player->speed = 5;
 	player->col_x = 0;
 	player->col_y = 0;
@@ -113,8 +113,8 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	y = 0;
 	cub3d->mlx_s->xpm_wall = NULL;
 	init_background(cub3d);
-	map->wall_xpm = read_wall_xpm(cub3d);
-	printf("xpm : %s\n", map->wall_xpm);
+	cub3d->xpm_s->wall_xpm = read_wall_xpm(cub3d);
+	// printf("xpm : %s\n", map->wall_xpm);
 	while (x < map->lenght)
 	{
 		while (y < map->height)

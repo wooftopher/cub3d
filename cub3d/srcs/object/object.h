@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:36:09 by christo           #+#    #+#             */
-/*   Updated: 2023/05/27 03:44:00 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/29 22:46:20 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j);
 void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j);
 
 //find_pixel_color
-int		pixel_color(char *xpm, int x, int y);
+uint32_t	pixel_color(t_xpm *xpm_s, int x, int y);
 
 #endif

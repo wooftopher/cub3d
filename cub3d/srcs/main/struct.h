@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/05/27 02:33:42 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/30 00:22:16 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ typedef struct map
 	int			wall_count;
     char		*wall_xpm;
 }   t_map;
+
+typedef struct xpm_s
+{
+	char	color[10];
+	char	code[2];
+	char	*wall_xpm;
+} t_xpm;
 
 typedef struct ray_angle_s
 {
@@ -94,6 +101,7 @@ typedef struct cub3d
 	t_player		*player;
     t_map           *map;
 	t_ray			*ray;
+	t_xpm			*xpm_s;
 	int				tic;
 	int				vision;
 }   t_cub3d;
