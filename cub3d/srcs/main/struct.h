@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/05/30 00:22:16 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 01:44:39 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ typedef struct map
 	float		*wall_px;
     float		*wall_py;
 	int			wall_count;
-    char		*wall_xpm;
+	int			**north;
 }   t_map;
 
-typedef struct xpm_s
-{
-	char	color[10];
-	char	code[2];
-	char	*wall_xpm;
-} t_xpm;
+// typedef struct xpm_s
+// {
+// 	char	color[10];
+// 	char	code[2];
+// 	char	*wall_xpm;
+// } t_xpm;
 
 typedef struct ray_angle_s
 {
@@ -51,7 +51,6 @@ typedef struct ray_angle_fov_s
 typedef struct ray
 {
 	float		min_dist;
-	float		min_dist_fov[1500];
 	t_ray_angle_s	*ray_angle_s;
 	t_ray_angle_s	*ray_angle_fov_s[1500];
 	float		dist;
@@ -86,6 +85,7 @@ typedef struct mlx_struc
 	mlx_texture_t   *txt_sky;
 	mlx_texture_t   *txt_floor;
 	mlx_texture_t   *txt_img;
+	mlx_texture_t   *txt_wall;
 	mlx_image_t		*img_player;
 	mlx_image_t		*img_sky;
 	mlx_image_t		*img_floor;
@@ -101,7 +101,7 @@ typedef struct cub3d
 	t_player		*player;
     t_map           *map;
 	t_ray			*ray;
-	t_xpm			*xpm_s;
+	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;
 }   t_cub3d;

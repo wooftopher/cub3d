@@ -141,26 +141,3 @@ uint32_t	pixel_color(t_xpm *xpm_s, int x, int y)
 	// printf("color  int: %lu\n", strtoul(xpm_cu->color, NULL, 16));
 	return (strtoul(color, NULL, 16));
 }
-
-// uint32_t	pixel_color(t_xpm *xpm_s, int x, int y)
-// {
-// 	int		nb_color;
-// 	int		nb_char;
-// 	int		i;
-// 	char	*code[2];
-// 	char	*color[10];
-
-// 	i = go_to_l2_a2(xpm_s->wall_xpm, 0);
-// 	nb_color = set_xpm_param(xpm_s->wall_xpm, i);
-// 	while (xpm_s->wall_xpm[i] != ' ')
-// 		i++;
-// 	i++;
-// 	nb_char = set_xpm_param(xpm_s->wall_xpm, i);
-// 	i = go_to_img(xpm_s->wall_xpm, nb_color, i);
-// 	i = go_to_code(xpm_s->wall_xpm, x, y, i);
-// 	xpm_s->code = get_code(xpm_s->wall_xpm, i, nb_char, xpm_s->code);
-// 	xpm_s->color = get_color(xpm_s->wall_xpm, xpm_s->code, xpm_s->color, nb_char);
-// 	// printf("color : %s\n", xpm_cu->color);
-// 	// printf("color  int: %lu\n", strtoul(xpm_cu->color, NULL, 16));
-// 	return (strtoul(xpm_s->color, NULL, 16));
-// }

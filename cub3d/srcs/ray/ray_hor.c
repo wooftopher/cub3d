@@ -6,11 +6,11 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:40:34 by christo           #+#    #+#             */
-/*   Updated: 2023/05/26 22:33:44 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/30 22:34:56 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./object.h"
+#include "./ray.h"
 
 void	check_ray_col_hor_up(t_map *map, t_player *player, t_ray *ray, int j)
 {

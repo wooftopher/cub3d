@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/05/24 20:15:05 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 02:54:09 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ft_rotate(t_cub3d *cub3d)
 		if (cub3d->mlx_s->img_sky->instances[0].x < -6500)
 			cub3d->mlx_s->img_sky->instances[0].x = 500;
 		else
-		cub3d->player->angle += cub3d->player->rot_speed;
+		cub3d->player->angle -= cub3d->player->rot_speed;
 			cub3d->mlx_s->img_sky->instances[0].x -= cub3d->player->rot_speed * 10;
 	}
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_LEFT))
@@ -105,7 +105,7 @@ void	ft_rotate(t_cub3d *cub3d)
 		if (cub3d->mlx_s->img_sky->instances[0].x > 500)
 			cub3d->mlx_s->img_sky->instances[0].x = -6500;
 		else
-			cub3d->player->angle -= cub3d->player->rot_speed;
+			cub3d->player->angle += cub3d->player->rot_speed;
 		cub3d->mlx_s->img_sky->instances[0].x += cub3d->player->rot_speed * 10;
 	}
 }

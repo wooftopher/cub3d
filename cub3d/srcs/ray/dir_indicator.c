@@ -6,11 +6,11 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 22:45:18 by christo           #+#    #+#             */
-/*   Updated: 2023/05/27 02:03:12 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/30 23:10:33 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./object.h"
+#include "./ray.h"
 
 void draw_line(t_player *player, t_mlx_struc *mlx, t_ray *ray, int i)
 {
@@ -37,7 +37,7 @@ void	set_direction_indicator_3(t_player *player, t_mlx_struc *mlx, t_ray *ray)
 	while(k <= ray->angle_count)
 	{
 		i = 0;
-		while(i < ray->min_dist_fov[k] && i < 500)
+		while(i < ray->ray_angle_fov_s[k]->min_dist_fov && i < 500)
 		{
 			draw_line(player, mlx, ray, i);
 			i++;
@@ -57,12 +57,6 @@ void	set_direction_indicator_2(t_player *player, t_mlx_struc *mlx, t_ray *ray)
 	int	d_y;
 
 	i = 0;
-	// if (mlx->img_dir_ind)
-	// 	mlx_delete_image(mlx->mlx, mlx->img_dir_ind);
-	// mlx->img_dir_ind = mlx_new_image(mlx->mlx, 1000, 1000);
-	if (mlx->img_wall_3d)
-		mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
-	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 1000);
 	while(i < ray->min_dist && i < 500)
 	{
 		d_y = i * cos(player->angle * M_PI / 180);
@@ -70,8 +64,6 @@ void	set_direction_indicator_2(t_player *player, t_mlx_struc *mlx, t_ray *ray)
 		mlx_put_pixel(mlx->img_wall_3d, player->pos_x + d_x, player->pos_y + d_y, 0xFFFFFF);
 		i++;
 	}
-	// mlx_image_to_window(mlx->mlx, mlx->img_dir_ind,
-	// 	player->pos_x - 500, player->pos_y - 500);
 }
 
 void	set_direction_indicator(t_player *player, t_mlx_struc *mlx)

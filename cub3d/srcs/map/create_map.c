@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/05/30 17:43:58 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 02:49:11 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx_s)
 	player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
 	player->angle = 180;
-	player->rot_speed = 4;
+	player->rot_speed = 2;
 	player->speed = 5;
 	player->col_x = 0;
 	player->col_y = 0;
 	mlx_s->xpm_player = mlx_load_xpm42("./img/eye.xpm42");
+	// printf ("text : %d", &mlx_s->xpm_player->texture);
 	mlx_s->img_player = mlx_texture_to_image(mlx_s->mlx, &mlx_s->xpm_player->texture);
 	mlx_delete_xpm42(mlx_s->xpm_player);
 	mlx_image_to_window(mlx_s->mlx, mlx_s->img_player,
@@ -88,7 +89,7 @@ char	*read_wall_xpm(t_cub3d *cub3d)
 	int		fd;
 	char 	*xpm; //trop variable
 	
-	fd = open("img/test1.xpm42", O_RDONLY);
+	fd = open("img/test2.xpm42", O_RDONLY);
     if (fd == -1)
 		fd_error(cub3d, fd);
 	//read until EOF
@@ -113,7 +114,7 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	y = 0;
 	cub3d->mlx_s->xpm_wall = NULL;
 	init_background(cub3d);
-	cub3d->xpm_s->wall_xpm = read_wall_xpm(cub3d);
+	// cub3d->xpm_s->wall_xpm = read_wall_xpm(cub3d);
 	// printf("xpm : %s\n", map->wall_xpm);
 	while (x < map->lenght)
 	{

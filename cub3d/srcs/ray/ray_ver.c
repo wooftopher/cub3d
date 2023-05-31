@@ -6,11 +6,11 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:45:21 by christo           #+#    #+#             */
-/*   Updated: 2023/05/26 22:33:52 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/30 22:35:01 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./object.h"
+#include "./ray.h"
 
 void	check_ray_col_ver_right(t_map *map, t_player *player, t_ray *ray, int j)
 {
