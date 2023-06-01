@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/05/31 02:53:01 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 03:40:33 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,35 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 
-int	find_y(int i, int wall_h)
+int	find_y(t_cub3d *cub3d, int i, int wall_h)
 {
-    double normalized_position;
+    // double normalized_position;
+    // int y_pixel_pos;
+
+    // if (i < 0) {
+    //     normalized_position = (double)i / -wall_h;
+    //     y_pixel_pos = (int) round((normalized_position + 1.0) * 50);
+    // } else {
+    //     normalized_position = (double)i / wall_h;
+    //     y_pixel_pos = 50 - (int) round(normalized_position * 40);
+    // }
+
+    // return (y_pixel_pos - 5);
+	    double normalized_position;
     int y_pixel_pos;
 
     if (i < 0) {
         normalized_position = (double)i / -wall_h;
-        y_pixel_pos = (int) round((normalized_position + 1.0) * 50);
+        y_pixel_pos = (int) round((normalized_position + 1.0)
+			* cub3d->mlx_s->txt_wall->height / 2);
     } else {
         normalized_position = (double)i / wall_h;
-        y_pixel_pos = 50 - (int) round(normalized_position * 40);
+        y_pixel_pos = cub3d->mlx_s->txt_wall->height / 2
+			- (int) round(normalized_position
+				* cub3d->mlx_s->txt_wall->height / 2.5);
     }
 
-    return (y_pixel_pos - 5);
+    return (y_pixel_pos - cub3d->mlx_s->txt_wall->height / 20);
 }
 
 
@@ -114,20 +129,17 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 			i = -450;
 		while (i < floor(wall_height) && i < 450)
 		{
-			y = find_y(i, wall_height);
-			x = (cub3d->ray->ray_angle_fov_s[k]->pos_on_texture);
-			if (x >= 100) //feature tu fix
-				x = 99;
-			if (y >= 100) //feature tu fix
-				y = 99;
-			if (y < 0) //feature tu fix
+			y = find_y(cub3d, i, wall_height);
+			x = (cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+			 * cub3d->mlx_s->txt_wall->height / 100;
+			if (x >= 200) //feature to fix
+				x = 199;
+			if (y >= cub3d->mlx_s->txt_wall->height) //feature to fix
+				y = cub3d->mlx_s->txt_wall->height - 1;
+			if (y < 0) //feature to fix
 				y = 0;
-			// mlx_put_pixel(mlx->img_wall_3d, k + 500, 450 + i,
-			// 	pixel_color(cub3d->xpm_s, (cub3d->ray->ray_angle_fov_s[k]->pos_on_texture / 10) ,
-			// 		y));
-
-			// mlx_put_pixel(mlx->img_wall_3d, k + 500, 450 - i,
-			// 	cub3d->map->north[y][x]);
+			// mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
+			// 	0xFFFFFF3F);
 			mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
 				cub3d->map->north[y][x]);
 			i++;
