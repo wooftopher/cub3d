@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/05/31 03:40:33 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 22:37:09 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,10 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 		while (i < floor(wall_height) && i < 450)
 		{
 			y = find_y(cub3d, i, wall_height);
-			x = (cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-			 * cub3d->mlx_s->txt_wall->height / 100;
-			if (x >= 200) //feature to fix
-				x = 199;
+			x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+			 * cub3d->mlx_s->txt_wall->width / 100);
+			if (x >= cub3d->mlx_s->txt_wall->width) //feature to fix
+				x = cub3d->mlx_s->txt_wall->width - 1;
 			if (y >= cub3d->mlx_s->txt_wall->height) //feature to fix
 				y = cub3d->mlx_s->txt_wall->height - 1;
 			if (y < 0) //feature to fix

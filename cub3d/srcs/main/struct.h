@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/05/31 03:53:37 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 22:49:16 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ typedef struct ray_angle_s
 {
 	float	min_dist_fov;
 	int		orientation;
-	int		pos_on_texture;
+	float		pos_on_texture;
 }	t_ray_angle_s;
 
 typedef struct ray_angle_fov_s
 {
 	float	min_dist_fov;
 	int		orientation;
-	int		pos_on_texture;
+	float		pos_on_texture;
 }	t_ray_angle_fov_s;
 
 

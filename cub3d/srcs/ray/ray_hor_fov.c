@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/05/30 23:02:40 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 23:19:57 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					while (k <= ray->angle_count)
-					{
+					// while (k <= ray->angle_count)
+					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -41,8 +41,8 @@ void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_x + ray->xn - map->wall_px[i];
 						}
-						k++;
-					}
+					// 	k++;
+					// }
 					i++;
 				}	
 		else
@@ -70,8 +70,8 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					while (k <= ray->angle_count)
-					{
+					// while (k <= ray->angle_count)
+					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -79,8 +79,8 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_x - ray->xn - map->wall_px[i];
 						}
-						k++;
-					}
+					// 	k++;
+					// }
 					i++;
 				}	
 		else

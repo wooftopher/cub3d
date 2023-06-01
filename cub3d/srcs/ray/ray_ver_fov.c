@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/05/30 23:07:13 by cperron          ###   ########.fr       */
+/*   Updated: 2023/05/31 23:19:38 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					while (k <= ray->angle_count)
-					{
+					// while (k <= ray->angle_count)
+					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -41,8 +41,8 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_y - ray->yn - map->wall_py[i];
 						}
-						k++;
-					}
+						// k++;
+					// }
 					i++;
 				}	
 		else
@@ -53,7 +53,7 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
-	int	y;
+	int	y; //float?
 	int k;
 	
 	i = 0;
@@ -71,8 +71,8 @@ void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					while (k <= ray->angle_count)
-					{
+					// while (k <= ray->angle_count)
+					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -80,8 +80,8 @@ void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_y + ray->yn - map->wall_py[i];
 						}
-							k++;
-					}
+					// 	k++;
+					// }
 					i++;
 				}	
 		else
