@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/06 23:32:36 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 03:46:13 by christo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,110 +75,39 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 
-int	find_y(t_cub3d *cub3d, int i, int wall_h)
-{
-    
-	double normalized_position;
-    int y_pixel_pos;
-
-    if (i < 0) {
-        normalized_position = (double)i / -wall_h;
-        y_pixel_pos = (int) round((normalized_position + 1.0)
-			* cub3d->mlx_s->txt_wall_n->height / 2);
-    } else {
-        normalized_position = (double)i / wall_h;
-        y_pixel_pos = cub3d->mlx_s->txt_wall_n->height / 2
-			- (int) round(normalized_position
-				* cub3d->mlx_s->txt_wall_n->height / 2.5);
-    }
-
-    return (y_pixel_pos - cub3d->mlx_s->txt_wall_n->height / 20);
-}
-
-void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *mlx)
+void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *mlx_s)
 {
 	int	i;
 	float j;
 	int k;
-	float	wall_height;
-	int	y;
-	int x;
+	int	wall_height;
 	
 	k = 0;
 	j = -ray->fov_angle;
-	if (mlx->img_wall_3d)
-		mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
-	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 1000);
+	create_pixel_image(cub3d);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
-        float correction_factor = (player->angle - ray->ray_angle_fov_s[k]->angle); // norm
-        wall_height = 45000 / (ray->ray_angle_fov_s[k]->min_dist_fov * cos(correction_factor * M_PI / 180));
+		wall_height = fish_eye_correction(cub3d, k, wall_height);;
 		i = -wall_height;
 		if (i < -450)
 			i = -450;
 		while (i < floor(wall_height) && i < 450)
 		{
-			y = find_y(cub3d, i, wall_height);
-			// x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-			//  * cub3d->mlx_s->txt_wall_n->width / 100);
-			// if (x >= cub3d->mlx_s->txt_wall_n->width) //feature to fix
-			// 	x = cub3d->mlx_s->txt_wall_n->width - 1;
-			// if (y >= cub3d->mlx_s->txt_wall_n->height) //feature to fix
-			// 	y = cub3d->mlx_s->txt_wall_n->height - 1;
-			// if (y < 0) //feature to fix
-			// 	y = 0;
-			// mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-			// 	0xFFFFFFFF);
-			if(ray->ray_angle_fov_s[k]->orientation == 1)
-			{
-				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-					* cub3d->mlx_s->txt_wall_n->width / 100);
-				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-					cub3d->map->north[y][x]);
-			}
-			else if(ray->ray_angle_fov_s[k]->orientation == 2)
-			{
-				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-					* cub3d->mlx_s->txt_wall_s->width / 100);
-				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-					cub3d->map->south[y][x]);
-			}
-			else if(ray->ray_angle_fov_s[k]->orientation == 3)
-			{
-				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-					* cub3d->mlx_s->txt_wall_e->width / 100);
-				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-					cub3d->map->east[y][x]);
-			}
-			else if(ray->ray_angle_fov_s[k]->orientation == 4)
-			{
-				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-					* cub3d->mlx_s->txt_wall_w->width / 100);
-				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-					cub3d->map->west[y][x]);
-			}
+			check_orientation_1(cub3d, k, i, wall_height);
+			check_orientation_2(cub3d, k, i, wall_height);
 			i++;
 		}
 		k++;
 		j++;
 	}
 	// set_direction_indicator_2(cub3d->player, cub3d->mlx_s, cub3d->ray);
-	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
+	mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall_3d, 0, 0);
 }
 
 void	ft_calcul_render(t_cub3d *cub3d)
 {
 	if (cub3d->tic == 60)
 	{
-	// 	mlx_texture_t * test =  mlx_load_png("./img/4.png");
-	// 	int **fuck = fill_int_array(test->height * test->width * 4, test->height, test->width, test);
-	// 	for (int i = 0; i < cub3d->mlx_s->txt_wall->height; i++)
-	// {
-	// 	for (int j = 0; j < cub3d->mlx_s->txt_wall->width; j++)
-	// 	{
-	// 		printf("%u ", cub3d->map->north[i][j]);	
-	// 	}
-	// }
 		// printf("%f ", cub3d->ray->ray_angle_fov_s[650]->pos_on_texture);	
 		cub3d->tic = 0;
 	}
