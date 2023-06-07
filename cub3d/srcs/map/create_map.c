@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/05/31 03:27:16 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 18:08:50 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_init_player(int x, int y, t_player *player, t_mlx_struc *mlx_s)
 	player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
 	player->angle = 180;
-	player->rot_speed = 2;
+	player->rot_speed = 4;
 	player->speed = 5;
 	player->col_x = 0;
 	player->col_y = 0;

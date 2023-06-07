@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/01 13:50:01 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 22:07:07 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_ray(t_cub3d *cub3d)
 {
 	int	i;
-	t_ray_angle_s *ray_angle_fov_s[1500];
+	t_ray_angle_fov_s *ray_angle_fov_s[1500];
 	
 	i = 0;
 	while (i <= 1400)
@@ -27,7 +27,7 @@ void	init_ray(t_cub3d *cub3d)
 	cub3d->ray->fov_angle = 30;
 	// cub3d.ray->angle_div = 0.035714f;
 	cub3d->ray->angle_div = 0.042857f;
-	cub3d->mlx_s->txt_wall = mlx_load_png("./img/test_wall.png");
+	cub3d->mlx_s->txt_wall = mlx_load_png("./img/test1.png");
 	cub3d->map->north = fill_int_array(cub3d->mlx_s->txt_wall->height
 		* cub3d->mlx_s->txt_wall->height * 4, cub3d->mlx_s->txt_wall->height,
 			cub3d->mlx_s->txt_wall->width, cub3d->mlx_s->txt_wall);

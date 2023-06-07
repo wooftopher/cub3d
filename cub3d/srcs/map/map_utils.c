@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 23:14:36 by christo           #+#    #+#             */
-/*   Updated: 2023/04/20 00:41:01 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/01 19:44:09 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ void count_wall(t_map *map, char *str)
 		i++;
 	}
 	map->wall_count = x;
-	map->wall_px = calloc(x, sizeof(int));
-	map->wall_py = calloc(x, sizeof(int));
+	map->wall_px = calloc(x, sizeof(float));
+	map->wall_py = calloc(x, sizeof(float));
 }

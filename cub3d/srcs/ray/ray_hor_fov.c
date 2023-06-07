@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/05/31 23:19:57 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 19:31:31 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 	{
 		if (map->wall_py[i] != y * 100)
 			i++;
-		else if (player->pos_x + ray->xn >= map->wall_px[i] - 1 //3
-				&& player->pos_x + ray->xn <= map->wall_px[i] + 101
-				&& player->pos_y - ray->yn >= map->wall_py[i] - 1
-				&& player->pos_y - ray->yn <= map->wall_py[i] + 101)
+		else if (player->pos_x + ray->xn >= map->wall_px[i] //3
+				&& player->pos_x + ray->xn <= map->wall_px[i] + 100
+				&& player->pos_y - ray->yn >= map->wall_py[i]
+				&& player->pos_y - ray->yn <= map->wall_py[i] + 100)
 				{
+					// remove_fish_eye(ray);
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
 					// while (k <= ray->angle_count)
@@ -63,11 +64,12 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 	{
 		if (map->wall_py[i] != y * 100)
 			i++;
-		else if (player->pos_x - ray->xn >= map->wall_px[i] - 1 
-				&& player->pos_x - ray->xn <= map->wall_px[i] + 101 //3
+		else if (player->pos_x - ray->xn >= map->wall_px[i]
+				&& player->pos_x - ray->xn <= map->wall_px[i] + 100 //3
 				&& player->pos_y + ray->yn == map->wall_py[i] 
-				&& player->pos_y + ray->yn <= map->wall_py[i] + 101)
+				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
 				{
+					// remove_fish_eye(ray);
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
 					// while (k <= ray->angle_count)
@@ -77,7 +79,7 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 2;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
-								= player->pos_x - ray->xn - map->wall_px[i];
+								=  100 - (player->pos_x - ray->xn - map->wall_px[i]);
 						}
 					// 	k++;
 					// }
@@ -90,8 +92,8 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 
 void ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
 {
-	int ys;
-	int xs;
+	float ys;
+	float xs;
 	int nb_inter;
 	
 	ys = 100;
@@ -110,8 +112,8 @@ void ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
 
 void ray_hor_down_fov(t_player *player, t_map *map, t_ray *ray, int j)
 {
-	int ys;
-	int xs;
+	float ys;
+	float xs;
 	int nb_inter;
 	
 	ys = 100;

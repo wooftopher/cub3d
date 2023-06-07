@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:54:39 by christo           #+#    #+#             */
-/*   Updated: 2023/05/31 04:04:25 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 18:09:40 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ void	ft_write_map(char *str, t_map *map)
 
 char	*ft_read_map(t_cub3d *cub3d)
 {
-  	char 	buffer[1024];
+  	char 	buffer[10240];
     size_t	num_read;
     int		offset;
 	int		fd;
 	char 	*map; //trop variable
 	
-	fd = open("map/1.ber", O_RDONLY);
+	fd = open("./map/1.ber", O_RDONLY);
     if (fd == -1)
 		fd_error(cub3d, fd);
 	//read until EOF
-    map = malloc(1024 * sizeof(char));
+    map = malloc(10240 * sizeof(char));
 	offset = 0;
 	num_read = 0;
     while ((num_read = read(fd, buffer, sizeof(buffer))) > 0)
@@ -122,6 +122,33 @@ void	malloc_map(t_map *map)
 	}
 }
 
+
+// void ft_map_init(t_cub3d *cub3d)
+// {
+//     cub3d->map->map = malloc(sizeof(char *) * 13);
+//     cub3d->map->map[0] = strdup("01111111111111111111111111000000000000000000000000000000000");
+//     cub3d->map->map[1] = strdup("10000000001100000000000010000000000000000000000000000000000");
+//     cub3d->map->map[2] = strdup("10110000011100000000000010000000000000000000000000000000000");
+//     cub3d->map->map[3] = strdup("10010000000000000000000010000000000000000000000000000000000");
+//     cub3d->map->map[4] = strdup("11111111101100000111000000000000100000000000000000000000000");
+//     cub3d->map->map[5] = strdup("10000000001100000111011111111111100000000000000000000000000");
+//     cub3d->map->map[6] = strdup("11110111111111011100000010001000000000000000000000000000000");
+//     cub3d->map->map[7] = strdup("11110111111111011101010010001000000000000000000000000000000");
+//     cub3d->map->map[8] = strdup("11000000110101011100000010001010000000000000001100000010001");
+//     cub3d->map->map[9] = strdup("10000000000000001101010010001000000000000000000000000000000");
+//     cub3d->map->map[10] = strdup("11000001110101011111011110N01110000000000000000000000000000");
+//     cub3d->map->map[11] = strdup("11110111011101010101111010001000000000000000000000000000000");
+//     cub3d->map->map[12] = NULL;
+// 	cub3d->map->wall_count = 100;
+// 	cub3d->map->wall_px = calloc(100, sizeof(int));
+// 	cub3d->map->wall_py = calloc(100, sizeof(int));
+// 	// for (int i = 0; cub3d->map->map[i]; i++)
+// 	// 	printf("%s\n", cub3d->map->map[i]);
+// 	// exit (0);
+//     //ft_print_map(cub3d->map);
+// }
+
+
 void	ft_map_init(t_cub3d *cub3d)
 {
 	char	*file;
@@ -133,5 +160,5 @@ void	ft_map_init(t_cub3d *cub3d)
 	malloc_map(cub3d->map);
 	ft_write_map(file, cub3d->map);
 	free(file);
-	ft_print_map(cub3d->map);
+	// ft_print_map(cub3d->map);
 }
