@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:54:39 by christo           #+#    #+#             */
-/*   Updated: 2023/06/06 18:09:40 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:00:46 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*ft_read_map(t_cub3d *cub3d)
 	int		fd;
 	char 	*map; //trop variable
 	
-	fd = open("./map/1.ber", O_RDONLY);
+	fd = open("./map/0.ber", O_RDONLY);
     if (fd == -1)
 		fd_error(cub3d, fd);
 	//read until EOF

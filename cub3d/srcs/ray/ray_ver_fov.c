@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/06 18:11:15 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 22:37:04 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 4;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_y - ray->yn - map->wall_py[i];
@@ -78,6 +79,7 @@ void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 3;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= 100 - (player->pos_y + ray->yn - map->wall_py[i]);

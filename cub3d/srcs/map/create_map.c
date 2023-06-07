@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/06 18:08:50 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:10:41 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 
 	map->wall_px[wall_count] = x * 100;
 	map->wall_py[wall_count] = y * 100;
-    if (!mlx_s->xpm_wall)
-	    mlx_s->xpm_wall = mlx_load_xpm42("./img/0.xpm42");
-	mlx_s->img_wall
-        = mlx_texture_to_image(mlx_s->mlx, &mlx_s->xpm_wall->texture);
-	mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 100, y * 100);
+    // if (!mlx_s->xpm_wall)
+	//     mlx_s->xpm_wall = mlx_load_xpm42("./img/0.xpm42");
+	// mlx_s->img_wall
+    //     = mlx_texture_to_image(mlx_s->mlx, &mlx_s->xpm_wall->texture);
+	// mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 100, y * 100);
 	wall_count++;
 	return (0);
 }

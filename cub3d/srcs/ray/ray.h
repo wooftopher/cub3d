@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:24:28 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/06 18:18:27 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:16:21 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,5 @@ void	init_ray(t_cub3d *cub3d);
 
 int		**fill_int_array(uint32_t length, uint32_t heigth, uint32_t witdh, mlx_texture_t *texture);
 void	free_int_array(int **array, uint32_t heigth);
-void	remove_fish_eye(t_ray *ray);
-void	remove_fish_eye_2(t_ray *ray);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/06 19:31:31 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 22:36:54 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 1;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_x + ray->xn - map->wall_px[i];
@@ -77,6 +78,7 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
+							ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 2;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								=  100 - (player->pos_x - ray->xn - map->wall_px[i]);

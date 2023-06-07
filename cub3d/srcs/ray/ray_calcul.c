@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/06 22:16:58 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:32:36 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,15 @@ int	find_y(t_cub3d *cub3d, int i, int wall_h)
     if (i < 0) {
         normalized_position = (double)i / -wall_h;
         y_pixel_pos = (int) round((normalized_position + 1.0)
-			* cub3d->mlx_s->txt_wall->height / 2);
+			* cub3d->mlx_s->txt_wall_n->height / 2);
     } else {
         normalized_position = (double)i / wall_h;
-        y_pixel_pos = cub3d->mlx_s->txt_wall->height / 2
+        y_pixel_pos = cub3d->mlx_s->txt_wall_n->height / 2
 			- (int) round(normalized_position
-				* cub3d->mlx_s->txt_wall->height / 2.5);
+				* cub3d->mlx_s->txt_wall_n->height / 2.5);
     }
 
-    return (y_pixel_pos - cub3d->mlx_s->txt_wall->height / 20);
-}
-
-void calcul_incident_angle(t_ray *ray, int k)
-{
-	float colum_dis;
-	
-	colum_dis = ((float)k - 700);
-	// if ( k < 0)
-	// 	k *= -1;
-	ray->ray_angle_fov_s[k]->inc_angle = 
-		atan2(0.5 - colum_dis, ray->ray_angle_fov_s[k]->min_dist_fov);
-	float angle = ray->ray_angle_fov_s[k]->inc_angle;
+    return (y_pixel_pos - cub3d->mlx_s->txt_wall_n->height / 20);
 }
 
 void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *mlx)
@@ -123,38 +111,58 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 1000);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
-		// calcul_incident_angle(ray, k);
-		// wall_height = 50000 / ray->ray_angle_fov_s[k]->min_dist_fov;
-			// wall_height = (50000 / ray->ray_angle_fov_s[k]->min_dist_fov
-			// * cos(ray->ray_angle_fov_s[k]->inc_angle));
-		float angle_of_incidence = atan((k - 1400 / 2.0) / ray->ray_angle_fov_s[k]->min_dist_fov);
-        float correction_factor = cos(angle_of_incidence);
-        wall_height = 50000 / (ray->ray_angle_fov_s[k]->min_dist_fov * correction_factor);
+        float correction_factor = (player->angle - ray->ray_angle_fov_s[k]->angle); // norm
+        wall_height = 45000 / (ray->ray_angle_fov_s[k]->min_dist_fov * cos(correction_factor * M_PI / 180));
 		i = -wall_height;
 		if (i < -450)
 			i = -450;
 		while (i < floor(wall_height) && i < 450)
 		{
-			// y = find_y(cub3d, i, wall_height);
+			y = find_y(cub3d, i, wall_height);
 			// x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-			//  * cub3d->mlx_s->txt_wall->width / 100);
-			// if (x >= cub3d->mlx_s->txt_wall->width) //feature to fix
-			// 	x = cub3d->mlx_s->txt_wall->width - 1;
-			// if (y >= cub3d->mlx_s->txt_wall->height) //feature to fix
-			// 	y = cub3d->mlx_s->txt_wall->height - 1;
+			//  * cub3d->mlx_s->txt_wall_n->width / 100);
+			// if (x >= cub3d->mlx_s->txt_wall_n->width) //feature to fix
+			// 	x = cub3d->mlx_s->txt_wall_n->width - 1;
+			// if (y >= cub3d->mlx_s->txt_wall_n->height) //feature to fix
+			// 	y = cub3d->mlx_s->txt_wall_n->height - 1;
 			// if (y < 0) //feature to fix
 			// 	y = 0;
-			mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-				0xFFFFFFFF);
 			// mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
-			// 	cub3d->map->north[y][x]);
+			// 	0xFFFFFFFF);
+			if(ray->ray_angle_fov_s[k]->orientation == 1)
+			{
+				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+					* cub3d->mlx_s->txt_wall_n->width / 100);
+				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
+					cub3d->map->north[y][x]);
+			}
+			else if(ray->ray_angle_fov_s[k]->orientation == 2)
+			{
+				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+					* cub3d->mlx_s->txt_wall_s->width / 100);
+				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
+					cub3d->map->south[y][x]);
+			}
+			else if(ray->ray_angle_fov_s[k]->orientation == 3)
+			{
+				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+					* cub3d->mlx_s->txt_wall_e->width / 100);
+				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
+					cub3d->map->east[y][x]);
+			}
+			else if(ray->ray_angle_fov_s[k]->orientation == 4)
+			{
+				x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+					* cub3d->mlx_s->txt_wall_w->width / 100);
+				mlx_put_pixel(mlx->img_wall_3d, 1900 - k, 450 - i,
+					cub3d->map->west[y][x]);
+			}
 			i++;
 		}
-		// angle_of_incidence += ray->angle;
 		k++;
 		j++;
 	}
-	set_direction_indicator_2(cub3d->player, cub3d->mlx_s, cub3d->ray);
+	// set_direction_indicator_2(cub3d->player, cub3d->mlx_s, cub3d->ray);
 	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 

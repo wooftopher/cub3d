@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/06 19:30:32 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:13:05 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,12 @@ typedef struct map
     float		*wall_py;
 	int			wall_count;
 	int			**north;
+	int			**south;
+	int			**east;
+	int			**west;
 }   t_map;
 
-// typedef struct xpm_s
-// {
-// 	char	color[10];
-// 	char	code[2];
-// 	char	*wall_xpm;
-// } t_xpm;
-
+//remove one day
 typedef struct ray_angle_s
 {
 	float	min_dist_fov;
@@ -46,13 +43,14 @@ typedef struct ray_angle_fov_s
 	int		orientation;
 	float	pos_on_texture;
 	float	inc_angle;
+	float	angle;
 }	t_ray_angle_fov_s;
 
 
 typedef struct ray
 {
 	float		min_dist;
-	t_ray_angle_s	*ray_angle_s;
+	t_ray_angle_s		*ray_angle_s;
 	t_ray_angle_fov_s	*ray_angle_fov_s[1500];
 	float		dist;
 	float		dir_x;
@@ -86,7 +84,10 @@ typedef struct mlx_struc
 	mlx_texture_t   *txt_sky;
 	mlx_texture_t   *txt_floor;
 	mlx_texture_t   *txt_img;
-	mlx_texture_t   *txt_wall;
+	mlx_texture_t   *txt_wall_n;
+	mlx_texture_t   *txt_wall_s;
+	mlx_texture_t   *txt_wall_e;
+	mlx_texture_t   *txt_wall_w;
 	mlx_image_t		*img_player;
 	mlx_image_t		*img_sky;
 	mlx_image_t		*img_floor;
