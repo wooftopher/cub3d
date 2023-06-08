@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/07 20:26:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/07 21:51:25 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void key_hook(mlx_key_data_t keydata, void *param)
 	{
 		mlx_terminate(cub3d->mlx_s->mlx);
 		free_stuff(cub3d);
-		exit (0);
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
@@ -77,9 +76,9 @@ int main(void)
 	cub3d.tic = 0;
 	cub3d.vision = 4;
     // ft_map_init(&cub3d);
-	map_initialization(&map, "wrong.cub");
-	for (int i = 0; map.map[i]; i++)
-		printf("%s\n", map.map[i]);
+	map_initialization(&map, "giant.cub");
+	// for (int i = 0; map.map[i]; i++)
+	// 	printf("%s\n", map.map[i]);
 	if (map.map_errno)
 	{
 		print_map_errno(map.map_errno);
