@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 19:52:47 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/07 23:44:07 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,12 @@ void	init_ray(t_cub3d *cub3d, t_map *map)
 	cub3d->map->west = fill_int_array(cub3d->mlx_s->txt_wall_n->height
 		* cub3d->mlx_s->txt_wall_w->height * 4, cub3d->mlx_s->txt_wall_w->height,
 			cub3d->mlx_s->txt_wall_w->width, cub3d->mlx_s->txt_wall_w);
+	free_int_array(cub3d->map->north, cub3d->mlx_s->txt_wall_n->height);
+	free_int_array(cub3d->map->south, cub3d->mlx_s->txt_wall_n->height);
+	free_int_array(cub3d->map->west, cub3d->mlx_s->txt_wall_n->height);
+	free_int_array(cub3d->map->east, cub3d->mlx_s->txt_wall_n->height);
+	mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
+	mlx_delete_texture(cub3d->mlx_s->txt_wall_s);
+	mlx_delete_texture(cub3d->mlx_s->txt_wall_e);
+	mlx_delete_texture(cub3d->mlx_s->txt_wall_w);
 }
