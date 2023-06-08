@@ -1,0 +1,24 @@
+x0.Valid map             
+x1.Couldn't open file    
+x2.Invalid map name      
+x3.Empty map             
+x4.Invalid map name      
+x5.Read failure          
+x6.Texture error         
+x7.No starting position  
+x8.Witdh too large       
+x9.Witdh too low         
+10.Multiple texture error
+11.Invalid color         
+12.Invalid ceiling color 
+13.Map invalid character 
+14.No map found          
+15.Out of memory         
+16.Invalid line          
+17.Height too large      
+18.Height too low        
+19.Invalid map           
+20.Double starting pos   
+21.Int overflow          
+22.Multiple starting pos 
+!

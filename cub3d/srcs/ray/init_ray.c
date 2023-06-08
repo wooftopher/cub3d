@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 02:36:34 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/07 19:52:47 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ray.h"
 
-void	init_ray(t_cub3d *cub3d)
+void	init_ray(t_cub3d *cub3d, t_map *map)
 {
 	int	i;
 	t_ray_angle_fov_s *ray_angle_fov_s[1500];
@@ -27,10 +27,10 @@ void	init_ray(t_cub3d *cub3d)
 	cub3d->ray->fov_angle = 30;
 	// cub3d.ray->angle_div = 0.035714f;
 	cub3d->ray->angle_div = 0.042857f;
-	cub3d->mlx_s->txt_wall_n = mlx_load_png("./img/big.png");
-	cub3d->mlx_s->txt_wall_s = mlx_load_png("./img/big.png");
-	cub3d->mlx_s->txt_wall_e = mlx_load_png("./img/big.png");
-	cub3d->mlx_s->txt_wall_w = mlx_load_png("./img/big.png");
+	cub3d->mlx_s->txt_wall_n = mlx_load_png(map->n_texture);
+	cub3d->mlx_s->txt_wall_s = mlx_load_png(map->s_texture);
+	cub3d->mlx_s->txt_wall_e = mlx_load_png(map->e_texture);
+	cub3d->mlx_s->txt_wall_w = mlx_load_png(map->w_texture);
 	cub3d->map->north = fill_int_array(cub3d->mlx_s->txt_wall_n->height
 		* cub3d->mlx_s->txt_wall_n->height * 4, cub3d->mlx_s->txt_wall_n->height,
 			cub3d->mlx_s->txt_wall_n->width, cub3d->mlx_s->txt_wall_n);

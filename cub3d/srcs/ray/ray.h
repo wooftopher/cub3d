@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:24:28 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 03:42:11 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/07 19:52:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j);
 void	ft_calcul_render(t_cub3d *cub3d);
 
 //ini_ray
-void	init_ray(t_cub3d *cub3d);
+void	init_ray(t_cub3d *cub3d, t_map *map);
 
 //ray_calcul_utils
 void	create_pixel_image(t_cub3d *cub3d);

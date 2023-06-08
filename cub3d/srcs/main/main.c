@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/01 15:03:22 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 20:26:10 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,22 @@ int main(void)
 	cub3d.ray = &ray;
 	cub3d.tic = 0;
 	cub3d.vision = 4;
-	init_ray(&cub3d);
-    ft_map_init(&cub3d);
+    // ft_map_init(&cub3d);
+	map_initialization(&map, "wrong.cub");
+	for (int i = 0; map.map[i]; i++)
+		printf("%s\n", map.map[i]);
+	if (map.map_errno)
+	{
+		print_map_errno(map.map_errno);
+		exit(0);
+	}
+	init_ray(&cub3d, &map);
 	cub3d.mlx_s->mlx = mlx_init(1900, 900, "cub3d", true); 
 	ft_create_map(cub3d.map, &cub3d);
 	// ft_minimap_init(cub3d.map);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);
+	map_struct_destructor(&map);
 	return (0);
 }

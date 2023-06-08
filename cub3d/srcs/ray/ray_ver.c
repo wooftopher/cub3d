@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_ver.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:45:21 by christo           #+#    #+#             */
-/*   Updated: 2023/05/30 22:35:01 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 19:26:49 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	ray_ver_right(t_player *player, t_map *map, t_ray *ray, int j)
 	ys = xs * (tan((player->angle - 90) * M_PI / 180));
 	ray->xn = ((floor(player->pos_x / 100)) + 1) * 100 - player->pos_x;
 	ray->yn = ray->xn * (tan((player->angle - 90) * M_PI / 180));
-	nb_inter = map->lenght - (floor(player->pos_x / 100)) - 1;
+	nb_inter = map->height - (floor(player->pos_x / 100)) - 1;
 	while (j < nb_inter)
 	{
 		check_ray_col_ver_right(map, player, ray, j);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/05/30 22:26:58 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 19:19:28 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 # include <limits.h>
 # include <float.h>
 
-#include "../map/map.h"
-#include "./struct.h"
-#include "../object/object.h"
-#include "../ray/ray.h"
+# include "../map/map.h"
+# include "./struct.h"
+# include "../object/object.h"
+# include "../ray/ray.h"
+# include "../parsing/map_processor.h"
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"

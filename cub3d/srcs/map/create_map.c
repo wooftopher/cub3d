@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/06 23:10:41 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 20:25:54 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
     //     = mlx_texture_to_image(mlx_s->mlx, &mlx_s->xpm_wall->texture);
 	// mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 100, y * 100);
 	wall_count++;
+	map->wall_count++;
 	return (0);
 }
 
@@ -116,7 +117,7 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	init_background(cub3d);
 	// cub3d->xpm_s->wall_xpm = read_wall_xpm(cub3d);
 	// printf("xpm : %s\n", map->wall_xpm);
-	while (x < map->lenght)
+	while (x < map->width)
 	{
 		while (y < map->height)
 		{
@@ -125,7 +126,7 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 				ft_init_wall(x, y, cub3d->map, cub3d->mlx_s);
 				// init_minimap(x, y, cub3d->map, cub3d->mlx_s);
 			}
-			if (map->map[y][x] == 'P')
+			if (map->map[y][x] == 'N')
 				ft_init_player(x, y, cub3d->player, cub3d->mlx_s);
 			y++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/06 23:13:05 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 19:25:37 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,40 @@
 
 # include "../../lib/MLX42/include/MLX42/MLX42.h"
 
-typedef struct map
+// typedef struct map
+// {
+//     char   		**map;
+//     int    		lenght;
+//     int    		height;
+// 	float		*wall_px;
+//     float		*wall_py;
+// 	int			wall_count;
+// 	int			**north;
+// 	int			**south;
+// 	int			**east;
+// 	int			**west;
+// }   t_map;
+
+typedef struct s_map
 {
-    char   		**map;
-    int    		lenght;
-    int    		height;
+	char		**map;
+	char		*n_texture;
+	char		*s_texture;
+	char		*w_texture;
+	char		*e_texture;
+	uint32_t	ceiling_color;
+	uint32_t	floor_color;
+	uint8_t		width;
+	uint8_t		height;
+	uint16_t	wall_count;
 	float		*wall_px;
-    float		*wall_py;
-	int			wall_count;
+	float		*wall_py;
+	uint8_t		map_errno;
 	int			**north;
 	int			**south;
 	int			**east;
 	int			**west;
-}   t_map;
+}	t_map;
 
 //remove one day
 typedef struct ray_angle_s

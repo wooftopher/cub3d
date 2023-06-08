@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_ver_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 02:30:43 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/07 19:27:09 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	ys = xs * (tan((ray->angle - 90) * M_PI / 180));
 	ray->xn = ((floor(player->pos_x / 100)) + 1) * 100 - player->pos_x;
 	ray->yn = ray->xn * (tan((ray->angle - 90) * M_PI / 180));
-	nb_inter = map->lenght - (floor(player->pos_x / 100)) - 1;
+	nb_inter = map->width - (floor(player->pos_x / 100)) - 1;
 	while (j < nb_inter)
 	{
 		check_ray_col_ver_right_fov(map, player, ray, j);

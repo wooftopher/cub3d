@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 23:14:36 by christo           #+#    #+#             */
-/*   Updated: 2023/06/01 19:44:09 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/07 20:23:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void set_map_lenght(t_map *map, char *str)
 	i = 0;
 	while (str[i] != '\n')
 		i++;
-	map->lenght = i;
+	map->height = i;
 }
 
 void set_map_height(t_map *map, char *str)
