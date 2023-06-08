@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/07 20:26:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/07 22:58:30 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void key_hook(mlx_key_data_t keydata, void *param)
 	{
 		mlx_terminate(cub3d->mlx_s->mlx);
 		free_stuff(cub3d);
-		exit (0);
+		return ;
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
@@ -76,8 +76,7 @@ int main(void)
 	cub3d.ray = &ray;
 	cub3d.tic = 0;
 	cub3d.vision = 4;
-    // ft_map_init(&cub3d);
-	map_initialization(&map, "wrong.cub");
+	map_initialization(&map, "./map/wrong.cub");
 	for (int i = 0; map.map[i]; i++)
 		printf("%s\n", map.map[i]);
 	if (map.map_errno)
@@ -86,11 +85,10 @@ int main(void)
 		exit(0);
 	}
 	init_ray(&cub3d, &map);
-	cub3d.mlx_s->mlx = mlx_init(1900, 900, "cub3d", true); 
+	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true); 
 	ft_create_map(cub3d.map, &cub3d);
-	// ft_minimap_init(cub3d.map);
-	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
+	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);
 	map_struct_destructor(&map);
 	return (0);

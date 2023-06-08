@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_calcul_utils                                   :+:      :+:    :+:   */
+/*   ray_calcul_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/07 03:35:37 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/07 22:58:24 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 			* cub3d->mlx_s->txt_wall_n->width / 100) ;
 		if (x >= cub3d->mlx_s->txt_wall_n->width) //feature to fix
 			x = cub3d->mlx_s->txt_wall_n->width - 1;
-		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1900 - k, 450 - i,
+		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 			cub3d->map->north[y][x]);
 	}
 	else if(cub3d->ray->ray_angle_fov_s[k]->orientation == 2)
@@ -53,7 +53,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 			* cub3d->mlx_s->txt_wall_s->width / 100);
 		if (x >= cub3d->mlx_s->txt_wall_s->width) //feature to fix
 			x = cub3d->mlx_s->txt_wall_s->width - 1;
-		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1900 - k, 450 - i,
+		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 			cub3d->map->south[y][x]);
 	}
 }
@@ -70,7 +70,7 @@ void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 			* cub3d->mlx_s->txt_wall_e->width / 100);
 		if (x >= cub3d->mlx_s->txt_wall_e->width) //feature to fix
 			x = cub3d->mlx_s->txt_wall_e->width - 1;
-		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1900 - k, 450 - i,
+		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 					cub3d->map->east[y][x]);
 	}
 	else if(cub3d->ray->ray_angle_fov_s[k]->orientation == 4)
@@ -79,7 +79,7 @@ void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 			* cub3d->mlx_s->txt_wall_w->width / 100);
 		if (x >= cub3d->mlx_s->txt_wall_w->width) //feature to fix
 			x = cub3d->mlx_s->txt_wall_w->width - 1;
-		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1900 - k, 450 - i,
+		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 			cub3d->map->west[y][x]);
 	}
 }
@@ -97,5 +97,5 @@ void	create_pixel_image(t_cub3d *cub3d)
 {
 	if (cub3d->mlx_s->img_wall_3d)
 		mlx_delete_image(cub3d->mlx_s->mlx, cub3d->mlx_s->img_wall_3d);
-	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1900, 1000);
+	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000);
 }

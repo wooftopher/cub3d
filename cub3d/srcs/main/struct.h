@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/07 19:25:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/07 23:44:32 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,6 @@
 # define STRUCT_H
 
 # include "../../lib/MLX42/include/MLX42/MLX42.h"
-
-// typedef struct map
-// {
-//     char   		**map;
-//     int    		lenght;
-//     int    		height;
-// 	float		*wall_px;
-//     float		*wall_py;
-// 	int			wall_count;
-// 	int			**north;
-// 	int			**south;
-// 	int			**east;
-// 	int			**west;
-// }   t_map;
 
 typedef struct s_map
 {
@@ -71,8 +57,8 @@ typedef struct ray_angle_fov_s
 typedef struct ray
 {
 	float		min_dist;
-	t_ray_angle_s		*ray_angle_s;
-	t_ray_angle_fov_s	*ray_angle_fov_s[1500];
+	t_ray_angle_s		*ray_angle_s; // to remove
+	t_ray_angle_fov_s	*ray_angle_fov_s[1500]; //1400
 	float		dist;
 	float		dir_x;
 	float		dir_y;
@@ -110,8 +96,8 @@ typedef struct mlx_struc
 	mlx_texture_t   *txt_wall_e;
 	mlx_texture_t   *txt_wall_w;
 	mlx_image_t		*img_player;
-	mlx_image_t		*img_sky;
-	mlx_image_t		*img_floor;
+	// mlx_image_t		*img_sky;
+	mlx_image_t		*img_back;
 	mlx_image_t		*img_img;
     mlx_image_t		*img_wall;
 	mlx_image_t		*img_dir_ind;

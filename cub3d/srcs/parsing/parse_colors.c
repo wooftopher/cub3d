@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 22:51:00 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/07 19:28:15 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/07 22:34:41 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ uint32_t	parse_colors(char *token, uint8_t *processedflags,
 	if (red == FAILURE || green == FAILURE || blue == FAILURE)
 		return (0);
 	set_flag(processedflags, flag);
-	return (get_r(red, green, blue, 0));
+	return (get_r(red, green, blue, 255));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 03:46:13 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/07 20:43:13 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	wall_height = 4000 / ray->min_dist;
 	if (mlx->img_wall_3d)
 		mlx_delete_image(mlx->mlx, mlx->img_wall_3d);
-	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1900, 900);
+	mlx->img_wall_3d = mlx_new_image(mlx->mlx, 1400, 900);
 	i = -wall_height;
 	while (i < wall_height)
 	{
