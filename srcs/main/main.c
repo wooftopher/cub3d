@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/09 12:49:02 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 14:06:09 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int main(void)
 	if (map.map_errno)
 		return (print_map_errno(map.map_errno), 1);
 	init_ray(&cub3d, &map);
-	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true); 
+	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true);
+	cub3d.mlx_s->img_wall_3d = NULL; // What is this garbage ?
 	ft_create_map(cub3d.map, &cub3d);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
