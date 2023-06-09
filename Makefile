@@ -18,7 +18,8 @@ OBJS = ${SRCS:.c=.o}
 
 # LIBS #
 LIBFT = libs/Libft/libft.a
-MLX = libs/MLX/build/libmlx42.a
+MLXM = libs/MLX/build/libmlx42.a
+MLXL = libs/MLX42/build/libmlx42.a
 GLFW = libs/GLFW/glfw.a
 LIBS =  $(LIBFT) \
 		$(MLX) \
@@ -103,8 +104,10 @@ WHITE = \033[0;37m
 
 ifeq ($(OS), Linux)
 	FLAGS = $(LINUX)
+	MLX = libs/MLX/build/libmlx42L.a
 else ifeq ($(OS), Darwin)
 	FLAGS = $(MAC)
+	MLX = libs/MLX/build/libmlx42.a
 endif
 
 all: lib $(NAME)
