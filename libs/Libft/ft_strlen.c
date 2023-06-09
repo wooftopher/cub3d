@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 18:24:30 by ddemers           #+#    #+#             */
-/*   Updated: 2022/11/03 16:38:33 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 11:33:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t	count;
+	int	index;
 
+	index = 0;
 	if (!str)
 		return (0);
-	count = 0;
-	while (str[count] != '\0')
-	{
-		++count;
-	}
-	return (count);
+	while (str[index])
+		index++;
+	return (index);
 }

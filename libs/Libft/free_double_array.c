@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _ft_strncmp.c                                      :+:      :+:    :+:   */
+/*   free_double_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 03:07:30 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/01 03:19:25 by ddemers          ###   ########.fr       */
+/*   Created: 2023/02/28 09:47:57 by ddemers           #+#    #+#             */
+/*   Updated: 2023/04/10 09:59:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_processor.h"
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*free_double_array(char **array)
 {
-	size_t	i;
+	int	index;
 
-	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	if (n == 0)
-		return (0);
-	while (s1[i] == s2[i] && s1[i])
-	{
-		if (i < n - 1)
-			i++;
-		else
-			return (0);
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	index = 0;
+	if (!array)
+		return (NULL);
+	while (array[index])
+		free(array[index++]);
+	free (array);
+	return (NULL);
 }

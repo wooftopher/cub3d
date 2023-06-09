@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 16:42:04 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/07 19:26:00 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 11:46:12 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 
 # include "../main/struct.h"
+# include "../../libs/Libft/libft.h"
 
 /*
 	 **********************************
@@ -166,14 +167,14 @@ typedef struct s_queue
 	 ~	  		LIBFT	REMOVE WHEN MERGE	      ~
 	 **********************************
 */
-size_t		ft_strlen(const char *str);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-int			ft_strcmp(const char *s1, const char *s2);
-int			ft_isspace(int c);
-int			ft_isdigit(int c);
-int			ft_isalnum(int c);
-void		*ft_calloc(size_t nmemb, size_t size);
-char		*ft_strdup(char *src);
+// size_t		ft_strlen(const char *str);
+// int			ft_strncmp(const char *s1, const char *s2, size_t n);
+// int			ft_strcmp(const char *s1, const char *s2);
+// int			ft_isspace(int c);
+// int			ft_isdigit(int c);
+// int			ft_isalnum(int c);
+// void		*ft_calloc(size_t nmemb, size_t size);
+// char		*ft_strdup(char *src);
 /*
 	 **********************************
 	 ~	  	  String functions		  ~

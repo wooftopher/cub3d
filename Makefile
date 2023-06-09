@@ -73,15 +73,7 @@ PARSING = 	./srcs/parsing/bit_shift_operations.c \
 			./srcs/parsing/substr_cube.c \
 			./srcs/parsing/texture_parsing.c \
 			./srcs/parsing/tokenize_map.c \
-			./srcs/parsing/validate_map_layout.c \
-			./srcs/parsing/_ft_calloc.c \
-			./srcs/parsing/_ft_isalnumb.c \
-			./srcs/parsing/_ft_isspace.c \
-			./srcs/parsing/_ft_strcmp.c \
-			./srcs/parsing/_ft_strdup.c \
-			./srcs/parsing/_ft_strktok.c \
-			./srcs/parsing/_ft_strlen.c \
-			./srcs/parsing/_ft_strncmp.c
+			./srcs/parsing/validate_map_layout.c
 
 SRCS =  $(MAIN) \
 		$(MAP) \

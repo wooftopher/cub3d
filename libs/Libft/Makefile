@@ -6,7 +6,7 @@
 #    By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 02:06:17 by ddemers           #+#    #+#              #
-#    Updated: 2023/01/11 18:23:08 by ddemers          ###   ########.fr        #
+#    Updated: 2023/05/05 13:59:40 by ddemers          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,22 @@ src =		ft_atoi.c\
 			ft_strjoin.c\
 			ft_strtrim.c\
 			ft_itoa.c\
+			ft_putchar_fd.c\
+			ft_putstr_fd.c\
+			ft_putendl_fd.c\
+			ft_putnbr_fd.c\
 			ft_strmapi.c\
-			ft_split.c	
-bonus =		ft_lstnew.c\
+			ft_striteri.c\
+			ft_split.c\
+			ft_strcmp.c \
+			free_double_array.c \
+			double_linked_list.c \
+			ft_realloc.c \
+			count_double_array.c \
+			ft_isspace.c \
+			ft_strncpy.c \
+			ft_strktok.c \
+			ft_lstnew.c\
 			ft_lstadd_front.c\
 			ft_lstsize.c\
 			ft_lstlast.c\
@@ -52,7 +65,6 @@ bonus =		ft_lstnew.c\
 			ft_lstclear.c\
 			ft_lstiter.c
 OBJS 	= ${src:.c=.o}
-BONUS_OBJS = ${bonus:.c=.o}
 LIBC 	= ar rcs
 REMOVE	= rm -f
 
@@ -63,15 +75,14 @@ all:$(NAME)
 
 clean :
 		${REMOVE} ${OBJS} 
-		${REMOVE} ${BONUS_OBJS}
 
 fclean :clean
 		${REMOVE} $(NAME)
 
-bonus : ${OBJS} ${BONUS_OBJS}
-			${LIBC} ${NAME} ${OBJS} ${BONUS_OBJS}
+bonus : ${OBJS}
+			${LIBC} ${NAME} ${OBJS}
 
 
 re:fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

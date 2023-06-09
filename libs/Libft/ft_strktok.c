@@ -6,12 +6,11 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:56:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/01 03:16:23 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 11:32:38 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdbool.h>
+#include "libft.h"
 
 static bool	is_delim(char c, const char *delim)
 {

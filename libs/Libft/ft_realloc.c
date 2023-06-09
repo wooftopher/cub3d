@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _ft_strcmp.c                                       :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 03:09:50 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/01 03:19:39 by ddemers          ###   ########.fr       */
+/*   Created: 2023/03/03 14:45:08 by ddemers           #+#    #+#             */
+/*   Updated: 2023/04/11 15:10:32 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_processor.h"
+#include "libft.h"
+#include <string.h>
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	if (!s1 || !s2)
-		return (-1);
-	while (*s1 == *s2++)
-		if (*s1++ == 0)
-			return (0);
-	return (*(unsigned char *)s1 - *(unsigned char *)--s2);
+	void	*ret_ptr;
+
+	ret_ptr = malloc(size);
+	if (!ret_ptr)
+		return (NULL);
+	ft_memcpy(ret_ptr, ptr, size);
+	free(ptr);
+	ptr = NULL;
+	return (ret_ptr);
 }

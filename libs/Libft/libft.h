@@ -14,12 +14,20 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct s_dlist
+{
+	struct s_dlist	*previous;
+	struct s_dlist	*next;
+	void			*data;
+}	t_dlist;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -37,6 +45,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -64,5 +73,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	*free_double_array(char **array);
+t_dlist	*create_node(void *data);
+void	add_node(t_dlist **head, t_dlist *new_node);
+void	delete_node(t_dlist **head, t_dlist *node_to_delete);
+void	free_linked_list(t_dlist **head);
+size_t	count_double_array(char **array);
+void	*ft_realloc(void *ptr, size_t size);
+int		ft_isspace(int c);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+char	*ft_strtok(char *str, const char *delim);
 
 #endif

@@ -6,36 +6,30 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:51:25 by ddemers           #+#    #+#             */
-/*   Updated: 2022/11/03 16:33:15 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 11:32:05 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_strcp(char *ptr, char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		ptr[i] = src[i];
-		i++;
-	}
-	ptr[i] = '\0';
-}
-
 char	*ft_strdup(char *src)
 {
-	int		i;
+	size_t	length;
+	int		index;
 	char	*ptr;
 
 	if (!src)
 		return (NULL);
-	i = ft_strlen(src);
-	ptr = malloc(sizeof(*ptr) * i + 1);
-	if (ptr == 0)
-		return (0);
-	ft_strcp(ptr, src);
+	index = 0;
+	length = ft_strlen(src);
+	ptr = malloc((sizeof(char) * length) + 1);
+	if (!ptr)
+		return (NULL);
+	while (src[index])
+	{
+		ptr[index] = src[index];
+		index++;
+	}
+	ptr[index] = '\0';
 	return (ptr);
 }

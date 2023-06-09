@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _ft_strlen.c                                       :+:      :+:    :+:   */
+/*   count_double_array.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 03:19:29 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/01 03:19:30 by ddemers          ###   ########.fr       */
+/*   Created: 2023/03/03 10:21:30 by ddemers           #+#    #+#             */
+/*   Updated: 2023/04/11 15:10:57 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_processor.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+/*Function that count the number of char string into the char**
+Return -1 if the double pointer is NULL, else return the count*/
+size_t	count_double_array(char **array)
 {
-	int	index;
+	size_t	count;
 
-	index = 0;
-	if (!str)
-		return (0);
-	while (str[index])
-		index++;
-	return (index);
+	count = 0;
+	if (!array)
+		return (-1);
+	while (array[count])
+		count++;
+	return (count);
 }
