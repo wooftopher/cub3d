@@ -12,32 +12,6 @@
 
 #include "map_processor.h"
 
-// static bool	replace_map_character_check(const char c)
-// {
-// 	if (c == ' ' || c == '#')
-// 		return (true);
-// 	return (false);
-// }
-
-// void	modify_map(t_map *map)
-// {
-// 	uint32_t	map_index;
-// 	uint32_t	array_index;
-
-// 	map_index = 0;
-// 	while (map->map[map_index])
-// 	{
-// 		array_index = 0;
-// 		while (map->map[map_index][array_index])
-// 		{
-// 			if (replace_map_character_check(map->map[map_index][array_index]))
-// 				map->map[map_index][array_index] = '0';
-// 			array_index++;
-// 		}
-// 		map_index++;
-// 	}
-// }
-
 static void	allocate_wall_ptr(t_map *map)
 {
 	map->wall_px = malloc(sizeof(float) * map->wall_count);
@@ -74,9 +48,9 @@ static int	fill_dimension(t_map *map)
 		width = 0;
 		while (map->map[height][width])
 		{
-			width++;
 			if (map->map[height][width] == '1')
 				wall_count++;
+			width++;
 		}
 		height++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 20:43:13 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/09 12:46:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 {
 	int	j;
-	t_ray_angle_s *ray_angle_s;
-	
-	ray_angle_s = calloc(1, sizeof(t_ray_angle_s));
-	ray->ray_angle_s = ray_angle_s;
+
 	j = 0;
 	ray->min_dist = INT_MAX;
 	if (cos(player->angle * M_PI / 180) < 0 && player->angle != 270)

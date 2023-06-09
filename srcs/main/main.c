@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/08 21:48:28 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 12:49:02 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	free_all(t_map *map, t_cub3d *cub3d)
 	while (index <= 1400)
 		free(cub3d->ray->ray_angle_fov_s[index++]);
 	free_int_array(cub3d->map->north, cub3d->mlx_s->txt_wall_n->height);
-	free_int_array(cub3d->map->south, cub3d->mlx_s->txt_wall_n->height);
-	free_int_array(cub3d->map->west, cub3d->mlx_s->txt_wall_n->height);
-	free_int_array(cub3d->map->east, cub3d->mlx_s->txt_wall_n->height);
+	free_int_array(cub3d->map->south, cub3d->mlx_s->txt_wall_s->height);
+	free_int_array(cub3d->map->west, cub3d->mlx_s->txt_wall_w->height);
+	free_int_array(cub3d->map->east, cub3d->mlx_s->txt_wall_e->height);
 	mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
 	mlx_delete_texture(cub3d->mlx_s->txt_wall_s);
 	mlx_delete_texture(cub3d->mlx_s->txt_wall_e);
@@ -78,10 +78,7 @@ int main(void)
     // ft_map_init(&cub3d);
 	map_initialization(&map, "./map/fuck.cub");
 	if (map.map_errno)
-	{
-		print_map_errno(map.map_errno);
-		exit(0);
-	}
+		return (print_map_errno(map.map_errno), 1);
 	init_ray(&cub3d, &map);
 	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true); 
 	ft_create_map(cub3d.map, &cub3d);

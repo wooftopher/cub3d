@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 16:42:04 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/09 11:46:12 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 11:50:09 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,23 +115,6 @@ typedef enum e_map_flag
 # define BUFFOV 23 /* Map buffer overflow */
 # define EMPTYF 24 /* Empty file */
 
-// typedef struct s_map
-// {
-// 	char		**map;
-// 	char		*n_texture;
-// 	char		*s_texture;
-// 	char		*w_texture;
-// 	char		*e_texture;
-// 	uint32_t	ceiling_color;
-// 	uint32_t	floor_color;
-// 	uint8_t		width;
-// 	uint8_t		height;
-// 	uint16_t	wall_count;
-// 	float		*wall_px;
-// 	float		*wall_py;
-// 	uint8_t		map_errno;
-// }	t_map;
-
 /*
 	 **********************************
 	 ~	  		BFS tools 		      ~
@@ -162,19 +145,6 @@ typedef struct s_queue
 	uint32_t	end;
 }	t_queue;
 
-/*
-	 **********************************
-	 ~	  		LIBFT	REMOVE WHEN MERGE	      ~
-	 **********************************
-*/
-// size_t		ft_strlen(const char *str);
-// int			ft_strncmp(const char *s1, const char *s2, size_t n);
-// int			ft_strcmp(const char *s1, const char *s2);
-// int			ft_isspace(int c);
-// int			ft_isdigit(int c);
-// int			ft_isalnum(int c);
-// void		*ft_calloc(size_t nmemb, size_t size);
-// char		*ft_strdup(char *src);
 /*
 	 **********************************
 	 ~	  	  String functions		  ~

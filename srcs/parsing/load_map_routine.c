@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:20:43 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/07 20:25:24 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 12:43:15 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,4 @@ void	map_initialization(t_map *map, const char *file_name)
 	if (map->map_errno)
 		return ;
 	modify_map(map);
-	map->wall_count = 0;
 }
