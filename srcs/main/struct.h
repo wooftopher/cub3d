@@ -6,14 +6,14 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/08 21:48:44 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/08 22:13:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# include "../../libs/MLX42/include/MLX42/MLX42.h"
+# include "../../libs/MLX/include/MLX42/MLX42.h"
 
 typedef struct s_map
 {

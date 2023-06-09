@@ -18,7 +18,7 @@ OBJS = ${SRCS:.c=.o}
 
 # LIBS #
 LIBFT = libs/Libft/libft.a
-MLX = libs/MLX42/build/libmlx42.a
+MLX = libs/MLX/build/libmlx42.a
 GLFW = libs/GLFW/glfw.a
 LIBS =  $(LIBFT) \
 		$(MLX) \
