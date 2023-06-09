@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/06/07 23:43:04 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/08 22:15:47 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	check_col(t_map *map, t_player *player)
 
 void	calcul_new_pos(t_player *player, int x, int y)
 {
-	player->d_y = x * player->speed * cos(player->angle * M_PI / 180)
-		+ y * player->speed * sin(player->angle * M_PI / 180);
-	player->d_x = x * player->speed * sin(player->angle * M_PI / 180)
-		+ y * player->speed * cos(player->angle * M_PI / 180);
+	player->d_y = x * player->speed * cos(player->angle * M_PI / 180);
+		// + y * player->speed * sin(player->angle * M_PI / 180);
+	player->d_x = x * player->speed * sin(player->angle * M_PI / 180);
+		// + y * player->speed * cos(player->angle * M_PI / 180);
 }
 
 void	set_new_pos(t_map *map, t_player *player, t_mlx_struc *mlx_s)
@@ -61,30 +61,30 @@ void	set_new_pos(t_map *map, t_player *player, t_mlx_struc *mlx_s)
 
 void	ft_move(t_cub3d *cub3d)
 {
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP))
 	{
 		calcul_new_pos(cub3d->player, 1, 0);
 		check_col(cub3d->map, cub3d->player);
 		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 	}
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_S))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN))
 	{
 		calcul_new_pos(cub3d->player, -1, 0);
 		check_col(cub3d->map, cub3d->player);
 		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 	}
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_A))
-	{
-		calcul_new_pos(cub3d->player, 0, -1);
-		check_col(cub3d->map, cub3d->player);
-		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
-	}
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_D))
-	{
-		calcul_new_pos(cub3d->player, 0, 1);
-		check_col(cub3d->map, cub3d->player);
-		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
-	}
+	// if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_A))
+	// {
+	// 	calcul_new_pos(cub3d->player, 0, -1);
+	// 	check_col(cub3d->map, cub3d->player);
+	// 	set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
+	// }
+	// if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_D))
+	// {
+	// 	calcul_new_pos(cub3d->player, 0, 1);
+	// 	check_col(cub3d->map, cub3d->player);
+	// 	set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
+	// }
 }
 
 void	ft_rotate(t_cub3d *cub3d)
