@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/09 13:05:46 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/09 20:51:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	init_ray(t_cub3d *cub3d, t_map *map)
 	t_ray_angle_fov_s *ray_angle_fov_s[1500];
 	t_ray_angle_s *ray_angle_s;
 	
-	ray_angle_s = calloc(2, sizeof(t_ray_angle_s)); //ADDED TWO TO FIX TEMP VALGRIND ERROR
+	ray_angle_s = calloc(1, sizeof(t_ray_angle_s)); //ADDED TWO TO FIX TEMP VALGRIND ERROR
 	cub3d->ray->ray_angle_s = ray_angle_s;
 	i = 0;
 	while (i <= 1400)
 	{
-		ray_angle_fov_s[i] = calloc(2, sizeof(t_ray_angle_fov_s)); //ADDED TWO TO FIX TEMP VALGRIND ERROR
+		ray_angle_fov_s[i] = calloc(1, sizeof(t_ray_angle_fov_s)); //ADDED TWO TO FIX TEMP VALGRIND ERROR
 		cub3d->ray->ray_angle_fov_s[i] = ray_angle_fov_s[i];
 		i++;
 	}
