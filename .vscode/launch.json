@@ -1,25 +1,3 @@
-{
-	// Use IntelliSense to learn about possible attributes.
-	// Hover to view descriptions of existing attributes.
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-	"version": "0.2.0",
-	"configurations": [{
-		"name": "C/C++: gcc build and debug active file",
-		"type": "cppdbg",
-		"request": "launch",
-		"program": "/home/christo/Desktop/test/cub3d/a.out",
-		"args": [],
-		"stopAtEntry": false,
-		"cwd": "/home/christo/Desktop/test/cub3d",
-		"environment": [],
-		"externalConsole": false,
-		"MIMode": "gdb",
-        "miDebuggerPath": "/usr/bin/gdb",
-		"preLaunchTask": "C/C++: gcc build active file"
-	}
-]
-}//linux
-
 // {
 // 	// Use IntelliSense to learn about possible attributes.
 // 	// Hover to view descriptions of existing attributes.
@@ -29,15 +7,37 @@
 // 		"name": "C/C++: gcc build and debug active file",
 // 		"type": "cppdbg",
 // 		"request": "launch",
-// 		"program": "/Users/cperron/Desktop/cub3d/cub3d/a.out",
+// 		"program": "/home/christo/Desktop/test/cub3d/a.out",
 // 		"args": [],
 // 		"stopAtEntry": false,
-// 		"cwd": "/Users/cperron/Desktop/cub3d/cub3d",
+// 		"cwd": "/home/christo/Desktop/test/cub3d",
 // 		"environment": [],
 // 		"externalConsole": false,
-// 		"MIMode": "lldb",
-//         // "miDebuggerPath": "/usr/bin/lldb",
+// 		"MIMode": "gdb",
+//         "miDebuggerPath": "/usr/bin/gdb",
 // 		"preLaunchTask": "C/C++: gcc build active file"
 // 	}
 // ]
-// }//mac
+// }//linux
+
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [{
+		"name": "C/C++: gcc build and debug active file",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "/Users/cperron/Desktop/cub3d/a.out",
+		"args": [],
+		"stopAtEntry": false,
+		"cwd": "/Users/cperron/Desktop/cub3d",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb",
+        // "miDebuggerPath": "/usr/bin/lldb",
+		"preLaunchTask": "C/C++: gcc build active file"
+	}
+]
+}//mac
