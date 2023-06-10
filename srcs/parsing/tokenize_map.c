@@ -13,16 +13,10 @@
 #include "map_processor.h"
 #include <limits.h>
 
-inline static bool	is_starting_position(const char c)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (true);
-	return (false);
-}
-
 inline static bool	is_map_character(const char c)
 {
-	if (c == '1' || c == '0' || is_starting_position(c))
+	if (c == '1' || c == '0' || c == 'N' || c == 'S'
+		|| c == 'E' || c == 'W')
 		return (true);
 	return (false);
 }
@@ -66,7 +60,7 @@ static char	*get_starting_position(char *map, t_map *maps)
 		if (index == UINT_MAX)
 			return (set_map_errno(maps, INTOVE), NULL);
 		begin_index = index;
-		while (map[index] && map[index] != '\n' && ft_isspace(map[index]))
+		while (map[index] && map[index] != '\n' && map[index] == ' ')
 			index++;
 		if (map[index] == '\n')
 		{
@@ -79,6 +73,25 @@ static char	*get_starting_position(char *map, t_map *maps)
 	if (!map[index])
 		return (set_map_errno(maps, MAPEMT), NULL);
 	return (map + begin_index);
+}
+
+static void	validate_map_token(const char *token, t_map *map)
+{
+	uint32_t	index;
+	bool		new_line;
+
+	new_line = false;
+	index = 0;
+	while (token[index])
+	{
+		if (token[index] == '\n' && new_line == true)
+			return (set_map_errno(map, INVALM));
+		if (token[index] != '\n')
+			new_line = false;
+		else if (token[index] == '\n')
+			new_line = true;
+		index++;
+	}
 }
 
 char	*tokenize_map(char *token, t_map *map)
@@ -95,5 +108,8 @@ char	*tokenize_map(char *token, t_map *map)
 		return (set_map_errno(map, MAPEMT), NULL);
 	end_index = get_end_index(map_token, map, index);
 	map_token[end_index] = '\0';
+	validate_map_token(map_token, map);
+	if (map->map_errno)
+		return (NULL);
 	return (map_token);
 }

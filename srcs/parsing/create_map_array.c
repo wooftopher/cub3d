@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:10:59 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/07 16:13:49 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 03:21:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ char	**create_map_array(const char *token, t_map *map)
 	uint32_t	max_length;
 	char		**map_array;
 
+	if (map->map_errno)
+		return (NULL);
 	nbr_of_array = count_number_of_array(token, map);
 	if (map->map_errno)
 		return (NULL);

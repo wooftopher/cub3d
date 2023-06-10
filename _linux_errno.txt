@@ -17,4 +17,8 @@ x9.Witdh too low
 16.Invalid line          
 17.Height too large      
 18.Height too low        
+19.Invalid map           
+20.Double starting pos   
+21.Int overflow          
+22.Multiple starting pos 
 !

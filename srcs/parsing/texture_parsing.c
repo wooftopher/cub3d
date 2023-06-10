@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:22:27 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/07 12:12:15 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 00:50:14 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ static char	*trim_texture_token(t_map *map, char *token)
 	int		index;
 	size_t	length;
 
-	index = 3;
-	while (ft_isspace(token[index]))
+	index = 0;
+	while (token[index] == ' ')
+		index++;
+	index += 3;
+	while (token[index] == ' ')
 		index++;
 	length = ft_strlen(token + index);
 	if (!length)

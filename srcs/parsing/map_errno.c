@@ -37,7 +37,7 @@ void	print_map_errno(uint8_t flag)
 	if (!OS)
 		fd = open("_mac_errno.txt", O_RDONLY);
 	if (OS)
-		fd = open("_linux_errno.txt", O_RDONLY);
+		fd = open("_mac_errno.txt", O_RDONLY);
 	if (fd == FAILURE)
 		return (put_str_error("Couldn't locate map_errno file,"
 				"undefined map error\n"));
