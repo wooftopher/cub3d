@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 14:54:33 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 21:40:31 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	find_y(t_cub3d *cub3d, int i, int wall_h)
 {
-    
 	double normalized_position;
     int y_pixel_pos;
 

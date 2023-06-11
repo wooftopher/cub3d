@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 20:28:47 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/10 23:45:15 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_init_player(int x, int y, t_player *player, t_map *map)
 	else if(map->map[y][x] == 'E')
 		player->angle = 90;
 	player->rot_speed = 4;
-	player->speed = 5;
+	player->speed = 0;
 	player->col_x = 0;
 	player->col_y = 0;
 	// mlx_s->xpm_player = mlx_load_xpm42("./img/eye.xpm42");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 21:21:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 22:23:18 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_cub3d *cub3d = param;
 
+
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(cub3d->mlx_s->mlx);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
@@ -55,6 +56,9 @@ void ft_loop(void *param)
 {
 	t_cub3d *cub3d = param;
 
+		calcul_new_pos(cub3d->player, 1, 0);
+		check_col(cub3d->map, cub3d->player);
+		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 	ft_move(cub3d);
 	ft_rotate(cub3d);
 	ft_calcul_render(cub3d);
