@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/09 13:51:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 20:28:47 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 
 	map->wall_px[wall_count] = x * 100;
 	map->wall_py[wall_count] = y * 100;
+	
     // if (!mlx_s->xpm_wall)
 	//     mlx_s->xpm_wall = mlx_load_xpm42("./img/0.xpm42");
 	// mlx_s->img_wall

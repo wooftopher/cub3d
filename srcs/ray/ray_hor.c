@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:40:34 by christo           #+#    #+#             */
-/*   Updated: 2023/05/30 22:34:56 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/10 19:21:00 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	check_ray_col_hor_down(t_map *map, t_player *player, t_ray *ray, int j)
 	y = (player->pos_y) / 100 + j + 1;
 	while (i < map->wall_count)
 	{
-		if (map->wall_py[i] != y *  100)
-			i++;
-		else if (player->pos_x - ray->xn >= map->wall_px[i]
+		// if (map->wall_py[i] != y *  100)
+		// 	i++;
+		 if (player->pos_x - ray->xn >= map->wall_px[i]
 				&& player->pos_x - ray->xn <= map->wall_px[i] + 103 //to fix
-				&& player->pos_y + ray->yn == map->wall_py[i]
+				&& player->pos_y + ray->yn >= map->wall_py[i]
 				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
 				{
 					ray->dist = sqrt((ray->xn * ray->xn)

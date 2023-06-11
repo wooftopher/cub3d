@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_ver_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 19:27:09 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 21:00:16 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ray.h"
 
-void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j)
+int	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
 	int	y;
@@ -25,16 +25,13 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 	{
 		if (map->wall_px[i] != y *  100)
 			i++;
-		else if (player->pos_x + ray->xn == map->wall_px[i]
+		else if (round(player->pos_x + ray->xn) == map->wall_px[i]
 				&& player->pos_x + ray->xn <= map->wall_px[i] + 100
 				&& player->pos_y - ray->yn >= map->wall_py[i]
 				&& player->pos_y - ray->yn <= map->wall_py[i] + 100) //3
 				{
-					// remove_fish_eye(ray);
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					// while (k <= ray->angle_count)
-					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -42,17 +39,17 @@ void	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 4;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= player->pos_y - ray->yn - map->wall_py[i];
+							return (1);
 						}
-						// k++;
-					// }
 					i++;
 				}	
 		else
 		 	i++;
 	}
+	return (0);
 }
 
-void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
+int	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
 	int	y; //float?
@@ -67,15 +64,12 @@ void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 			i++;
 		else
 		 if (player->pos_x - ray->xn >= map->wall_px[i]
-				&& player->pos_x - ray->xn == map->wall_px[i] + 100
+				&& round(player->pos_x - ray->xn) == map->wall_px[i] + 100
 				&& player->pos_y + ray->yn >= map->wall_py[i]
 				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
 				{
-					// remove_fish_eye(ray);
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					// while (k <= ray->angle_count)
-					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -83,14 +77,14 @@ void	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 							ray->ray_angle_fov_s[ray->angle_count]->orientation = 3;
 							ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 								= 100 - (player->pos_y + ray->yn - map->wall_py[i]);
+								return (1);
 						}
-					// 	k++;
-					// }
 					i++;
 				}	
 		else
 		 	i++;
 	}
+	return (0);
 }
 
 void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j)
@@ -106,7 +100,8 @@ void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	nb_inter = floor(player->pos_x / 100);
 	while (j < nb_inter)
 	{
-		check_ray_col_ver_left_fov(map, player, ray, j);
+		if (check_ray_col_ver_left_fov(map, player, ray, j) == 1)
+			return ;
 		ray->yn += ys;
 		ray->xn += xs;
 		j++;
@@ -126,7 +121,8 @@ void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	nb_inter = map->width - (floor(player->pos_x / 100)) - 1;
 	while (j < nb_inter)
 	{
-		check_ray_col_ver_right_fov(map, player, ray, j);
+		if (check_ray_col_ver_right_fov(map, player, ray, j) == 1)
+			return ;
 		ray->yn += ys;
 		ray->xn += xs;
 		j++;

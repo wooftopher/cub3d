@@ -42,17 +42,17 @@
             "args": [
                 "-g",
                 "srcs/*/*.c",
-                "./libS/MLX/build/libmlx42.a",
-                "./libs/Libft/libft.a",
+                "./libs/MLX/build/libmlx42.a",
+				"./libs/Libft/libft.a",
                 "-I",
                 "/include",
                 "-lglfw",
                 "-pthread",
                 "-L",
-                "/Users/ddemers/.brew/opt/glfw/lib/",
+                "/Users/cperron/.brew/opt/glfw/lib/",
             ],
             "options": {
-                "cwd": "/Users/ddemers/Desktop/42projects/cub3d"
+                "cwd": "/Users/cperron/Desktop/cub3d"
             },
             "problemMatcher": [
                 "$gcc"

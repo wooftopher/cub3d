@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hor_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christo <christo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 04:20:09 by christo          ###   ########.fr       */
+/*   Updated: 2023/06/10 19:29:38 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_ray_param(t_map *map, t_player *player, t_ray *ray, int i)
 	}
 }
 
-void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
+int	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
 	int	y;
@@ -52,15 +52,17 @@ void	check_ray_col_hor_up_fov(t_map *map, t_player *player, t_ray *ray, int j)
 				ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 					= player->pos_x + ray->xn - map->wall_px[i];
 				ray->ray_angle_fov_s[ray->angle_count]->orientation = 1;
+				return (1);
 			}
 			i++;
 		}	
 		else
 		 	i++;
 	}
+	return (0);
 }
 
-void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
+int	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 {
 	int	i;
 	int	y;
@@ -75,7 +77,7 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 			i++;
 		else if (player->pos_x - ray->xn >= map->wall_px[i]
 				&& player->pos_x - ray->xn <= map->wall_px[i] + 100 //3
-				&& player->pos_y + ray->yn == map->wall_py[i] 
+				&& round(player->pos_y + ray->yn) == map->wall_py[i] 
 				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
 		{
 			// set_ray_param(map, ray, i, 2);
@@ -87,12 +89,14 @@ void	check_ray_col_hor_down_fov(t_map *map, t_player *player, t_ray *ray, int j)
 				ray->ray_angle_fov_s[ray->angle_count]->orientation = 2;
 				ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 					=  100 - (player->pos_x - ray->xn - map->wall_px[i]);
+				return (1);
 			}
 			i++;
 		}	
 		else
 		 	i++;
 	}
+	return (0);
 }
 
 void ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
@@ -108,7 +112,8 @@ void ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	nb_inter = player->pos_y / 100;
 	while (j < nb_inter)
 	{
-		check_ray_col_hor_up_fov(map, player, ray, j);
+		if (check_ray_col_hor_up_fov(map, player, ray, j) == 1)
+			return ;
 		ray->yn += ys;
 		ray->xn += xs;
 		j++;
@@ -128,7 +133,8 @@ void ray_hor_down_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	nb_inter = (map->height - floor(player->pos_y / 100)) - 1;
 	while (j < nb_inter)
 	{
-		check_ray_col_hor_down_fov(map, player, ray, j);
+		if (check_ray_col_hor_down_fov(map, player, ray, j) == 1)
+			return ;
 		ray->yn += ys;
 		ray->xn += xs;
 		j++;

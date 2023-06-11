@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 20:33:46 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 21:21:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,6 @@ int main(void)
 	mlx_terminate(cub3d.mlx_s->mlx);
 	return (0);
 }
+
+// big fat map
+// texture bug
