@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 19:33:25 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/10 21:21:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	free_all(t_map *map, t_cub3d *cub3d)
 void key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_cub3d *cub3d = param;
-	int i;
 
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(cub3d->mlx_s->mlx);
@@ -73,15 +72,9 @@ int main(void)
 	cub3d.map = &map;
 	cub3d.player = &player;
 	cub3d.ray = &ray;
-	cub3d.tic = 0;
-	cub3d.vision = 4;
-    // ft_map_init(&cub3d);
-	map_initialization(&map, "./map/fuck.cub");
-	if (map.map_errno)
-		return (print_map_errno(map.map_errno), 1);
-	init_ray(&cub3d, &map);
+	if (initialization(&cub3d, &map))
+		return (1);
 	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true);
-	cub3d.mlx_s->img_wall_3d = NULL; // What is this garbage ?
 	ft_create_map(cub3d.map, &cub3d);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);

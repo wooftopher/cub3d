@@ -6,27 +6,48 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:55:24 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/07 16:17:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 00:30:49 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map_processor.h"
 
+static bool	str_find(const char *token, const char *to_find)
+{
+	uint32_t	index;
+	uint32_t	to_find_index;
+
+	index = 0;
+	while (token[index])
+	{
+		to_find_index = 0;
+		while (token[index] == to_find[to_find_index])
+		{
+			index++;
+			to_find_index++;
+			if (to_find[to_find_index] == '\0')
+				return (true);
+		}
+		if (token[index] != ' ')
+			return (false);
+		index++;
+	}
+	return (false);
+}
+
 static void	process_token(char *token, uint8_t *processedflags, t_map *map)
 {
-	if (!return_flag(processedflags, NORTH) && !ft_strncmp(token, "NO ", 3))
+	if (!return_flag(processedflags, NORTH) && str_find(token, "NO "))
 		map->n_texture = parse_texture(token, processedflags, NORTH, map);
-	else if (!return_flag(processedflags, SOUTH) && !ft_strncmp(token,
-			"SO ", 3))
+	else if (!return_flag(processedflags, SOUTH) && str_find(token, "SO "))
 		map->s_texture = parse_texture(token, processedflags, SOUTH, map);
-	else if (!return_flag(processedflags, WEST) && !ft_strncmp(token, "WE ", 3))
+	else if (!return_flag(processedflags, WEST) && str_find(token, "WE "))
 		map->w_texture = parse_texture(token, processedflags, WEST, map);
-	else if (!return_flag(processedflags, EAST) && !ft_strncmp(token, "EA ", 3))
+	else if (!return_flag(processedflags, EAST) && str_find(token, "EA "))
 		map->e_texture = parse_texture(token, processedflags, EAST, map);
-	else if (!return_flag(processedflags, FLOOR) && !ft_strncmp(token, "F ", 2))
+	else if (!return_flag(processedflags, FLOOR) && str_find(token, "F "))
 		map->floor_color = parse_colors(token, processedflags, FLOOR, map);
-	else if (!return_flag(processedflags, CEILING) && !ft_strncmp(token,
-			"C ", 2))
+	else if (!return_flag(processedflags, CEILING) && str_find(token, "C "))
 		map->ceiling_color = parse_colors(token, processedflags, CEILING, map);
 	else
 		set_map_errno(map, INVALI);

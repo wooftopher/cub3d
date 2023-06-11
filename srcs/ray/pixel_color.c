@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 23:15:04 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/08 21:10:38 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 19:05:10 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,24 @@ void	free_int_array(int **array, uint32_t heigth)
 	free(array);
 }
 
-int	**fill_int_array(uint32_t length, uint32_t heigth,
-	uint32_t witdh, mlx_texture_t *texture)
+int	**fill_int_array(mlx_texture_t *texture)
 {
 	uint32_t	index;
 	uint32_t	array_index;
 	int			**array;
 
-	array = malloc(sizeof(int *) * heigth);
+	array = malloc(sizeof(int *) * texture->height);
 	if (!array)
 		return (NULL);
 	index = 0;
 	array_index = 0;
-	while (array_index < heigth)
+	while (array_index < texture->height)
 	{
-		array[array_index] = array_witdh(witdh, index, texture);
+		array[array_index] = array_witdh(texture->width, index, texture);
 		if (!array[array_index])
 			return (free_int_array(array, array_index), NULL);
 		array_index++;
-		index += 4 * witdh;
+		index += 4 * texture->width;
 	}
 	return (array);
 }

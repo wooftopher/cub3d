@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:24:28 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 19:52:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 18:57:05 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height);
 void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height);
 int		find_y(t_cub3d *cub3d, int i, int wall_h);
 
-int		**fill_int_array(uint32_t length, uint32_t heigth, uint32_t witdh, mlx_texture_t *texture);
+int		**fill_int_array(mlx_texture_t *texture);
 void	free_int_array(int **array, uint32_t heigth);
 
 #endif
