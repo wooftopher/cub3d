@@ -6,119 +6,86 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/10 21:01:43 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:19:34 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "struct.h"
 
-static void	del_text(t_cub3d *cub3d, uint8_t flag, char *message)
+static int8_t	print_error(const char *message)
 {
-	if (flag == 1)
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
-	else if (flag == 2)
-	{
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_s);
-	}
-	else if (flag == 3)
-	{
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_s);
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_e);
-	}
-	else if (flag == 4)
-	{
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_s);
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_e);
-		mlx_delete_texture(cub3d->mlx_s->txt_wall_w);
-	}
-	ft_putstr_fd(message, STDERR_FILENO);
+	write(STDERR_FILENO, "Error\n", 6);
+	write(STDERR_FILENO, message, ft_strlen(message));
+	return (FAILURE);
 }
 
 static int8_t	init_texture(t_cub3d *cub3d, t_map *map)
-{	
+{
 	cub3d->mlx_s->txt_wall_n = mlx_load_png(map->n_texture);
 	if (!cub3d->mlx_s->txt_wall_n)
-		return (del_text(cub3d, 0, "Couldn't load north map texture\n"), -1);
+		return (print_error("Couldn't load north map texture\n"));
 	cub3d->mlx_s->txt_wall_s = mlx_load_png(map->s_texture);
 	if (!cub3d->mlx_s->txt_wall_s)
-		return (del_text(cub3d, 1, "Couldn't load south map texture\n"), -1);
+		return (print_error("Couldn't load south map texture\n"));
 	cub3d->mlx_s->txt_wall_e = mlx_load_png(map->e_texture);
 	if (!cub3d->mlx_s->txt_wall_e)
-		return (del_text(cub3d, 2, "Couldn't load east map texture\n"), -1);
+		return (print_error("Couldn't load east map texture\n"));
 	cub3d->mlx_s->txt_wall_w = mlx_load_png(map->w_texture);
 	if (!cub3d->mlx_s->txt_wall_w)
-		return (del_text(cub3d, 3, "Couldn't load west map texture\n"), -1);
+		return (print_error("Couldn't load west map texture\n"));
 	cub3d->map->north = fill_int_array(cub3d->mlx_s->txt_wall_n);
 	if (!cub3d->map->north)
-		return (del_text(cub3d, 4, "Allocation failure\n"), -1);
+		return (print_error("Alloc failure\n"));
 	cub3d->map->south = fill_int_array(cub3d->mlx_s->txt_wall_s);
 	if (!cub3d->map->south)
-		return (del_text(cub3d, 4, "Allocation failure\n"), -1);
+		return (print_error("Alloc failure\n"));
 	cub3d->map->east = fill_int_array(cub3d->mlx_s->txt_wall_e);
 	if (!cub3d->map->east)
-		return (del_text(cub3d, 4, "Allocation failure\n"), -1);
+		return (print_error("Alloc failure\n"));
 	cub3d->map->west = fill_int_array(cub3d->mlx_s->txt_wall_w);
 	if (!cub3d->map->west)
-		return (del_text(cub3d, 4, "Allocation failure\n"), -1);
-	return (0);
+		return (print_error("Alloc failure\n"));
+	return (SUCCESS);
 }
 
-static void	free_ray(t_cub3d *cub3d, int index)
-{
-	int	i;
-
-	i = 0;
-	while (i < index)
-	{
-		free(cub3d->ray->ray_angle_fov_s[i++]);
-		cub3d->ray->ray_angle_fov_s[i] = NULL;
-	}
-	free(cub3d->ray->ray_angle_s);
-	cub3d->ray->ray_angle_s = NULL;
-	ft_putstr_fd("Alloc failure\n", STDERR_FILENO);
-}
-
-static int8_t	init_rayz(t_cub3d *cub3d)
-{
-	int					i;
-	t_ray_angle_fov_s	*ray_angle_fov_s[1500];
-	t_ray_angle_s		*ray_angle_s;
-
-	ray_angle_s = calloc(1, sizeof(t_ray_angle_s));
-	cub3d->ray->ray_angle_s = ray_angle_s;
-	if (!cub3d->ray->ray_angle_s)
-		return (free_ray(cub3d, 0), FAILURE);
-	i = 0;
-	while (i <= 1400)
-	{
-		ray_angle_fov_s[i] = calloc(1, sizeof(t_ray_angle_fov_s));
-		cub3d->ray->ray_angle_fov_s[i] = ray_angle_fov_s[i];
-		if (!cub3d->ray->ray_angle_fov_s[i])
-		{
-			free_ray(cub3d, i);
-			return (FAILURE);
-		}
-		i++;
-	}
-	cub3d->ray->fov_angle = 30;
-	// cub3d.ray->angle_div = 0.035714f;
-	cub3d->ray->angle_div = 0.042857f;
-	return (0);
-}
-
-int8_t	initialization(t_cub3d *cub3d, t_map *map)
+static void	init_cub3d_struct(t_cub3d *cub3d)
 {
 	cub3d->tic = 0;
 	cub3d->vision = 4;
-	cub3d->mlx_s->img_wall_3d = NULL;
-	map_initialization(map, "./map/fuck.cub");
-	if (map->map_errno)
-		return (print_map_errno(map->map_errno), FAILURE);
-	if (init_texture(cub3d, map))
+	cub3d->ray = NULL;
+	cub3d->map = NULL;
+	cub3d->player = NULL;
+	cub3d->mlx_s = NULL;
+}
+
+static int8_t	alloc_struct(t_cub3d *cub3d)
+{
+	cub3d->map = ft_calloc(1, sizeof(t_map));
+	if (!cub3d->map)
+		return (-1);
+	cub3d->player = ft_calloc(1, sizeof(t_player));
+	if (!cub3d->player)
+		return (-1);
+	cub3d->ray = ft_calloc(1, sizeof(t_ray));
+	if (!cub3d->ray)
+		return (-1);
+	cub3d->mlx_s = ft_calloc(1, sizeof(t_mlx_struc));
+	if (!cub3d->mlx_s)
+		return (-1);
+	return (SUCCESS);
+}
+
+int8_t	initialization(t_cub3d *cub3d)
+{
+	init_cub3d_struct(cub3d);
+	if (alloc_struct(cub3d))
+		return (print_error("Alloc failure\n"));
+	map_initialization(cub3d->map, "./map/fuck.cub");
+	if (cub3d->map->map_errno)
+		return (print_map_errno(cub3d->map->map_errno),
+			FAILURE);
+	if (init_texture(cub3d, cub3d->map))
 		return (FAILURE);
 	if (init_rayz(cub3d))
 		return (FAILURE);

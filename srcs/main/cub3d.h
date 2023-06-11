@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 15:07:40 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/11 13:50:23 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 //     t_map           map;
 // }   t_cub3d;
 
-void	free_all(t_map *map, t_cub3d *cub3d);
-int8_t	initialization(t_cub3d *cub3d, t_map *map);
+void	free_all(t_cub3d *cub3d);
+int8_t	initialization(t_cub3d *cub3d);
 
 # define true 1
 # define false 0

@@ -6,30 +6,11 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 21:21:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:22:22 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	free_all(t_map *map, t_cub3d *cub3d)
-{
-	uint16_t	index;
-
-	index = 0;
-	while (index <= 1400)
-		free(cub3d->ray->ray_angle_fov_s[index++]);
-	free_int_array(cub3d->map->north, cub3d->mlx_s->txt_wall_n->height);
-	free_int_array(cub3d->map->south, cub3d->mlx_s->txt_wall_s->height);
-	free_int_array(cub3d->map->west, cub3d->mlx_s->txt_wall_w->height);
-	free_int_array(cub3d->map->east, cub3d->mlx_s->txt_wall_e->height);
-	mlx_delete_texture(cub3d->mlx_s->txt_wall_n);
-	mlx_delete_texture(cub3d->mlx_s->txt_wall_s);
-	mlx_delete_texture(cub3d->mlx_s->txt_wall_e);
-	mlx_delete_texture(cub3d->mlx_s->txt_wall_w);
-	free(cub3d->ray->ray_angle_s);
-	map_struct_destructor(map);
-}
 
 void key_hook(mlx_key_data_t keydata, void *param)
 {
@@ -63,25 +44,17 @@ void ft_loop(void *param)
 int main(void)
 {
     t_cub3d 	cub3d;
-	t_mlx_struc mlx_s;
-	t_map		map;
-	t_player	player;
-	t_ray		ray;
- 
-	cub3d.mlx_s = &mlx_s;
-	cub3d.map = &map;
-	cub3d.player = &player;
-	cub3d.ray = &ray;
-	if (initialization(&cub3d, &map))
-		return (1);
+
+	if (initialization(&cub3d))
+		return (free_all(&cub3d), EXIT_FAILURE);
 	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true);
 	ft_create_map(cub3d.map, &cub3d);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);
-	free_all(&map, &cub3d);
+	free_all(&cub3d);
 	mlx_terminate(cub3d.mlx_s->mlx);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 // big fat map
