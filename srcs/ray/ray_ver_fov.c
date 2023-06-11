@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/10 19:27:51 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/10 21:00:16 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@ int	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j)
 	{
 		if (map->wall_px[i] != y *  100)
 			i++;
-		else if (player->pos_x + ray->xn == map->wall_px[i]
+		else if (round(player->pos_x + ray->xn) == map->wall_px[i]
 				&& player->pos_x + ray->xn <= map->wall_px[i] + 100
 				&& player->pos_y - ray->yn >= map->wall_py[i]
 				&& player->pos_y - ray->yn <= map->wall_py[i] + 100) //3
 				{
-					// remove_fish_eye(ray);
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					// while (k <= ray->angle_count)
-					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -44,8 +41,6 @@ int	check_ray_col_ver_right_fov(t_map *map, t_player *player, t_ray *ray, int j)
 								= player->pos_y - ray->yn - map->wall_py[i];
 							return (1);
 						}
-						// k++;
-					// }
 					i++;
 				}	
 		else
@@ -69,15 +64,12 @@ int	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 			i++;
 		else
 		 if (player->pos_x - ray->xn >= map->wall_px[i]
-				&& player->pos_x - ray->xn == map->wall_px[i] + 100
+				&& round(player->pos_x - ray->xn) == map->wall_px[i] + 100
 				&& player->pos_y + ray->yn >= map->wall_py[i]
 				&& player->pos_y + ray->yn <= map->wall_py[i] + 100)
 				{
-					// remove_fish_eye(ray);
 					ray->dist = sqrt((ray->xn * ray->xn)
 						+ (ray->yn * ray->yn));
-					// while (k <= ray->angle_count)
-					// {
 						if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
 						{
 							ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
@@ -87,8 +79,6 @@ int	check_ray_col_ver_left_fov(t_map *map, t_player *player, t_ray *ray, int j)
 								= 100 - (player->pos_y + ray->yn - map->wall_py[i]);
 								return (1);
 						}
-					// 	k++;
-					// }
 					i++;
 				}	
 		else

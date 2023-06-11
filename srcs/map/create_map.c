@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 19:15:11 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/10 20:28:47 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 
 int	ft_init_player(int x, int y, t_player *player, t_map *map)
 {
-	// player->pos_x = x * 100 + 50;
-	// player->pos_y = y * 100 + 50;
-	player->pos_x = 141.885437;
-	player->pos_y = 113.364052;
+	player->pos_x = x * 100 + 50;
+	player->pos_y = y * 100 + 50;
 	if (map->map[y][x] == 'N')
 		player->angle = 180;
 	else if(map->map[y][x] == 'S')
