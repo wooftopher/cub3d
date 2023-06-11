@@ -1,9 +1,21 @@
                         NO                      ./img/big.png
-WE                                                           ./img/zoe.png
-                                 SO ./img/big.png                           
-EA ./img/zoe.png
-F 220,100,0
+WE                                                           ./img/mac.png
                      C     225,        30,         0
+                                 SO ./img/block.png                           
+EA ./img/zoe.png
+
+
+
+
+
+
+
+
+
+
+
+
+F 220,100,0
 
 
        1

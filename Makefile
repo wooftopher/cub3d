@@ -35,7 +35,8 @@ LEAK = leaks -atExit -- ./cub3d
 
 # Source file mandatory #
 
-MAIN =  	./srcs/main/main.c
+MAIN =  	./srcs/main/main.c \
+			./srcs/main/initialization.c
 
 MAP =		./srcs/map/create_map.c \
 			./srcs/map/map_utils.c \

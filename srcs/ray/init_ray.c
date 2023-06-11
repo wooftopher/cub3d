@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/09 20:51:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/10 15:22:19 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,4 @@ void	init_ray(t_cub3d *cub3d, t_map *map)
 	cub3d->ray->fov_angle = 30;
 	// cub3d.ray->angle_div = 0.035714f;
 	cub3d->ray->angle_div = 0.042857f;
-	cub3d->mlx_s->txt_wall_n = mlx_load_png(map->n_texture);
-	cub3d->mlx_s->txt_wall_s = mlx_load_png(map->s_texture);
-	cub3d->mlx_s->txt_wall_e = mlx_load_png(map->e_texture);
-	cub3d->mlx_s->txt_wall_w = mlx_load_png(map->w_texture);
-	cub3d->map->north = fill_int_array(cub3d->mlx_s->txt_wall_n->height
-		* cub3d->mlx_s->txt_wall_n->height * 4, cub3d->mlx_s->txt_wall_n->height,
-			cub3d->mlx_s->txt_wall_n->width, cub3d->mlx_s->txt_wall_n);
-	cub3d->map->south = fill_int_array(cub3d->mlx_s->txt_wall_s->height
-		* cub3d->mlx_s->txt_wall_s->height * 4, cub3d->mlx_s->txt_wall_s->height,
-			cub3d->mlx_s->txt_wall_s->width, cub3d->mlx_s->txt_wall_s);
-	cub3d->map->east = fill_int_array(cub3d->mlx_s->txt_wall_n->height
-		* cub3d->mlx_s->txt_wall_e->height * 4, cub3d->mlx_s->txt_wall_e->height,
-			cub3d->mlx_s->txt_wall_e->width, cub3d->mlx_s->txt_wall_e);
-	cub3d->map->west = fill_int_array(cub3d->mlx_s->txt_wall_n->height
-		* cub3d->mlx_s->txt_wall_w->height * 4, cub3d->mlx_s->txt_wall_w->height,
-			cub3d->mlx_s->txt_wall_w->width, cub3d->mlx_s->txt_wall_w);
 }
