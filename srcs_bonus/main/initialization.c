@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/11 23:44:58 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/12 01:58:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ int8_t	initialization(t_cub3d *cub3d)
 		return (FAILURE);
 	if (init_rayz(cub3d))
 		return (FAILURE);
+	cub3d->mlx_s->mlx = mlx_init(1400, 900, "cub3d", true);
+	if (!cub3d->mlx_s->mlx)
+		return (print_error("MLX INIT FAILURE\n"));
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 22:32:22 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/12 00:13:06 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/12 01:08:31 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ static void	t_rgb_constructor(uint32_t color, t_rgb *color_struct)
 	color_struct->alpha = color & 0xFF;
 }
 
-static void	generate_gradient(t_rgb *gradient, t_rgb ceiling, t_rgb floor)
+/*
+	Math: Intermediate_value = ceiling + (ceiling - floor) * t
+	T = How far we are inbetween the 2 colors
+*/
+static void	linear_interpolation(t_rgb *gradient, t_rgb ceiling, t_rgb floor)
 {
 	uint16_t	index;
 
@@ -79,7 +83,7 @@ int8_t	color_gradient(t_cub3d *cub3d)
 	gradient = malloc(STEP * sizeof(t_rgb));
 	if (!gradient)
 		return (ft_putstr_fd("Alloc failure\n", 2), FAILURE);
-	generate_gradient(gradient, ceiling, floor);
+	linear_interpolation(gradient, ceiling, floor);
 	cub3d->mlx_s->img_back = mlx_new_image(cub3d->mlx_s->mlx, 1900, 900);
 	if (!cub3d->mlx_s->img_back)
 		return (free (gradient), ft_putstr_fd("MLX failure\n", 2), FAILURE);

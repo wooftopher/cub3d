@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 00:03:34 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/12 02:47:27 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,9 @@ int main(void)
 
 	if (initialization(&cub3d))
 		return (free_all(&cub3d), EXIT_FAILURE);
-	cub3d.mlx_s->mlx = mlx_init(1400, 900, "cub3d", true);
-	if (!cub3d.mlx_s->mlx)
-		return (printf("LOL\n"), 1);
 	ft_create_map(cub3d.map, &cub3d);
-	// mlx_set_cursor_mode(cub3d.mlx_s->mlx, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
-	// mlx_cursor_hook(cub3d.mlx_s->mlx, &mouse_position, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);
 	mlx_terminate(cub3d.mlx_s->mlx);
 	free_all(&cub3d);
