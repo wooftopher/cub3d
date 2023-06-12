@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/08 22:13:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/11 23:48:46 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,13 @@ typedef struct wall
     int		pos_x;
     int		pos_y;
 }   t_wall;
+
+typedef struct s_rgb
+{
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+	uint8_t	alpha;
+}	t_rgb;
 
 #endif

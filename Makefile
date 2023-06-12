@@ -31,19 +31,16 @@ LIBS =  $(LIBFT) \
 		$(GLFW)
 
 # OS CHECK #
-
 OS = $(shell uname)
 
 # Leak #
-
 LEAK = leaks -atExit -- ./cub3d
 LEAKB = leaks -atExit -- ./cub3d_bonus
 
 # Source file mandatory #
-
 MAIN =  	./srcs/main/main.c \
 			./srcs/main/initialization.c \
-			./srcs/main/free.c
+			./srcs/main/free.c \
 
 MAP =		./srcs/map/create_map.c \
 			./srcs/map/map_utils.c \
@@ -90,14 +87,14 @@ SRCS =  $(MAIN) \
 		$(PARSING)
 
 # SRCS FILE BONUS #
-
 MAINB =  	./srcs_bonus/main/main.c \
 			./srcs_bonus/main/initialization.c \
 			./srcs_bonus/main/free.c
 
 MAPB =		./srcs_bonus/map/create_map.c \
 			./srcs_bonus/map/map_utils.c \
-			./srcs_bonus/map/parse_map.c
+			./srcs_bonus/map/parse_map.c \
+			./srcs_bonus/map/gradient.c
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 
@@ -140,7 +137,6 @@ SRCS_BONUS =  $(MAINB) \
 		$(PARSINGB)
 
 # Colors #
-
 BLACK = \033[0;30m
 RED = \033[0;31m
 GREEN = \033[0;32m
@@ -151,7 +147,6 @@ CYAN = \033[0;36m
 WHITE = \033[0;37m
 
 # CHECK WHICH OS IS RUNNING TO GET THE CORRECT COMPILATION FLAG #
-
 ifeq ($(OS), Linux)
 	FLAGS = $(LINUX)
 	MLX = libs/MLX/build/libmlx42L.a

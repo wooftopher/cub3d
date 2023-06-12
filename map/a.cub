@@ -1,6 +1,6 @@
                         NO                      ./img/big.png
 WE                                                           ./img/mac.png
-                     C     225,        30,         0
+                     C     0,        0,         0
                                  SO ./img/block.png                           
 EA ./img/zoe.png
 
@@ -15,7 +15,7 @@ EA ./img/zoe.png
 
 
 
-F 220,100,0
+F 250,0,0
 
 
        1

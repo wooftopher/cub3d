@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/10 20:28:47 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/11 23:51:26 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	
 	x = 0;
 	y = 0;
-	cub3d->mlx_s->xpm_wall = NULL;
-	init_background(cub3d);
+	if (color_gradient(cub3d))
+		return ; // FIX LATER
 	while (x < map->width)
 	{
 		while (y < map->height)
