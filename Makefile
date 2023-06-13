@@ -6,7 +6,7 @@ NAME_BONUS = cub3d_bonus
 CC = @gcc
 CFGLAGS = -Wall -Werror -Wextra
 LINUX = -ldl -lglfw -pthread -lm
-MAC = -I /include -lglfw -pthread -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+MAC = -I /include -L/Users/ddemers/Desktop/cub3d/cub3d/libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 
 # REMOVE #
 REMOVE = @rm -f
@@ -25,7 +25,7 @@ OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 LIBFT = libs/Libft/libft.a
 MLXM = libs/MLX/build/libmlx42.a
 MLXL = libs/MLX42/build/libmlx42.a
-GLFW = libs/GLFW/glfw.a
+GLFW = libs/GLFW/lib-x86_64/libglfw3.a
 LIBS =  $(LIBFT) \
 		$(MLX) \
 		$(GLFW)
@@ -158,11 +158,11 @@ endif
 all: lib $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		${CC} ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
+		${CC} ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Done$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
-	${CC} ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
+	${CC} ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME_BONUS}
 	@echo "$(GREEN)Bonus done!$(WHITE)"
 
 lib:
