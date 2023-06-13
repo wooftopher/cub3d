@@ -6,7 +6,7 @@ NAME_BONUS = cub3d_bonus
 CC = @gcc
 CFGLAGS = -Wall -Werror -Wextra
 LINUX = -ldl -lglfw -pthread -lm
-MAC = -I /include -L/Users/ddemers/Desktop/cub3d/cub3d/libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+MAC = -I /include -L./libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 
 # REMOVE #
 REMOVE = @rm -f
@@ -42,9 +42,7 @@ MAIN =  	./srcs/main/main.c \
 			./srcs/main/initialization.c \
 			./srcs/main/free.c \
 
-MAP =		./srcs/map/create_map.c \
-			./srcs/map/map_utils.c \
-			./srcs/map/parse_map.c
+MAP =		./srcs/map/create_map.c
 
 OBJECT =	./srcs/object/player_move.c
 
@@ -170,7 +168,8 @@ lib:
 
 clean:
 	@make clean -s -C libs/Libft
-	${REMOVE} ${OBJS} ${OBJSB}
+	${REMOVE} ${OBJS} 
+	${REMOVE} ${OBJS_BONUS}
 
 fclean:clean
 	@make fclean -s -C libs/Libft

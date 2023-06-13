@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 21:04:28 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/12 23:10:25 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./map.h"
-// # include "../main/struct.h"
 
 int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 {
@@ -59,40 +58,7 @@ int	ft_init_player(int x, int y, t_player *player, t_map *map)
 	return (0);
 }
 
-// void	init_background(t_cub3d *cub3d)
-// {
-// 	int			x;
-// 	int			y;
-// 	uint32_t 	color;
-
-// 	y = 0;
-// 	color = cub3d->map->ceiling_color;
-// 	cub3d->mlx_s->img_back =  mlx_new_image(cub3d->mlx_s->mlx, 1900, 900);
-// 	while (y <= 450)
-// 	{
-// 		x = 0;
-// 		while (x <= 1900)
-// 		{
-// 			mlx_put_pixel(cub3d->mlx_s->img_back, x, y , color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	color = cub3d->map->floor_color;
-// 	while (y < 900)
-// 	{
-// 		x = 0;
-// 		while (x <= 1900)
-// 		{
-// 			mlx_put_pixel(cub3d->mlx_s->img_back, x, y , color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_back, 0, 0);
-// }
-
-void	init_background(t_cub3d *cub3d) // HAVE A RETURN VALUE FOR LATER ERROR HANDLING
+static int8_t	init_background(t_cub3d *cub3d)
 {
 	int			x;
 	int			y;
@@ -101,7 +67,7 @@ void	init_background(t_cub3d *cub3d) // HAVE A RETURN VALUE FOR LATER ERROR HAND
 	y = 0;
 	cub3d->mlx_s->img_back = mlx_new_image(cub3d->mlx_s->mlx, 1900, 900);
 	if (!cub3d->mlx_s->img_back)
-		return ;
+		return (FAILURE);
 	while (y < 450)
 	{
 		x = 0;
@@ -115,13 +81,13 @@ void	init_background(t_cub3d *cub3d) // HAVE A RETURN VALUE FOR LATER ERROR HAND
 		}
 		y++;
 	}
-	ret = mlx_image_to_window(cub3d->mlx_s->mlx,
-			cub3d->mlx_s->img_back, 0, 0);
+	ret = mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_back, 0, 0);
 	if (ret == FAILURE)
-		return ;
+		return (FAILURE);
+	return (SUCCESS);
 }
 
-void	ft_create_map(t_map *map, t_cub3d *cub3d)
+int8_t	ft_create_map(t_map *map, t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
@@ -129,7 +95,8 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 	x = 0;
 	y = 0;
 	cub3d->mlx_s->xpm_wall = NULL;
-	init_background(cub3d);
+	if (init_background(cub3d))
+		return (ft_putstr_fd("Mlx Erron\n", 2), FAILURE);
 	while (x < map->width)
 	{
 		while (y < map->height)
@@ -144,4 +111,5 @@ void	ft_create_map(t_map *map, t_cub3d *cub3d)
 		y = 0;
 		x++;
 	}
+	return (SUCCESS);
 }
