@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:24:28 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/10 18:57:05 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/12 21:28:46 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	create_pixel_image(t_cub3d *cub3d);
 int 	fish_eye_correction(t_cub3d *cub3d, int k, float wall_height);
 void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height);
 void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height);
-int		find_y(t_cub3d *cub3d, int i, int wall_h);
+int		find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height);
 
 int		**fill_int_array(mlx_texture_t *texture);
 void	free_int_array(int **array, uint32_t heigth);
