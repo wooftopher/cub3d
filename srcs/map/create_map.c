@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 23:10:25 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:57:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 
 int	ft_init_player(int x, int y, t_player *player, t_map *map)
 {
-	player->pos_x = x * 100 + 50;
+		player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
 	if (map->map[y][x] == 'N')
 		player->angle = 180;
@@ -41,7 +41,7 @@ int	ft_init_player(int x, int y, t_player *player, t_map *map)
 	else if(map->map[y][x] == 'E')
 		player->angle = 90;
 	player->rot_speed = 4;
-	player->speed = 10;
+	player->speed = 20;
 	player->col_x = 0;
 	player->col_y = 0;
 	// mlx_s->xpm_player = mlx_load_xpm42("./img/eye.xpm42");
