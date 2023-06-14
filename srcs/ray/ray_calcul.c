@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/10 19:02:18 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:31:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,29 @@ void	calcul_ray_to_wall(t_player *player, t_map *map, t_ray *ray)
 		ray_ver_left(player, map, ray, j);
 }
 
-void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
+void    calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 {
-	int	j;
-	float fov_angle;
-
-	j = 0;
-	ray->angle_count = 0;
-	fov_angle = -ray->fov_angle;
-	ray->angle = player->angle - ray->fov_angle;
-	while(fov_angle <= ray->fov_angle)
-	{
-		ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = INT_MAX;
-		if (cos(ray->angle * M_PI / 180) < 0 && ray->angle != 270)
-			ray_hor_up_fov(player, map, ray, j);
-		else if(ray->angle != 90)
-			ray_hor_down_fov(player, map, ray, j);
-		if (sin(ray->angle * M_PI / 180) > 0)
-			ray_ver_right_fov(player, map, ray, j);
-		else
-			ray_ver_left_fov(player, map, ray, j);
-		ray->angle += ray->angle_div;
-		fov_angle += ray->angle_div;
-		ray->angle_count++;
-	}
+    int j;
+    float fov_angle;
+    j = 0;
+    ray->angle_count = 0;
+    fov_angle = -ray->fov_angle;
+    ray->angle = player->angle - ray->fov_angle;
+    while(fov_angle <= ray->fov_angle)
+    {
+        ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = INT_MAX;
+        if (cos(ray->angle * M_PI / 180) <= 0)
+            ray_hor_up_fov(player, map, ray, j);
+        else
+            ray_hor_down_fov(player, map, ray, j);
+        if (sin(ray->angle * M_PI / 180) > 0)
+            ray_ver_right_fov(player, map, ray, j);
+        else
+            ray_ver_left_fov(player, map, ray, j);
+        ray->angle += ray->angle_div;
+        fov_angle += ray->angle_div;
+        ray->angle_count++;
+    }
 }
 
 void ft_render(t_ray *ray, t_mlx_struc *mlx)
@@ -72,6 +71,20 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 
+static void	memset_image(uint32_t height, uint32_t width, uint8_t *image)
+{
+	uint32_t	index;
+	uint32_t	length;
+
+	length = (width * height) * 4;
+	index = 3;
+	while (index < length)
+	{
+		image[index] = 0x00;
+		index += 4;
+	}
+}
+
 void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *mlx_s)
 {
 	int	i;
@@ -82,6 +95,7 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 	k = 0;
 	j = -ray->fov_angle;
 	create_pixel_image(cub3d);
+	// memset_image(cub3d->mlx_s->img_wall_3d->width, cub3d->mlx_s->img_wall_3d->height, cub3d->mlx_s->img_wall_3d->pixels);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
 		wall_height = fish_eye_correction(cub3d, k, wall_height);;

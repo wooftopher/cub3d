@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/08 22:13:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:00:13 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct ray_angle_fov_s
 	float	pos_on_texture;
 	float	inc_angle;
 	float	angle;
+
 }	t_ray_angle_fov_s;
 
 
@@ -68,6 +69,8 @@ typedef struct ray
 	float		angle;
 	float		xn;
 	float		yn;
+	int			text_x;
+	int			text_y;
 }	t_ray;
 
 typedef struct player
