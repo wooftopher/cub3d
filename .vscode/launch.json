@@ -41,3 +41,25 @@
 	}
 ]
 }//mac
+
+// {
+// 	// Use IntelliSense to learn about possible attributes.
+// 	// Hover to view descriptions of existing attributes.
+// 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+// 	"version": "0.2.0",
+// 	"configurations": [{
+// 		"name": "cub3d",
+// 		"type": "cppdbg",
+// 		"request": "launch",
+// 		"program": "/Users/cperron/Desktop/cub3d/cub3d",
+// 		"args": [],
+// 		"stopAtEntry": false,
+// 		"cwd": "/Users/cperron/Desktop/cub3d",
+// 		"environment": [],
+// 		"externalConsole": false,
+// 		"MIMode": "lldb",
+//         // "miDebuggerPath": "/usr/bin/lldb",
+// 		"preLaunchTask": "cub3d"
+// 	}
+// ]
+// }//mac

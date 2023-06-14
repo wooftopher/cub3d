@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 21:59:43 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:53:48 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int fish_eye_correction(t_cub3d *cub3d, int k, float wall_height)
 	float correction_factor;
 
 	correction_factor = (cub3d->player->angle - cub3d->ray->ray_angle_fov_s[k]->angle);
-	wall_height = 45000 / (cub3d->ray->ray_angle_fov_s[k]->min_dist_fov * cos(correction_factor * M_PI / 180));
+	wall_height = 45000 / (cub3d->ray->ray_angle_fov_s[k]->min_dist_fov * cos(correction_factor * M_PI / 180)); //45000
 	return (wall_height);
 }
 

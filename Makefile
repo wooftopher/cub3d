@@ -156,7 +156,7 @@ endif
 all: lib $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		${CC} ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
+		${CC} -g ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Done$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)

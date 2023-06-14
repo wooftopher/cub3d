@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 15:24:13 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:47:00 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		cub3d->vision = 4;
 }
 
+#include <time.h>
+
+void fps_counter(t_cub3d *cub3d)
+{
+    static clock_t	start_time = 0;
+    static uint32_t	frame_count = 0;
+	clock_t			current_time;
+	double			elapsed_time;
+
+	frame_count++;
+	current_time = clock();
+	elapsed_time = (current_time - start_time) / CLOCKS_PER_SEC;
+    if (elapsed_time >= 1.0)
+    {
+		printf("\rFps:%.0f", frame_count - elapsed_time);
+		fflush(stdout);
+		frame_count = 0;
+		start_time = current_time;
+    }
+}
+
 void ft_loop(void *param)
 {
 	t_cub3d *cub3d;
@@ -41,6 +62,8 @@ void ft_loop(void *param)
 	ft_move(cub3d);
 	ft_rotate(cub3d);
 	ft_calcul_render(cub3d);
+	fps_counter(cub3d);
+	
 }
 
 int main(int argc, char **argv)
