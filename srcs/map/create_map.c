@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 21:04:28 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:14:18 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int ft_init_wall(int x, int y, t_map *map, t_mlx_struc *mlx_s)
 
 int	ft_init_player(int x, int y, t_player *player, t_map *map)
 {
-	player->pos_x = x * 100 + 50;
+		player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
 	if (map->map[y][x] == 'N')
 		player->angle = 180;
@@ -42,7 +42,7 @@ int	ft_init_player(int x, int y, t_player *player, t_map *map)
 	else if(map->map[y][x] == 'E')
 		player->angle = 90;
 	player->rot_speed = 4;
-	player->speed = 10;
+	player->speed = 20;
 	player->col_x = 0;
 	player->col_y = 0;
 	// mlx_s->xpm_player = mlx_load_xpm42("./img/eye.xpm42");
@@ -58,39 +58,6 @@ int	ft_init_player(int x, int y, t_player *player, t_map *map)
 	// mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall, x * 50, y * 50);
 	return (0);
 }
-
-// void	init_background(t_cub3d *cub3d)
-// {
-// 	int			x;
-// 	int			y;
-// 	uint32_t 	color;
-
-// 	y = 0;
-// 	color = cub3d->map->ceiling_color;
-// 	cub3d->mlx_s->img_back =  mlx_new_image(cub3d->mlx_s->mlx, 1900, 900);
-// 	while (y <= 450)
-// 	{
-// 		x = 0;
-// 		while (x <= 1900)
-// 		{
-// 			mlx_put_pixel(cub3d->mlx_s->img_back, x, y , color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	color = cub3d->map->floor_color;
-// 	while (y < 900)
-// 	{
-// 		x = 0;
-// 		while (x <= 1900)
-// 		{
-// 			mlx_put_pixel(cub3d->mlx_s->img_back, x, y , color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_back, 0, 0);
-// }
 
 void	init_background(t_cub3d *cub3d) // HAVE A RETURN VALUE FOR LATER ERROR HANDLING
 {

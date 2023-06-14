@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/10 19:02:18 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:01:13 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 	while(fov_angle <= ray->fov_angle)
 	{
 		ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = INT_MAX;
-		if (cos(ray->angle * M_PI / 180) < 0 && ray->angle != 270)
+		if (cos(ray->angle * M_PI / 180) <= 0)
 			ray_hor_up_fov(player, map, ray, j);
-		else if(ray->angle != 90)
+		else
 			ray_hor_down_fov(player, map, ray, j);
 		if (sin(ray->angle * M_PI / 180) > 0)
 			ray_ver_right_fov(player, map, ray, j);
@@ -93,6 +93,9 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 			check_orientation_1(cub3d, k, i, wall_height);
 			check_orientation_2(cub3d, k, i, wall_height);
 			i++;
+			// mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
+			// 		0xFFFFFFF);
+			// i++;
 		}
 		k++;
 		j++;

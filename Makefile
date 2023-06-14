@@ -6,7 +6,9 @@ NAME_BONUS = cub3d_bonus
 CC = @gcc
 CFGLAGS = -Wall -Werror -Wextra
 LINUX = -ldl -lglfw -pthread -lm
-MAC = -I /include -L/Users/ddemers/Desktop/cub3d/cub3d/libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+# MAC = -I /include -L/Users/cperron/Desktop/cub3d/libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+MAC = -I /include -L./libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+
 
 # REMOVE #
 REMOVE = @rm -f
@@ -158,7 +160,7 @@ endif
 all: lib $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		${CC} ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
+		${CC} -g ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Done$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
