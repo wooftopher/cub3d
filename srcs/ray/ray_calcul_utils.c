@@ -6,13 +6,13 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 14:53:48 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:02:10 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ray.h"
 
-int	find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height)
+int	find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height) // a check
 {
 	double normalized_position;
     int y_pixel_pos;
@@ -48,7 +48,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 			cub3d->mlx_s->txt_wall_n->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 			* cub3d->mlx_s->txt_wall_n->width / 100) ;
-		if (x >= cub3d->mlx_s->txt_wall_n->width) //feature to fix
+		if (x >= cub3d->mlx_s->txt_wall_n->width)
 			x = cub3d->mlx_s->txt_wall_n->width - 1;
 		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 			cub3d->map->north[y][x]);
@@ -59,7 +59,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 			cub3d->mlx_s->txt_wall_s->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 			* cub3d->mlx_s->txt_wall_s->width / 100);
-		if (x >= cub3d->mlx_s->txt_wall_s->width) //feature to fix
+		if (x >= cub3d->mlx_s->txt_wall_s->width)
 			x = cub3d->mlx_s->txt_wall_s->width - 1;
 		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 			cub3d->map->south[y][x]);
@@ -77,7 +77,7 @@ void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 			cub3d->mlx_s->txt_wall_e->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 			* cub3d->mlx_s->txt_wall_e->width / 100);
-		if (x >= cub3d->mlx_s->txt_wall_e->width) //feature to fix
+		if (x >= cub3d->mlx_s->txt_wall_e->width)
 			x = cub3d->mlx_s->txt_wall_e->width - 1;
 		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 					cub3d->map->east[y][x]);
@@ -88,7 +88,7 @@ void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 			cub3d->mlx_s->txt_wall_w->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 			* cub3d->mlx_s->txt_wall_w->width / 100);
-		if (x >= cub3d->mlx_s->txt_wall_w->width) //feature to fix
+		if (x >= cub3d->mlx_s->txt_wall_w->width)
 			x = cub3d->mlx_s->txt_wall_w->width - 1;
 		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
 			cub3d->map->west[y][x]);
@@ -100,13 +100,6 @@ int fish_eye_correction(t_cub3d *cub3d, int k, float wall_height)
 	float correction_factor;
 
 	correction_factor = (cub3d->player->angle - cub3d->ray->ray_angle_fov_s[k]->angle);
-	wall_height = 45000 / (cub3d->ray->ray_angle_fov_s[k]->min_dist_fov * cos(correction_factor * M_PI / 180)); //45000
+	wall_height = 45000 / (cub3d->ray->ray_angle_fov_s[k]->min_dist_fov * cos(correction_factor * M_PI / 180));
 	return (wall_height);
-}
-
-void	create_pixel_image(t_cub3d *cub3d)
-{
-	if (cub3d->mlx_s->img_wall_3d)
-		mlx_delete_image(cub3d->mlx_s->mlx, cub3d->mlx_s->img_wall_3d);
-	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000);
 }

@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/14 14:19:33 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:02:31 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	col_down_v2(t_map *map, t_player *player, t_ray *ray)
 	xs = ys / (tan((ray->angle - 90) * M_PI / 180));
 	y = ((player->pos_y + ray->yn) / 100);
 	x = ((player->pos_x - ray->xn) / 100);
-	if (x < 0) //what the actual fuck tabarnck
+	if (x < 0)
 		return (0);
 	while (y < map->height && x < map->width)
 	{

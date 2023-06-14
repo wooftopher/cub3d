@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 16:04:23 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:06:22 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int8_t	ft_create_map(t_map *map, t_cub3d *cub3d)
 
 	x = 0;
 	y = 0;
-	cub3d->mlx_s->xpm_wall = NULL;
 	if (init_background(cub3d))
 		return (ft_putstr_fd("Mlx Erron\n", 2), FAILURE);
 	while (x < map->width)
