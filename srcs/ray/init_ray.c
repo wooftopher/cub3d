@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/11 14:20:22 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:01:37 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,18 @@ void	free_ray(t_cub3d *cub3d, int index)
 		free(cub3d->ray->ray_angle_fov_s[i++]);
 		cub3d->ray->ray_angle_fov_s[i] = NULL;
 	}
-	free(cub3d->ray->ray_angle_s);
-	cub3d->ray->ray_angle_s = NULL;
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd("Alloc failure\n", 2);
 }
 
 int8_t	init_rayz(t_cub3d *cub3d)
 {
-	int					i;
-	t_ray_angle_fov_s	*ray_angle_fov_s[1500];
-	t_ray_angle_s		*ray_angle_s;
-
-	ray_angle_s = calloc(1, sizeof(t_ray_angle_s));
-	cub3d->ray->ray_angle_s = ray_angle_s;
-	if (!cub3d->ray->ray_angle_s)
-		return (free_ray(cub3d, 0), -1);
+	int	i;
+	
 	i = 0;
 	while (i <= 1400)
 	{
-		ray_angle_fov_s[i] = calloc(1, sizeof(t_ray_angle_fov_s));
-		cub3d->ray->ray_angle_fov_s[i] = ray_angle_fov_s[i];
+		cub3d->ray->ray_angle_fov_s[i] = ft_calloc(1, sizeof(t_ray_angle_fov_s));
 		if (!cub3d->ray->ray_angle_fov_s[i])
 		{
 			free_ray(cub3d, i);
@@ -52,7 +43,6 @@ int8_t	init_rayz(t_cub3d *cub3d)
 		i++;
 	}
 	cub3d->ray->fov_angle = 30;
-	// cub3d.ray->angle_div = 0.035714f;
 	cub3d->ray->angle_div = 0.042857f;
 	return (0);
 }

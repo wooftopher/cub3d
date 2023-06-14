@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:39:41 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/11 14:22:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:10:26 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ static void	free_ray(t_cub3d *cub3d)
 		free(cub3d->ray->ray_angle_fov_s[index]);
 		index++;
 	}
-	if (cub3d->ray->ray_angle_s)
-		free(cub3d->ray->ray_angle_s);
 }
 
 void	free_all(t_cub3d *cub3d)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 15:47:00 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:07:55 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,11 @@
 
 void key_hook(mlx_key_data_t keydata, void *param)
 {
-	t_cub3d *cub3d = param;
+	t_cub3d *cub3d;
 
-
+	cub3d = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(cub3d->mlx_s->mlx);
-	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-	{
-		usleep(10);
-	}
-	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
-		cub3d->vision = 1;
-	if (keydata.key == MLX_KEY_2 && keydata.action == MLX_PRESS)
-		cub3d->vision = 2;
-	if (keydata.key == MLX_KEY_3 && keydata.action == MLX_PRESS)
-		cub3d->vision = 3;
-	if (keydata.key == MLX_KEY_4 && keydata.action == MLX_PRESS)
-		cub3d->vision = 4;
 }
 
 #include <time.h>
@@ -82,5 +70,4 @@ int main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-// big fat map
 // texture bug

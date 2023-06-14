@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/14 15:37:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 17:08:20 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ static int8_t	init_texture(t_cub3d *cub3d, t_map *map)
 
 static void	init_cub3d_struct(t_cub3d *cub3d)
 {
-	cub3d->tic = 0;
-	cub3d->vision = 4;
 	cub3d->ray = NULL;
 	cub3d->map = NULL;
 	cub3d->player = NULL;

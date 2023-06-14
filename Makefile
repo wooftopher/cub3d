@@ -46,15 +46,12 @@ INITIALIZATION = 	./srcs/initialization/initialization.c \
 
 OBJECT =	./srcs/object/player_move.c
 
-RAY = 		./srcs/ray/dir_indicator.c \
-			./srcs/ray/init_ray.c \
+RAY =		./srcs/ray/init_ray.c \
 			./srcs/ray/pixel_color.c \
 			./srcs/ray/ray_calcul.c \
 			./srcs/ray/ray_calcul_utils.c \
 			./srcs/ray/ray_hor_fov.c \
-			./srcs/ray/ray_hor.c \
-			./srcs/ray/ray_ver_fov.c \
-			./srcs/ray/ray_ver.c
+			./srcs/ray/ray_ver_fov.c
 
 PARSING = 	./srcs/parsing/bit_shift_operations.c \
 			./srcs/parsing/breadth_first_search.c \
@@ -156,7 +153,7 @@ endif
 all: lib $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		${CC} -g ${CFGLAGS} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
+		${CC} ${CFGLAGS} ${SRC} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Done$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)

@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 16:38:29 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 16:46:11 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	calcul_new_pos(t_player *player, int dx, int dy)
 }
 
 void	set_new_pos(t_player *player)
-{ 
+{
 	if (player->col_x == 0)
 		player->pos_x += player->d_x;
 	else
