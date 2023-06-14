@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 21:04:05 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 10:20:05 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,19 @@ void	ft_move(t_cub3d *cub3d)
 void	ft_rotate(t_cub3d *cub3d)
 {
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_RIGHT))
+	{
 		cub3d->player->angle -= cub3d->player->rot_speed;
+		if (cub3d->player->angle > 360)
+			cub3d->player->angle -= 360;
+		if (cub3d->player->angle < 0)
+			cub3d->player->angle += 360;
+	}
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_LEFT))
+	{
 		cub3d->player->angle += cub3d->player->rot_speed;
+		if (cub3d->player->angle > 360)
+			cub3d->player->angle -= 360;
+		if (cub3d->player->angle < 0)
+			cub3d->player->angle += 360;
+	}
 }

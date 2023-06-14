@@ -34,6 +34,25 @@
 // } //linux
 
 {
+	// "tasks": [
+    //     {
+    //         "label": "cub3d",
+    //         "type": "shell",
+    //         "command": "make",
+    //         "args": [],
+    //         "options": {
+    //             "cwd": "${workspaceFolder}"
+    //         },
+    //         "problemMatcher": [
+    //             "$gcc"
+    //         ],
+    //         "group": {
+    //             "kind": "build",
+    //             "isDefault": true
+    //         },
+    //         "detail": "cub3d"
+    //     }
+    // ],
     "tasks": [
         {
             "type": "cppbuild",

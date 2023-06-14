@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/14 15:23:54 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:37:23 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 			check_orientation_1(cub3d, k, i, wall_height);
 			check_orientation_2(cub3d, k, i, wall_height);
 			i++;
+			// mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
+			// 		0xFFFFFFF);
+			// i++;
 		}
 		k++;
 		j++;
