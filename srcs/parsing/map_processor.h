@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 16:42:04 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/09 11:50:09 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 16:32:43 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ typedef enum e_map_flag
 # ifndef OS
 #  define OS 1
 # endif
+
+# define MAC 0
 
 # define LINE_LENGTH 26 /* Line length for each error message */
 # define FILE_BUFFER_SIZE 600 /* Max buffer for read */

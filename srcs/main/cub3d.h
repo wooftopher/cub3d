@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 15:16:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 16:35:04 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "../object/object.h"
 # include "../ray/ray.h"
 # include "../parsing/map_processor.h"
+# include "../initialization/initialization.h"
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"
@@ -38,17 +39,6 @@
 # define WHT   "\x1B[37m"
 # define RESET "\x1B[0m"
 
-// typedef struct cub3d
-// {
-//     mlx_t			*mlx;
-//     xpm_t           *xpm;
-//     t_map           map;
-// }   t_cub3d;
-
 void	free_all(t_cub3d *cub3d);
-int8_t	initialization(t_cub3d *cub3d, char **argv);
-
-# define true 1
-# define false 0
 
 #endif

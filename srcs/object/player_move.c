@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 10:20:05 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:29:42 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,45 @@
 
 void	check_col(t_map *map, t_player *player)
 {
-	int	i;
-	
-	i = 0;
-	while (i <= map->wall_count)
-	{
-		if (player->pos_x + player->d_x > map->wall_px[i] - 10
-				&& player->pos_x + player->d_x < map->wall_px[i] + 110
-				&& player->pos_y < map->wall_py[i] + 110
-				&& player->pos_y > map->wall_py[i] - 10)
-			player->col_x = 1;
-		if (player->pos_y + player->d_y < map->wall_py[i] + 110
-				&& player->pos_y + player->d_y > map->wall_py[i] - 10
-				&& player->pos_x > map->wall_px[i] - 10
-				&& player->pos_x < map->wall_px[i] + 110)
-			player->col_y = 1;
-		i++;
-	}
+	int x;
+	int y;
+
+	if (player->d_x < 0)
+		x = (player->pos_x - 1 + player->d_x) / 100;
+	else
+		x = (player->pos_x + 1 + player->d_x) / 100;
+	y = player->pos_y / 100;
+	if (map->map[y][x] == '1')
+		player->col_x = 1;
+	if (player->d_y < 0)
+		y = (player->pos_y - 1 + player->d_y) / 100;
+	else
+		y = (player->pos_y + 1 + player->d_y) / 100;
+	x = player->pos_x / 100;
+	if (map->map[y][x] == '1')
+		player->col_y = 1;
 }
+
+// void	check_col(t_map *map, t_player *player)
+// {
+// 	int	i;
+	
+// 	i = 0;
+// 	while (i <= map->wall_count)
+// 	{
+// 		if (player->pos_x + player->d_x > map->wall_px[i] - 10
+// 				&& player->pos_x + player->d_x < map->wall_px[i] + 110
+// 				&& player->pos_y < map->wall_py[i] + 110
+// 				&& player->pos_y > map->wall_py[i] - 10)
+// 			player->col_x = 1;
+// 		if (player->pos_y + player->d_y < map->wall_py[i] + 110
+// 				&& player->pos_y + player->d_y > map->wall_py[i] - 10
+// 				&& player->pos_x > map->wall_px[i] - 10
+// 				&& player->pos_x < map->wall_px[i] + 110)
+// 			player->col_y = 1;
+// 		i++;
+// 	}
+// }
 
 void	calcul_new_pos(t_player *player, int x, int y)
 {
