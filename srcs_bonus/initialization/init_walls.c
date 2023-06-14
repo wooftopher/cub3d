@@ -1,23 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialization.c                                   :+:      :+:    :+:   */
+/*   init_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/12 22:52:05 by ddemers          ###   ########.fr       */
+/*   Created: 2023/06/13 23:55:30 by ddemers           #+#    #+#             */
+/*   Updated: 2023/06/14 01:19:15 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "struct.h"
+#include "initialization.h"
 
-static int8_t	print_error(const char *message)
+void	free_ray(t_cub3d *cub3d, int index)
 {
-	write(STDERR_FILENO, "Error\n", 6);
-	write(STDERR_FILENO, message, ft_strlen(message));
-	return (FAILURE);
+	int	i;
+
+	i = 0;
+	while (i < index)
+	{
+		free(cub3d->ray->ray_angle_fov_s[i++]);
+		cub3d->ray->ray_angle_fov_s[i] = NULL;
+	}
+	free(cub3d->ray->ray_angle_s);
+	cub3d->ray->ray_angle_s = NULL;
+	print_error("Alloc failure\n");
+}
+
+static int8_t	init_rayz(t_cub3d *cub3d)
+{
+	int					i;
+	t_ray_angle_fov_s	*ray_angle_fov_s[1500]; // change maybe?
+	t_ray_angle_s		*ray_angle_s;
+
+	ray_angle_s = ft_calloc(1, sizeof(t_ray_angle_s));
+	cub3d->ray->ray_angle_s = ray_angle_s;
+	if (!cub3d->ray->ray_angle_s)
+		return (free_ray(cub3d, 0), FAILURE);
+	i = 0;
+	while (i <= 1400)
+	{
+		ray_angle_fov_s[i] = ft_calloc(1, sizeof(t_ray_angle_fov_s));
+		cub3d->ray->ray_angle_fov_s[i] = ray_angle_fov_s[i];
+		if (!cub3d->ray->ray_angle_fov_s[i])
+		{
+			free_ray(cub3d, i);
+			return (-1);
+		}
+		i++;
+	}
+	cub3d->ray->fov_angle = 30;
+	// cub3d.ray->angle_div = 0.035714f;
+	cub3d->ray->angle_div = 0.042857f;
+	return (0);
 }
 
 static int8_t	init_texture(t_cub3d *cub3d, t_map *map)
@@ -49,48 +84,17 @@ static int8_t	init_texture(t_cub3d *cub3d, t_map *map)
 	return (SUCCESS);
 }
 
-static void	init_cub3d_struct(t_cub3d *cub3d)
+int8_t	init_walls(t_cub3d *cub3d)
 {
-	cub3d->tic = 0;
-	cub3d->vision = 4;
-	cub3d->ray = NULL;
-	cub3d->map = NULL;
-	cub3d->player = NULL;
-	cub3d->mlx_s = NULL;
-}
-
-static int8_t	alloc_struct(t_cub3d *cub3d)
-{
-	cub3d->map = ft_calloc(1, sizeof(t_map));
-	if (!cub3d->map)
-		return (FAILURE);
-	cub3d->player = ft_calloc(1, sizeof(t_player));
-	if (!cub3d->player)
-		return (FAILURE);
-	cub3d->ray = ft_calloc(1, sizeof(t_ray));
-	if (!cub3d->ray)
-		return (FAILURE);
-	cub3d->mlx_s = ft_calloc(1, sizeof(t_mlx_struc));
-	if (!cub3d->mlx_s)
-		return (FAILURE);
-	return (SUCCESS);
-}
-
-int8_t	initialization(t_cub3d *cub3d)
-{
-	init_cub3d_struct(cub3d);
-	if (alloc_struct(cub3d))
-		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/a.cub");
-	if (cub3d->map->map_errno)
-		return (print_map_errno(cub3d->map->map_errno),
-			FAILURE);
 	if (init_texture(cub3d, cub3d->map))
 		return (FAILURE);
+	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000); // why 1400x1000? over 1400x900?
+	if (!cub3d->mlx_s->img_wall_3d)
+		return (print_error("Alloc failure\n"), FAILURE);
+	if (mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_wall_3d, 0 , 0) == FAILURE)
+		return (print_error("Alloc failure\n"), FAILURE);
 	if (init_rayz(cub3d))
 		return (FAILURE);
-	cub3d->mlx_s->mlx = mlx_init(1400, 900, "cub3d", true);
-	if (!cub3d->mlx_s->mlx)
-		return (print_error("MLX INIT FAILURE\n"));
+	ft_create_map(cub3d->map, cub3d);
 	return (SUCCESS);
 }

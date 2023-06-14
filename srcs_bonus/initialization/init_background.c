@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gradient.c                                         :+:      :+:    :+:   */
+/*   init_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 22:32:22 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/12 16:24:30 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 01:38:14 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main/cub3d.h"
-
-#define STEP 900 // remove later
 
 inline static uint32_t	get_rgb(uint8_t red, uint8_t green,
 	uint8_t blue, uint8_t alpha)
@@ -71,7 +69,10 @@ static void	fill_gradient(t_cub3d *cub3d, t_rgb *gradient)
 	}
 }
 
-int8_t	color_gradient(t_cub3d *cub3d)
+/*
+	Responsible to generate the gradient :)
+*/
+int8_t	init_background(t_cub3d *cub3d)
 {
 	t_rgb	ceiling;
 	t_rgb	floor;
@@ -82,11 +83,11 @@ int8_t	color_gradient(t_cub3d *cub3d)
 	t_rgb_constructor(cub3d->map->floor_color, &floor);
 	gradient = malloc(STEP * sizeof(t_rgb));
 	if (!gradient)
-		return (ft_putstr_fd("Alloc failure\n", 2), FAILURE);
+		return (print_error("Alloc failure\n"), FAILURE);
 	linear_interpolation(gradient, ceiling, floor);
 	cub3d->mlx_s->img_back = mlx_new_image(cub3d->mlx_s->mlx, 1900, 900);
 	if (!cub3d->mlx_s->img_back)
-		return (free (gradient), ft_putstr_fd("MLX failure\n", 2), FAILURE);
+		return (free (gradient), print_error("MLX failure\n"), FAILURE);
 	fill_gradient(cub3d, gradient);
 	free(gradient);
 	ret = mlx_image_to_window(cub3d->mlx_s->mlx,

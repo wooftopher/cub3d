@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 22:10:14 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:02:58 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		cub3d->vision = 3;
 	if (keydata.key == MLX_KEY_4 && keydata.action == MLX_PRESS)
 		cub3d->vision = 4;
-	if (keydata.key == MLX_KEY_E && keydata.action == MLX_PRESS)
-		cub3d->focus = true;
+	// if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+	// 	mushroom(cub3d);
 }
 
 #include <time.h>
@@ -84,9 +84,8 @@ int main(void)
 
 	if (initialization(&cub3d))
 		return (free_all(&cub3d), EXIT_FAILURE);
-	ft_create_map(cub3d.map, &cub3d);
 	mlx_set_cursor_mode(cub3d.mlx_s->mlx, MLX_MOUSE_HIDDEN);
-	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
+	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d); // ADD HOOKS LATER TO INIT
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_cursor_hook(cub3d.mlx_s->mlx, &mouse_position, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);

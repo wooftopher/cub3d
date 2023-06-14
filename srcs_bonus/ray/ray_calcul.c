@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/10 19:02:18 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 00:30:10 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ void ft_render(t_ray *ray, t_mlx_struc *mlx)
 	mlx_image_to_window(mlx->mlx, mlx->img_wall_3d, 0, 0);
 }
 
+static void	memset_image(uint32_t height, uint32_t width, uint8_t *image)
+{
+	uint32_t	index;
+	uint32_t	length;
+
+	length = (width * height) * 4;
+	index = 3;
+	while (index < length)
+	{
+		image[index] = 0x00;
+		index += 4;
+	}
+}
+
 void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *mlx_s)
 {
 	int	i;
@@ -81,7 +95,8 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 	
 	k = 0;
 	j = -ray->fov_angle;
-	create_pixel_image(cub3d);
+	// create_pixel_image(cub3d);
+	memset_image(cub3d->mlx_s->img_wall_3d->width, cub3d->mlx_s->img_wall_3d->height, cub3d->mlx_s->img_wall_3d->pixels);
 	while (j < ray->angle_count - ray->fov_angle)
 	{
 		wall_height = fish_eye_correction(cub3d, k, wall_height);;
@@ -98,7 +113,7 @@ void ft_render_fov(t_cub3d * cub3d, t_player *player, t_ray *ray, t_mlx_struc *m
 		j++;
 	}
 	// set_direction_indicator_2(cub3d->player, cub3d->mlx_s, cub3d->ray);
-	mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall_3d, 0, 0);
+	// mlx_image_to_window(mlx_s->mlx, mlx_s->img_wall_3d, 0, 0);
 }
 
 void	ft_calcul_render(t_cub3d *cub3d)

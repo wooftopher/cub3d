@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:24:28 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/11 14:00:39 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 00:03:30 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j);
 void	ft_calcul_render(t_cub3d *cub3d);
 
 //ini_ray
-int8_t	init_rayz(t_cub3d *cub3d);
+// int8_t	init_rayz(t_cub3d *cub3d);
 // void	free_ray(t_cub3d *cub3d, int index);
 
 //ray_calcul_utils
@@ -53,7 +53,7 @@ void	create_pixel_image(t_cub3d *cub3d);
 int 	fish_eye_correction(t_cub3d *cub3d, int k, float wall_height);
 void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height);
 void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height);
-int		find_y(t_cub3d *cub3d, int i, int wall_h);
+int		find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height);
 
 int		**fill_int_array(mlx_texture_t *texture);
 void	free_int_array(int **array, uint32_t heigth);

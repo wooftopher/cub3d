@@ -83,18 +83,19 @@ SRCS =  $(MAIN) \
 
 # SRCS FILE BONUS #
 MAINB =  	./srcs_bonus/main/main.c \
-			./srcs_bonus/main/initialization.c \
 			./srcs_bonus/main/free.c
 
 MAPB =		./srcs_bonus/map/create_map.c \
 			./srcs_bonus/map/map_utils.c \
-			./srcs_bonus/map/parse_map.c \
-			./srcs_bonus/map/gradient.c
+			./srcs_bonus/map/parse_map.c
+INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
+					./srcs_bonus/initialization/init_background.c \
+					./srcs_bonus/initialization/init_walls.c \
+					./srcs_bonus/initialization/init_hud_player.c \
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 
 RAYB = 		./srcs_bonus/ray/dir_indicator.c \
-			./srcs_bonus/ray/init_ray.c \
 			./srcs_bonus/ray/pixel_color.c \
 			./srcs_bonus/ray/ray_calcul.c \
 			./srcs_bonus/ray/ray_calcul_utils.c \
@@ -126,6 +127,7 @@ PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations.c \
 			./srcs_bonus/parsing/validate_map_layout.c
 
 SRCS_BONUS =  $(MAINB) \
+		$(INITIALIZATIONB) \
 		$(MAPB) \
 		$(OBJECTB) \
 		$(RAYB) \

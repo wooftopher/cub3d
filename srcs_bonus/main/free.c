@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:39:41 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/11 14:22:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:02:33 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	free_left_over(t_cub3d *cub3d)
 		free(cub3d->ray);
 	if (cub3d->mlx_s)
 		free(cub3d->mlx_s);
+	if (cub3d->hud)
+		free(cub3d->hud);
 }
 
 static void	destroy_textures(t_cub3d *cub3d)

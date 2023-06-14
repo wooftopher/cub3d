@@ -1,8 +1,8 @@
-                        NO                      ./img/optic/4.png
-WE                                                           ./img/optic/3.png
+                        NO                      ./img/castle/walli.png
+WE                                                           ./img/castle/jail.png
                      C     0,        0,         0
-                                 SO ./img/optic/2.png                           
-EA ./img/optic/1.png
+                                 SO ./img/castle/bowser_wall.png                           
+EA ./img/castle/walli.png
 
 
 
@@ -15,7 +15,7 @@ EA ./img/optic/1.png
 
 
 
-F 255,255,255
+F 125,0,0
 
 
        1

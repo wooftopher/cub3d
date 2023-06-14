@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/06/11 23:39:36 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 00:25:37 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # include <limits.h>
 # include <float.h>
 
-# include "../map/map.h"
+# include "../initialization/initialization.h"
 # include "./struct.h"
+# include "../map/map.h"
 # include "../object/object.h"
 # include "../ray/ray.h"
 # include "../parsing/map_processor.h"
