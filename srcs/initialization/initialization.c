@@ -6,12 +6,11 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/12 23:03:44 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:29:46 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "struct.h"
+#include "initialization.h"
 
 static int8_t	print_error(const char *message)
 {
@@ -76,12 +75,12 @@ static int8_t	alloc_struct(t_cub3d *cub3d)
 	return (SUCCESS);
 }
 
-int8_t	initialization(t_cub3d *cub3d)
+int8_t	initialization(t_cub3d *cub3d, char **argv)
 {
 	init_cub3d_struct(cub3d);
 	if (alloc_struct(cub3d))
 		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/fuck.cub");
+	map_initialization(cub3d->map, argv[1]);
 	if (cub3d->map->map_errno)
 		return (print_map_errno(cub3d->map->map_errno),
 			FAILURE);
@@ -94,5 +93,11 @@ int8_t	initialization(t_cub3d *cub3d)
 		return (print_error("MLX INIT FAILURE\n"));
 	if (ft_create_map(cub3d->map, cub3d))
 		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
+	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000);
+	if (!cub3d->mlx_s->img_wall_3d)
+		return (print_error("MLX"), mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
+	if (mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_wall_3d,
+			0, 0) == FAILURE)
+		return (print_error("MLX"), mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
 	return (SUCCESS);
 }

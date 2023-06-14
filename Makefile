@@ -12,7 +12,7 @@ MAC = -I /include -L./libs/z/lib -framework OpenGL -framework Cocoa -framework I
 REMOVE = @rm -f
 
 # RUN #
-RUN = ./cub3d default.cub
+RUN = ./cub3d ./map/a.cub
 RUNB = ./cub3d_bonus
 
 # OBJS #
@@ -39,10 +39,10 @@ LEAKB = leaks -atExit -- ./cub3d_bonus
 
 # Source file mandatory #
 MAIN =  	./srcs/main/main.c \
-			./srcs/main/initialization.c \
-			./srcs/main/free.c \
+			./srcs/main/free.c
 
-MAP =		./srcs/map/create_map.c
+INITIALIZATION = 	./srcs/initialization/initialization.c \
+					./srcs/initialization/create_map.c
 
 OBJECT =	./srcs/object/player_move.c
 
@@ -79,7 +79,7 @@ PARSING = 	./srcs/parsing/bit_shift_operations.c \
 			./srcs/parsing/validate_map_layout.c
 
 SRCS =  $(MAIN) \
-		$(MAP) \
+		$(INITIALIZATION) \
 		$(OBJECT) \
 		$(RAY) \
 		$(PARSING)

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/12 22:53:44 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:24:13 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void key_hook(mlx_key_data_t keydata, void *param)
 
 void ft_loop(void *param)
 {
-	t_cub3d *cub3d = param;
+	t_cub3d *cub3d;
 
-		// calcul_new_pos(cub3d->player, 1, 0);
-		// check_col(cub3d->map, cub3d->player);
-		// set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
+	cub3d = param;
 	ft_move(cub3d);
 	ft_rotate(cub3d);
 	ft_calcul_render(cub3d);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
     t_cub3d 	cub3d;
 
-	if (initialization(&cub3d))
+	if (argc != 2)
+		return (write(STDERR_FILENO, "Error argc\n", 11), EXIT_FAILURE);
+	if (initialization(&cub3d, argv))
 		return (free_all(&cub3d), EXIT_FAILURE);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
