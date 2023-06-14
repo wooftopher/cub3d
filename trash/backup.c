@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 21:46:34 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/07 23:40:54 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:30:25 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,27 @@
 // 			- d * floor(2 * cos((player->angle) * M_PI / 180));
 // 		mlx_s->img_wall[i]->instances[0].x = mlx_s->img_wall[i]->instances[0].x
 // 			- d * floor(2 * sin((player->angle) * M_PI / 180));
+// 		i++;
+// 	}
+// }
+
+// void	check_col(t_map *map, t_player *player)
+// {
+// 	int	i;
+	
+// 	i = 0;
+// 	while (i <= map->wall_count)
+// 	{
+// 		if (player->pos_x + player->d_x > map->wall_px[i] - 10
+// 				&& player->pos_x + player->d_x < map->wall_px[i] + 110
+// 				&& player->pos_y < map->wall_py[i] + 110
+// 				&& player->pos_y > map->wall_py[i] - 10)
+// 			player->col_x = 1;
+// 		if (player->pos_y + player->d_y < map->wall_py[i] + 110
+// 				&& player->pos_y + player->d_y > map->wall_py[i] - 10
+// 				&& player->pos_x > map->wall_px[i] - 10
+// 				&& player->pos_x < map->wall_px[i] + 110)
+// 			player->col_y = 1;
 // 		i++;
 // 	}
 // }
