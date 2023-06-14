@@ -1,4 +1,4 @@
-# Executable #
+# Executables #
 NAME = cub3d
 NAME_BONUS = cub3d_bonus
 
