@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 13:56:50 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 09:53:27 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct ray
 	float		angle;
 	float		xn;
 	float		yn;
+	int			text_x;
+	int			text_y;
 }	t_ray;
 
 typedef struct player
@@ -77,7 +79,7 @@ typedef struct player
 	float		d_x;
 	float		d_y;
 	float		angle;
-	int			speed;
+	float			speed;
 	float		rot_speed;
 	bool		col_x;
 	bool		col_y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_hud_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:52:37 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/14 14:22:49 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 09:46:20 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int8_t	init_player(t_cub3d *cub3d)
 	image = mlx_texture_to_image(cub3d->mlx_s->mlx, png);
 	mlx_image_to_window(cub3d->mlx_s->mlx, image, 615, 650);
 	mlx_delete_texture(png);
+	return (0);
 }
 
 static int8_t	init_hud(t_cub3d *cub3d)

@@ -6,11 +6,32 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/06/08 22:15:47 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/15 09:58:17 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./object.h"
+
+// void	check_col(t_map *map, t_player *player)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	if (player->d_x < 0)
+// 		x = (player->pos_x - 1 + player->d_x) / 100;
+// 	else
+// 		x = (player->pos_x + 1 + player->d_x) / 100;
+// 	y = player->pos_y / 100;
+// 	if (map->map[y][x] == '1')
+// 		player->col_x = 1;
+// 	if (player->d_y < 0)
+// 		y = (player->pos_y - 1 + player->d_y) / 100;
+// 	else
+// 		y = (player->pos_y + 1 + player->d_y) / 100;
+// 	x = player->pos_x / 100;
+// 	if (map->map[y][x] == '1')
+// 		player->col_y = 1;
+// }
 
 void	check_col(t_map *map, t_player *player)
 {
@@ -63,15 +84,19 @@ void	ft_move(t_cub3d *cub3d)
 {
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP))
 	{
-		calcul_new_pos(cub3d->player, 1, 0);
-		check_col(cub3d->map, cub3d->player);
-		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
+		if (cub3d->player->speed < 7)
+			cub3d->player->speed += 1;
+		// calcul_new_pos(cub3d->player, 1, 0);
+		// check_col(cub3d->map, cub3d->player);
+		// set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 	}
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN))
 	{
-		calcul_new_pos(cub3d->player, -1, 0);
-		check_col(cub3d->map, cub3d->player);
-		set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
+		if (cub3d->player->speed > -5)
+			cub3d->player->speed -= 0.5;
+		// calcul_new_pos(cub3d->player, -1, 0);
+		// check_col(cub3d->map, cub3d->player);
+		// set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 	}
 	// if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_A))
 	// {

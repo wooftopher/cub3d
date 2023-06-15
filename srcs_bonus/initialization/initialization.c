@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/14 17:29:38 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 09:49:28 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int8_t	initialization(t_cub3d *cub3d)
 	init_cub3d_struct(cub3d);
 	if (alloc_struct(cub3d))
 		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/a.cub");
+	map_initialization(cub3d->map, "./map/maze.cub");
 	if (cub3d->map->map_errno)
 		return (print_map_errno(cub3d->map->map_errno),
 			FAILURE);
