@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:52:37 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/15 04:24:39 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 10:37:34 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int8_t	init_player(t_cub3d *cub3d)
 	image = mlx_texture_to_image(cub3d->mlx_s->mlx, png);
 	mlx_image_to_window(cub3d->mlx_s->mlx, image, 615, 650); //add verif
 	mlx_delete_texture(png);
+	return (0);
 }
 
 static int8_t	init_hud2(t_cub3d *cub3d)

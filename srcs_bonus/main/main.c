@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 05:04:53 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 10:37:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,25 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		mushroom(cub3d);
 }
 
+void	ft_race(t_cub3d *cub3d)
+{
+	if (cub3d->player->speed > 0)
+	{
+		cub3d->player->speed -= 0.1;
+		if (cub3d->player->speed < 0)
+			cub3d->player->speed = 0;
+	}
+	calcul_new_pos(cub3d->player, 1, 0);
+	check_col(cub3d->map, cub3d->player);
+	set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
+}
+
 void ft_loop(void *param)
 {
 	t_cub3d *cub3d = param;
 
 	ft_move(cub3d);
+	ft_race(cub3d);
 	ft_rotate(cub3d);
 	ft_calcul_render(cub3d);
 	mlx_set_mouse_pos(cub3d->mlx_s->mlx, 700, 450);
