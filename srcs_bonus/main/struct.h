@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 13:56:50 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 05:15:33 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ typedef struct s_hud
 	mlx_image_t	*mush1;
 	mlx_image_t	*empty;
 	mlx_image_t	*tig;
+	uint8_t		counter;
+	uint8_t		duration;
 }	t_hud;
 
 typedef struct mlx_struc

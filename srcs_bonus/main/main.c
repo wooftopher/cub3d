@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 14:02:58 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 05:04:53 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void key_hook(mlx_key_data_t keydata, void *param)
 {
-	t_cub3d *cub3d = param;
+	t_cub3d *cub3d;
 
+	cub3d = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(cub3d->mlx_s->mlx);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
@@ -30,29 +31,8 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		cub3d->vision = 3;
 	if (keydata.key == MLX_KEY_4 && keydata.action == MLX_PRESS)
 		cub3d->vision = 4;
-	// if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
-	// 	mushroom(cub3d);
-}
-
-#include <time.h>
-
-void fps_counter(t_cub3d *cub3d)
-{
-    static clock_t	start_time = 0;
-    static uint32_t	frame_count = 0;
-	clock_t			current_time;
-	double			elapsed_time;
-
-	frame_count++;
-	current_time = clock();
-	elapsed_time = (current_time - start_time) / CLOCKS_PER_SEC;
-    if (elapsed_time >= 1.0)
-    {
-		printf("\rFps:%.0f", frame_count - elapsed_time);
-		fflush(stdout);
-		frame_count = 0;
-		start_time = current_time;
-    }
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+		mushroom(cub3d);
 }
 
 void ft_loop(void *param)
@@ -63,7 +43,7 @@ void ft_loop(void *param)
 	ft_rotate(cub3d);
 	ft_calcul_render(cub3d);
 	mlx_set_mouse_pos(cub3d->mlx_s->mlx, 700, 450);
-	fps_counter(cub3d);
+	game_clock(cub3d);
 }
 
 void mouse_position(double xpos, double ypos, void *params)

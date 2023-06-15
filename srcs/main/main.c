@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 17:14:51 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 03:16:47 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	main(int argc, char **argv)
 		return (free_all(&cub3d), EXIT_FAILURE);
 	if (!mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d))
 		return (mlx_terminate(cub3d.mlx_s->mlx),
-			write(STDERR_FILENO, "Hook\n", 11), EXIT_FAILURE);
+			write(STDERR_FILENO, "Hook Error\n", 12), EXIT_FAILURE);
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);
-	free_all(&cub3d);
 	mlx_terminate(cub3d.mlx_s->mlx);
+	free_all(&cub3d);
 	return (EXIT_SUCCESS);
 }
 

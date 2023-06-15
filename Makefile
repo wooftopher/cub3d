@@ -126,12 +126,16 @@ PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations.c \
 			./srcs_bonus/parsing/tokenize_map.c \
 			./srcs_bonus/parsing/validate_map_layout.c
 
+FEATURES =	./srcs_bonus/features/game_clock.c \
+			./srcs_bonus/features/mushroom.c
+
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \
 		$(MAPB) \
 		$(OBJECTB) \
 		$(RAYB) \
-		$(PARSINGB)
+		$(PARSINGB) \
+		$(FEATURES)
 
 # Colors #
 BLACK = \033[0;30m

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:51:00 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 17:06:22 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/15 03:06:22 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_init_player(int x, int y, t_player *player, t_map *map)
 {
-		player->pos_x = x * 100 + 50;
+	player->pos_x = x * 100 + 50;
 	player->pos_y = y * 100 + 50;
 	if (map->map[y][x] == 'N')
 		player->angle = 180;
