@@ -6,16 +6,17 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 05:04:38 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/15 05:28:09 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 16:54:50 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
 
-static void	update_hud(t_cub3d *cub3d, mlx_image_t *to_delete, mlx_image_t *new_image)
+static void	update_hud(t_cub3d *cub3d, mlx_image_t *to_delete,
+		mlx_image_t *new_image)
 {
 	int32_t	ret;
-	
+
 	mlx_delete_image(cub3d->mlx_s->mlx, to_delete);
 	ret = mlx_image_to_window(cub3d->mlx_s->mlx, new_image, 0, 0);
 	if (ret == FAILURE)

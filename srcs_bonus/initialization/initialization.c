@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/15 09:49:28 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/15 13:42:55 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ static int8_t	alloc_struct(t_cub3d *cub3d)
 		return (FAILURE);
 	cub3d->hud = ft_calloc(1, sizeof(t_hud));
 	if (!cub3d->hud)
+		return (FAILURE);
+	cub3d->racer = ft_calloc(1, sizeof(t_hud));
+	if (!cub3d->racer)
 		return (FAILURE);
 	return (SUCCESS);
 }

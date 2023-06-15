@@ -6,6 +6,7 @@
 		"string_view": "c",
 		"type_traits": "c",
 		"random": "c",
-		"struct.h": "c"
+		"struct.h": "c",
+		"initialization.h": "c"
 	}
 }

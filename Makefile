@@ -127,7 +127,8 @@ PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations.c \
 			./srcs_bonus/parsing/validate_map_layout.c
 
 FEATURES =	./srcs_bonus/features/game_clock.c \
-			./srcs_bonus/features/mushroom.c
+			./srcs_bonus/features/mushroom.c \
+			./srcs_bonus/features/animation.c
 
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \
@@ -163,7 +164,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(GREEN)Done$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
-	${CC} ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME_BONUS}
+	${CC} -g -o ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME_BONUS}
 	@echo "$(GREEN)Bonus done!$(WHITE)"
 
 lib:
