@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/15 13:42:55 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 22:36:25 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int8_t	alloc_struct(t_cub3d *cub3d)
 	cub3d->hud = ft_calloc(1, sizeof(t_hud));
 	if (!cub3d->hud)
 		return (FAILURE);
-	cub3d->racer = ft_calloc(1, sizeof(t_hud));
+	cub3d->racer = ft_calloc(1, sizeof(t_racer));
 	if (!cub3d->racer)
 		return (FAILURE);
 	return (SUCCESS);
@@ -65,7 +65,7 @@ int8_t	initialization(t_cub3d *cub3d)
 	init_cub3d_struct(cub3d);
 	if (alloc_struct(cub3d))
 		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/maze.cub");
+	map_initialization(cub3d->map, "./map/castle.cub");
 	if (cub3d->map->map_errno)
 		return (print_map_errno(cub3d->map->map_errno),
 			FAILURE);

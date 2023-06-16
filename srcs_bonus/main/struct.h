@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 14:56:07 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 23:47:58 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ typedef struct player
 	bool		col_y;
 }   t_player;
 
+typedef struct s_timer
+{
+	mlx_image_t	*text;
+	mlx_image_t	*zero;
+	mlx_image_t	*one;
+}	t_timer;
+
 typedef struct s_racer
 {
 	mlx_image_t	*forward;
@@ -133,6 +140,8 @@ typedef struct cub3d
 	t_ray			*ray;
 	t_hud			*hud;
 	t_racer			*racer;
+	mlx_image_t		*timer;
+	mlx_image_t		*fps;
 	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;

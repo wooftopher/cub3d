@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:35:04 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 16:29:53 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/15 16:57:50 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_move(t_cub3d *cub3d)
 	{
 		if (cub3d->player->speed < 7)
 			cub3d->player->speed += 1;
-		//animation_racer(cub3d, FORWARD);
+		animation_racer(cub3d, FORWARD);
 		// calcul_new_pos(cub3d->player, 1, 0);
 		// check_col(cub3d->map, cub3d->player);
 		// set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
@@ -96,7 +96,7 @@ void	ft_move(t_cub3d *cub3d)
 	{
 		if (cub3d->player->speed > -5)
 		{
-			//animation_racer(cub3d, BACK);
+			animation_racer(cub3d, BACK);
 			cub3d->player->speed -= 0.5;
 		}
 		// calcul_new_pos(cub3d->player, -1, 0);
@@ -122,11 +122,11 @@ void	ft_rotate(t_cub3d *cub3d)
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_RIGHT))
 	{
 		cub3d->player->angle -= cub3d->player->rot_speed;
-	//	animation_racer(cub3d, RIGHT);
+		animation_racer(cub3d, RIGHT);
 	}
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_LEFT))
 	{
 		cub3d->player->angle += cub3d->player->rot_speed;
-	//	animation_racer(cub3d, LEFT);
+		animation_racer(cub3d, LEFT);
 	}
 }

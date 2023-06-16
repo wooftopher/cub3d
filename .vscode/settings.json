@@ -7,6 +7,7 @@
 		"type_traits": "c",
 		"random": "c",
 		"struct.h": "c",
-		"initialization.h": "c"
+		"initialization.h": "c",
+		"features.h": "c"
 	}
 }
