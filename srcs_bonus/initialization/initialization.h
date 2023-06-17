@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:38:58 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 22:13:49 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/17 12:42:44 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../main/cub3d.h"
 
 # define STEP 900
-
+# define MATH 8448
 
 int8_t	ft_create_map(t_map *map, t_cub3d *cub3d);
 // initialization.c
@@ -35,6 +35,10 @@ int8_t	init_hud_player(t_cub3d *cub3d);
 
 //
 int8_t	init_timer(t_cub3d *cub3d);
-void	destroy_timer_texture(t_cub3d *cub3d);
+
+// init_timer_digit.c
+int8_t	load_digit1(t_cub3d *cub3d);
+int8_t	load_digit2(t_cub3d *cub3d);
+int8_t	load_digit3(t_cub3d *cub3d);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 20:22:32 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/17 12:06:17 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int8_t	initialization(t_cub3d *cub3d)
 	init_cub3d_struct(cub3d);
 	if (alloc_struct(cub3d))
 		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/maze.cub");
+	map_initialization(cub3d->map, "./map/test.cub");
 	if (cub3d->map->map_errno)
 		return (print_map_errno(cub3d->map->map_errno),
 			FAILURE);

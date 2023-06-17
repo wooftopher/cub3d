@@ -90,7 +90,8 @@ INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
 					./srcs_bonus/initialization/init_walls.c \
 					./srcs_bonus/initialization/init_hud_player.c \
 					./srcs_bonus/initialization/init_timer.c \
-					./srcs_bonus/initialization/create_map.c
+					./srcs_bonus/initialization/create_map.c \
+					./srcs_bonus/initialization/init_timer_digit.c
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 

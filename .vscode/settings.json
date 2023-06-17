@@ -8,6 +8,7 @@
 		"random": "c",
 		"struct.h": "c",
 		"initialization.h": "c",
-		"features.h": "c"
+		"features.h": "c",
+		"cub3d.h": "c"
 	}
 }
