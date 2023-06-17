@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:18 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 00:15:14 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 18:07:05 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 	 **********************************
 */
 # define INTERVAL 1
+# define FIRST_DIGIT 1
 
 void	game_clock(t_cub3d *cub3d);
 /*

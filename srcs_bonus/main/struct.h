@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 23:47:58 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 19:54:11 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,19 @@ typedef struct player
 
 typedef struct s_timer
 {
-	mlx_image_t	*text;
-	mlx_image_t	*zero;
-	mlx_image_t	*one;
+	mlx_image_t		*timer_text;
+	mlx_image_t		*secondsl;
+	mlx_image_t		*secondsr;
+	mlx_image_t		*zero;
+	mlx_image_t		*one;
+	mlx_image_t		*two;
+	mlx_image_t		*three;
+	mlx_image_t		*four;
+	mlx_image_t		*five;
+	mlx_image_t		*six;
+	mlx_image_t		*seven;
+	mlx_image_t		*eight;
+	mlx_image_t		*nine;
 }	t_timer;
 
 typedef struct s_racer
@@ -140,8 +150,7 @@ typedef struct cub3d
 	t_ray			*ray;
 	t_hud			*hud;
 	t_racer			*racer;
-	mlx_image_t		*timer;
-	mlx_image_t		*fps;
+	t_timer			*timer;
 	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;

@@ -6,30 +6,45 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 00:49:58 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:35:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
 #include <sys/time.h>
 
-static char	*timer(uint8_t seconds, uint8_t minutes)
+static uint8_t	*get_number(t_cub3d *cub3d, uint8_t digit)
 {
-	char	*minutes_str;
-	char	*seconds_str;
-	char	*result;
+	if (digit == 0)
+		return (cub3d->timer->zero->pixels);
+	else if (digit == 1)
+		return (cub3d->timer->one->pixels);
+	else if (digit == 2)
+		return (cub3d->timer->two->pixels);
+	else if (digit == 3)
+		return (cub3d->timer->three->pixels);
+	else if (digit == 4)
+		return (cub3d->timer->four->pixels);
+	else if (digit == 5)
+		return (cub3d->timer->five->pixels);
+	else if (digit == 6)
+		return (cub3d->timer->six->pixels);
+	else if (digit == 7)
+		return (cub3d->timer->seven->pixels);
+	else if (digit == 8)
+		return (cub3d->timer->eight->pixels);
+	else
+		return (cub3d->timer->nine->pixels);
+}
 
-	minutes_str = ft_itoa(minutes);
-	if (!minutes_str)
-		return (NULL);
-	seconds_str = ft_itoa(seconds);
-	if (!seconds_str)
-		return (NULL);
-	result = ft_strjoin(minutes_str, seconds_str);
-	free(minutes_str);
-	free(seconds_str);
-	if (!result)
-		return (NULL);
+static uint8_t	extract_digit(uint8_t number, uint8_t position)
+{
+	uint8_t	result;
+
+	if (position == FIRST_DIGIT)
+		result = number / 10;
+	else
+		result = number % 10;
 	return (result);
 }
 
@@ -37,8 +52,6 @@ static void	on_screen_timer(t_cub3d *cub3d)
 {
 	static uint8_t	seconds = 0;
 	static uint8_t	minutes = 0;
-	static bool		first = false;
-	char			*time;
 
 	seconds++;
 	if (seconds == 60)
@@ -46,14 +59,8 @@ static void	on_screen_timer(t_cub3d *cub3d)
 		seconds = 0;
 		minutes++;
 	}
-	time = timer(seconds, minutes);
-	if (first)
-		mlx_delete_image(cub3d->mlx_s->mlx, cub3d->timer);
-	else
-		first = true;
-	cub3d->timer = mlx_put_string(cub3d->mlx_s->mlx, time, 1000, 500);
-	mlx_resize_image(cub3d->timer, 35, 35);
-	free(time);
+	ft_memcpy(cub3d->timer->secondsl->pixels, get_number(cub3d, extract_digit(seconds, FIRST_DIGIT)), (33 * 64) * 4);
+	ft_memcpy(cub3d->timer->secondsr->pixels, get_number(cub3d, extract_digit(seconds, 0)), (33 * 64) * 4);
 }
 
 static void	decrease_timer(t_cub3d *cub3d)

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:38:58 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/14 01:06:04 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 17:58:04 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ int8_t	init_walls(t_cub3d *cub3d);
 
 // init_hud_player.c
 int8_t	init_hud_player(t_cub3d *cub3d);
+
+//
+int8_t	init_timer(t_cub3d *cub3d);
+void	destroy_timer_texture(t_cub3d *cub3d);
 
 #endif

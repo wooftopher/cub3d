@@ -92,6 +92,7 @@ INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
 					./srcs_bonus/initialization/init_background.c \
 					./srcs_bonus/initialization/init_walls.c \
 					./srcs_bonus/initialization/init_hud_player.c \
+					./srcs_bonus/initialization/init_timer.c
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 
