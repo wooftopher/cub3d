@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_ver_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/15 11:28:33 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:18:25 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	col_left_v2(t_map *map, t_player *player, t_ray *ray)
 	ys = xs * (tan((ray->angle - 90) * M_PI / 180));
 	y = ((player->pos_y + ray->yn) / 100);
 	x = ((player->pos_x - ray->xn) / 100) - 1;
+	if (y < 0)
+		return (0);
 	while (y < map->height && x < map->width && y > 0)
 	{
 		if (map->map[y][x] == '1')

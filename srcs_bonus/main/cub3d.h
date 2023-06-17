@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 05:00:11 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 22:13:17 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 # include "../initialization/initialization.h"
 # include "./struct.h"
-# include "../map/map.h"
 # include "../object/object.h"
 # include "../ray/ray.h"
 # include "../parsing/map_processor.h"
@@ -49,7 +48,7 @@
 // }   t_cub3d;
 
 void	free_all(t_cub3d *cub3d);
-int8_t	initialization(t_cub3d *cub3d);
+// int8_t	initialization(t_cub3d *cub3d);
 
 # define true 1
 # define false 0

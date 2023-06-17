@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 17:02:49 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 22:58:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,21 @@ void mouse_position(double xpos, double ypos, void *params)
     t_cub3d *cub3d;
 
     cub3d = params;
-    if (xpos > 500)
+    if (xpos > 700)
+	{
+		animation_racer(cub3d, RIGHT);
         cub3d->player->angle -= (xpos - 700) * 0.25;
+	}
     else
+	{
+		animation_racer(cub3d, LEFT);
         cub3d->player->angle += (700 - xpos) * 0.25;;
+	}
+}
+
+void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+{
+	return ;
 }
 
 
@@ -82,6 +93,7 @@ int main(void)
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d); // ADD HOOKS LATER TO INIT
 	mlx_key_hook(cub3d.mlx_s->mlx, key_hook, &cub3d);
 	mlx_cursor_hook(cub3d.mlx_s->mlx, &mouse_position, &cub3d);
+	mlx_mouse_hook(cub3d.mlx_s->mlx, &mouse_hook, &cub3d);
 	mlx_loop(cub3d.mlx_s->mlx);
 	mlx_terminate(cub3d.mlx_s->mlx);
 	free_all(&cub3d);

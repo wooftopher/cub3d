@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 21:50:19 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 22:46:23 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static uint8_t	extract_digit(uint8_t number, uint8_t position)
 		result = number % 10;
 	return (result);
 }
-
 static void	on_screen_timer(t_cub3d *cub3d)
+
 {
 	static uint8_t	seconds = 0;
 	static uint8_t	minutes = 0;
@@ -56,10 +56,10 @@ static void	on_screen_timer(t_cub3d *cub3d)
 	seconds++;
 	if (seconds == 60)
 	{
-		ft_memcpy(cub3d->timer->minutesl->pixels, get_number(cub3d, extract_digit(seconds, FIRST_DIGIT)), (33 * 64) * 4);
-		ft_memcpy(cub3d->timer->minutesr->pixels, get_number(cub3d, extract_digit(seconds, 0)), (33 * 64) * 4);
-		seconds = 0;
 		minutes++;
+		seconds = 0;
+		ft_memcpy(cub3d->timer->minutesl->pixels, get_number(cub3d, extract_digit(minutes, FIRST_DIGIT)), (33 * 64) * 4);
+		ft_memcpy(cub3d->timer->minutesr->pixels, get_number(cub3d, extract_digit(minutes, 0)), (33 * 64) * 4);
 	}
 	ft_memcpy(cub3d->timer->secondsl->pixels, get_number(cub3d, extract_digit(seconds, FIRST_DIGIT)), (33 * 64) * 4);
 	ft_memcpy(cub3d->timer->secondsr->pixels, get_number(cub3d, extract_digit(seconds, 0)), (33 * 64) * 4);
@@ -87,12 +87,12 @@ void	game_clock(t_cub3d *cub3d)
 	gettimeofday(&current_time, NULL);
 	elapsed_time = current_time.tv_sec - start_time.tv_sec;
 	frame_count++;
+		on_screen_timer(cub3d);
 	if (elapsed_time >= INTERVAL)
 	{
-		on_screen_timer(cub3d);
 		decrease_timer(cub3d);
-		printf("\rFps:%d", (int)((double)frame_count / elapsed_time));
-		fflush(stdout);
+		// printf("\rFps:%d", (int)((double)frame_count / elapsed_time));
+		// fflush(stdout);
 		frame_count = 0;
 		start_time = current_time;
 	}

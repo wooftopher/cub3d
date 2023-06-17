@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:38:58 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 17:58:04 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 22:13:49 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define STEP 900
 
+
+int8_t	ft_create_map(t_map *map, t_cub3d *cub3d);
 // initialization.c
 int8_t	initialization(t_cub3d *cub3d);
 int8_t	print_error(const char *message);
