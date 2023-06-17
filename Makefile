@@ -153,7 +153,7 @@ else ifeq ($(OS), Darwin)
 	MLX = libs/MLX/build/libmlx42.a
 endif
 
-all: lib $(NAME)
+all: submodule lib $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 		${CC} ${CFGLAGS} ${SRC} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
@@ -162,6 +162,9 @@ $(NAME): $(OBJS) $(LIBFT)
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
 	${CC} -g -o ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME_BONUS}
 	@echo "$(GREEN)Bonus done!$(WHITE)"
+
+submodule:
+	@git submodule update --init --recursive
 
 lib:
 	@make -s -C libs/Libft
@@ -180,7 +183,7 @@ re: fclean all
 
 reb: fclean lib $(NAME_BONUS)
 
-bonus: lib $(NAME_BONUS)
+bonus: submodule lib $(NAME_BONUS)
 
 run: all
 	${RUN}
