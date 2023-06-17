@@ -6,14 +6,14 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/11 14:20:22 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:57:56 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ray.h"
 #include "../../libs/Libft/libft.h"
 
-void	free_ray(t_cub3d *cub3d, int index)
+void	free_rayz(t_cub3d *cub3d, int index)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int8_t	init_rayz(t_cub3d *cub3d)
 	ray_angle_s = calloc(1, sizeof(t_ray_angle_s));
 	cub3d->ray->ray_angle_s = ray_angle_s;
 	if (!cub3d->ray->ray_angle_s)
-		return (free_ray(cub3d, 0), -1);
+		return (free_rayz(cub3d, 0), -1);
 	i = 0;
 	while (i <= 1400)
 	{
@@ -46,7 +46,7 @@ int8_t	init_rayz(t_cub3d *cub3d)
 		cub3d->ray->ray_angle_fov_s[i] = ray_angle_fov_s[i];
 		if (!cub3d->ray->ray_angle_fov_s[i])
 		{
-			free_ray(cub3d, i);
+			free_rayz(cub3d, i);
 			return (-1);
 		}
 		i++;

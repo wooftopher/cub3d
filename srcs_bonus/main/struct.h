@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/16 19:54:11 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:43:55 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ typedef struct s_timer
 	mlx_image_t		*timer_text;
 	mlx_image_t		*secondsl;
 	mlx_image_t		*secondsr;
+	mlx_image_t		*minutesl;
+	mlx_image_t		*minutesr;
 	mlx_image_t		*zero;
 	mlx_image_t		*one;
 	mlx_image_t		*two;

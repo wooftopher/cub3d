@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 12:14:06 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 20:19:46 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:49:44 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,15 @@ int8_t	init_timer(t_cub3d *cub3d)
 		return (FAILURE);
 	cub3d->timer->secondsl = mlx_new_image(cub3d->mlx_s->mlx, 33, 64);
 	cub3d->timer->secondsr = mlx_new_image(cub3d->mlx_s->mlx, 33, 64);
+	cub3d->timer->minutesl = mlx_new_image(cub3d->mlx_s->mlx, 33, 64);
+	cub3d->timer->minutesr = mlx_new_image(cub3d->mlx_s->mlx, 33, 64);
 	ft_memcpy(cub3d->timer->secondsl->pixels, cub3d->timer->zero->pixels, (33 * 64) * 4);
 	ft_memcpy(cub3d->timer->secondsr->pixels, cub3d->timer->zero->pixels, (33 * 64) * 4);
-	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->timer->secondsl, 500, 500);
-	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->timer->secondsr, 600, 500);
+	ft_memcpy(cub3d->timer->minutesr->pixels, cub3d->timer->zero->pixels, (33 * 64) * 4);
+	ft_memcpy(cub3d->timer->minutesl->pixels, cub3d->timer->zero->pixels, (33 * 64) * 4);
+	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->timer->secondsl, 1200, 20);
+	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->timer->secondsr, 1250, 20);
+	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->timer->minutesl, 1050, 20);
+	mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->timer->minutesr, 1100, 20);
 	return (SUCCESS);
 }

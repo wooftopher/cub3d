@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 21:35:03 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/16 21:50:19 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	on_screen_timer(t_cub3d *cub3d)
 	seconds++;
 	if (seconds == 60)
 	{
+		ft_memcpy(cub3d->timer->minutesl->pixels, get_number(cub3d, extract_digit(seconds, FIRST_DIGIT)), (33 * 64) * 4);
+		ft_memcpy(cub3d->timer->minutesr->pixels, get_number(cub3d, extract_digit(seconds, 0)), (33 * 64) * 4);
 		seconds = 0;
 		minutes++;
 	}
