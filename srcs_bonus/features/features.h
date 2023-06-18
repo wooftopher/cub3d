@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:18 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 18:07:05 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/18 04:14:15 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,12 @@ void	mushroom(t_cub3d *cub3d);
 # define RIGHT 0b00001000
 
 void	animation_racer(t_cub3d *cub3d, uint8_t flag);
+/*
+	 **********************************
+	 ~	         End_screen	          ~
+	 **********************************
+*/
+void	end_screen(t_cub3d *cub3d);
+void	set_end_screen_transition(t_cub3d *cub3d);
 
 #endif

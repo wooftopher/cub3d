@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/17 12:13:25 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/18 03:54:50 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,10 +156,11 @@ typedef struct cub3d
 	t_hud			*hud;
 	t_racer			*racer;
 	t_timer			*timer;
+	mlx_image_t		*end_screen;
+	bool			end;
 	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;
-	bool			focus;
 }   t_cub3d;
 
 typedef struct wall

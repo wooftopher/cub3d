@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:38:58 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/17 12:42:44 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/18 03:47:28 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ int8_t	init_timer(t_cub3d *cub3d);
 int8_t	load_digit1(t_cub3d *cub3d);
 int8_t	load_digit2(t_cub3d *cub3d);
 int8_t	load_digit3(t_cub3d *cub3d);
+
+// init_end_screen.c
+int8_t	init_end_screen(t_cub3d *cub3d);
 
 #endif
