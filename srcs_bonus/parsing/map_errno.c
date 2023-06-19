@@ -34,10 +34,10 @@ void	print_map_errno(uint8_t flag)
 	int		read_ret;
 	char	buffer[FILE_BUFFER_SIZE];
 
-	if (!OS)
+	// if (!OS)
 		fd = open("_mac_errno.txt", O_RDONLY);
-	if (OS)
-		fd = open("_mac_errno.txt", O_RDONLY); // FIX LATER OS
+	// if (OS)
+	// 	fd = open("_mac_errno.txt", O_RDONLY); // FIX LATER OS
 	if (fd == FAILURE)
 		return (put_str_error("Couldn't locate map_errno file,"
 				"undefined map error\n"));

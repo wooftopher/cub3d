@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:18 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/18 04:14:15 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 00:33:13 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	game_clock(t_cub3d *cub3d);
 	 ~	         Mushroom	          ~
 	 **********************************
 */
-# define MUSH_TIMER 10
+# define MUSH_TIMER 3
 # define SPEED_BOOST 20
 
 void	mushroom(t_cub3d *cub3d);
@@ -51,5 +51,13 @@ void	animation_racer(t_cub3d *cub3d, uint8_t flag);
 */
 void	end_screen(t_cub3d *cub3d);
 void	set_end_screen_transition(t_cub3d *cub3d);
+/*
+	 **********************************
+	 ~	           Hooks  	          ~
+	 **********************************
+*/
+void	init_hooks(t_cub3d *cub3d);
+void 	key_hook(mlx_key_data_t keydata, void *param);
+void	mouse_position(double xpos, double ypos, void *params);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 17:02:10 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/18 14:19:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 		y = find_y(cub3d, i, wall_height,
 			cub3d->mlx_s->txt_wall_n->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-			* cub3d->mlx_s->txt_wall_n->width / 100) ;
+			* cub3d->mlx_s->txt_wall_n->width / 100);
 		if (x >= cub3d->mlx_s->txt_wall_n->width)
 			x = cub3d->mlx_s->txt_wall_n->width - 1;
 		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,

@@ -6,36 +6,12 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/18 04:06:26 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 01:51:05 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
 #include <sys/time.h>
-
-static uint8_t	*get_number(t_cub3d *cub3d, uint8_t digit)
-{
-	if (digit == 0)
-		return (cub3d->timer->zero->pixels);
-	else if (digit == 1)
-		return (cub3d->timer->one->pixels);
-	else if (digit == 2)
-		return (cub3d->timer->two->pixels);
-	else if (digit == 3)
-		return (cub3d->timer->three->pixels);
-	else if (digit == 4)
-		return (cub3d->timer->four->pixels);
-	else if (digit == 5)
-		return (cub3d->timer->five->pixels);
-	else if (digit == 6)
-		return (cub3d->timer->six->pixels);
-	else if (digit == 7)
-		return (cub3d->timer->seven->pixels);
-	else if (digit == 8)
-		return (cub3d->timer->eight->pixels);
-	else
-		return (cub3d->timer->nine->pixels);
-}
 
 static uint8_t	extract_digit(uint8_t number, uint8_t position)
 {
@@ -104,7 +80,7 @@ static void	decrease_timer(t_cub3d *cub3d)
 	{
 		cub3d->hud->duration--;
 		if (cub3d->hud->duration == 0)
-			cub3d->player->speed = 1;
+			cub3d->player->speed = 10;
 	}
 }
 

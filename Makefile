@@ -127,7 +127,8 @@ PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations.c \
 FEATURES =	./srcs_bonus/features/game_clock.c \
 			./srcs_bonus/features/mushroom.c \
 			./srcs_bonus/features/animation.c \
-			./srcs_bonus/features/end_screen.c
+			./srcs_bonus/features/end_screen.c \
+			./srcs_bonus/features/hooks.c
 
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 22:24:28 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 01:48:53 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void    set_new_pos(t_map *map, t_player *player, t_mlx_struc *mlx_s)
 }
 void    ft_move(t_cub3d *cub3d)
 {
-    if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP))
+    if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP)
+		|| mlx_is_mouse_down(cub3d->mlx_s->mlx, MLX_MOUSE_BUTTON_LEFT))
     {
         if (cub3d->player->speed < 7)
             cub3d->player->speed += 1;
@@ -86,7 +87,8 @@ void    ft_move(t_cub3d *cub3d)
         // check_col(cub3d->map, cub3d->player);
         // set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
     }
-    if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN))
+    if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN)
+		|| mlx_is_mouse_down(cub3d->mlx_s->mlx, MLX_MOUSE_BUTTON_RIGHT))
     {
         if (cub3d->player->speed > -5)
         {
@@ -112,6 +114,9 @@ void    ft_move(t_cub3d *cub3d)
 }
 void    ft_rotate(t_cub3d *cub3d)
 {
+	int32_t	x;
+	int32_t	y;
+
     if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_RIGHT))
     {
         cub3d->player->angle -= cub3d->player->rot_speed;
@@ -122,4 +127,15 @@ void    ft_rotate(t_cub3d *cub3d)
         cub3d->player->angle += cub3d->player->rot_speed;
         animation_racer(cub3d, LEFT);
     }
+	mlx_get_mouse_pos(cub3d->mlx_s->mlx, &x, &y);
+    if (x > 700)
+	{
+		animation_racer(cub3d, RIGHT);
+        cub3d->player->angle -= (x - 700) * 0.25;
+	}
+    else if (x < 700)
+	{
+		animation_racer(cub3d, LEFT);
+        cub3d->player->angle += (700 - x) * 0.25;
+	}
 }
