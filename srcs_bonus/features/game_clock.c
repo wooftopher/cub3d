@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/19 23:22:54 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 08:10:38 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void	game_clock(t_cub3d *cub3d)
 	{
 		on_screen_timer(cub3d);
 		decrease_timer(cub3d);
-		printf("\rFps:%d", (int)((double)frame_count / elapsed_time));
-		fflush(stdout);
+		// printf("\rFps:%d", (int)((double)frame_count / elapsed_time));
+		// fflush(stdout);
 		frame_count = 0;
 		start_time = current_time;
 	}

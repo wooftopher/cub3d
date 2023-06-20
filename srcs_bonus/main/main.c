@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/19 23:49:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 08:12:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ int main(void)
 	if (initialization(&cub3d))
 		return (free_all(&cub3d), EXIT_FAILURE);
 	mlx_loop_hook(cub3d.mlx_s->mlx, ft_loop, &cub3d); // ADD HOOKS LATER TO INIT
-	// system("afplay ./music/urss.mp3 &");
+	// system("afplay ./music/circuit.mp3 &");
 	mlx_loop(cub3d.mlx_s->mlx);
 	mlx_terminate(cub3d.mlx_s->mlx);
 	free_all(&cub3d);
 	// system("killall afplay");
-	system("sleep 10 && afplay ./music/urss.mp3 &");
 	return (EXIT_SUCCESS);
 }
 
