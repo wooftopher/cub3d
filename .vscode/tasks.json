@@ -60,7 +60,7 @@
             "command": "/usr/bin/gcc",
             "args": [
                 "-g",
-                "srcs/*/*.c",
+                "srcs_bonus/*/*.c",
                 "./libs/MLX/build/libmlx42.a",
 				"./libs/Libft/libft.a",
                 "-I",
