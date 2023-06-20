@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:11:20 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 08:18:26 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 09:01:32 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int ft_init_player(int x, int y, t_player *player, t_map *map)
     else if (map->map[y][x] == 'E')
         player->angle = 90;
     player->rot_speed = 4;
-    player->speed = 10;
+    player->speed = 0;
     player->col_x = 0;
     player->col_y = 0;
     return (0);

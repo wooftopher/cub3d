@@ -12,7 +12,7 @@ MAC = -I /include -lglfw -pthread -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 REMOVE = @rm -f
 
 # RUN #
-RUN = ./cub3d ./map/a.cub
+RUN = ./cub3d ./map/merio64.cub
 RUNB = ./cub3d_bonus
 
 # OBJS #

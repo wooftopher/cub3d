@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 05:53:38 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:04:29 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	col_down_v2(t_map *map, t_player *player, t_ray *ray)
 			ray->yn += ys;
 			ray->xn += xs;
 		}
-		y = (player->pos_y + ray->yn) / 100;
+		y = round((player->pos_y + ray->yn) / 100);
 		x = (player->pos_x - ray->xn) / 100;
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 08:19:16 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:24:39 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 			ray_ver_left_fov(player, map, ray, j);
 		ray->angle += ray->angle_div;
 		fov_angle += ray->angle_div;
-		ray->angle_count++;
+			ray->angle_count++;
 	}
 }
 

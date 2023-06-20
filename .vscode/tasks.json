@@ -61,7 +61,7 @@
             "args": [
                 "-g",
                 "srcs_bonus/*/*.c",
-                "./libs/MLX/build/libmlx42.a",
+                "./libs/MLX42/build/libmlx42.a",
 				"./libs/Libft/libft.a",
                 "-I",
                 "/include",

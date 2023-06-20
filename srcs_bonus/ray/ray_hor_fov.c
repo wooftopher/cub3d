@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 05:33:17 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:02:38 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,14 @@ void	ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	if (col_up_v2(map, player, ray) == 1)
 	{
 		ray->dist = sqrt((ray->xn * ray->xn) + (ray->yn * ray->yn));
+		if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
+		{
 		ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
 		ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 		ray->ray_angle_fov_s[ray->angle_count]->orientation = 1;
 		ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
 			= player->pos_x + ray->xn - ray->text_x * 100;
+		}
 	}
 }
 
@@ -79,7 +82,7 @@ int	col_down_v2(t_map *map, t_player *player, t_ray *ray)
 			ray->yn += ys;
 			ray->xn += xs;
 		}
-		y = (player->pos_y + ray->yn) / 100;
+		y = round((player->pos_y + ray->yn) / 100);
 		x = (player->pos_x - ray->xn) / 100;
 	}
 	return (0);
@@ -92,10 +95,13 @@ void	ray_hor_down_fov(t_player *player, t_map *map, t_ray *ray, int j)
 	if (col_down_v2(map, player, ray) == 1)
 	{
 		ray->dist = sqrt((ray->xn * ray->xn) + (ray->yn * ray->yn));
+		if (ray->dist < ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov)
+		{
 		ray->ray_angle_fov_s[ray->angle_count]->min_dist_fov = ray->dist;
 		ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 		ray->ray_angle_fov_s[ray->angle_count]->orientation = 2;
 		ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture = 100
 			- (player->pos_x - ray->xn - ray->text_x * 100);
+		}
 	}
 }
