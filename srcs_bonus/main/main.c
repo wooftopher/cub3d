@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/19 21:37:51 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 23:49:37 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int main(void)
 	mlx_terminate(cub3d.mlx_s->mlx);
 	free_all(&cub3d);
 	// system("killall afplay");
+	system("sleep 10 && afplay ./music/urss.mp3 &");
 	return (EXIT_SUCCESS);
 }
 

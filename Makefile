@@ -219,7 +219,6 @@ dependency:
 		echo "\033[0;32mGLFW is already installed\033[0;37m"; \
 	fi
 
-
 re: fclean all
 
 reb: fclean bonus

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/19 01:51:05 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 23:22:54 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	game_clock(t_cub3d *cub3d)
 	if (start_time.tv_sec == 0)
 		gettimeofday(&start_time, NULL);
 	gettimeofday(&current_time, NULL);
-	elapsed_time = current_time.tv_sec - start_time.tv_sec;
+	elapsed_time = current_time.tv_usec - start_time.tv_usec;
 	frame_count++;
 	if (elapsed_time >= INTERVAL)
 	{
