@@ -6,13 +6,13 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 03:37:25 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/18 04:09:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:03:00 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
 
-static void image_alpha(uint32_t height, uint32_t width, uint8_t *image)
+static void	image_alpha(uint32_t height, uint32_t width, uint8_t *image)
 {
 	uint32_t	index;
 	uint32_t	length;

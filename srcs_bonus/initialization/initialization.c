@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 08:17:44 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:23:28 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	init_cub3d_struct(t_cub3d *cub3d)
 	cub3d->map = NULL;
 	cub3d->player = NULL;
 	cub3d->mlx_s = NULL;
-	cub3d->end = false;
+	cub3d->loop_status= 0;
+	cub3d->fps_counter = false;
 }
 
 static int8_t	alloc_struct(t_cub3d *cub3d)
@@ -53,6 +54,9 @@ static int8_t	alloc_struct(t_cub3d *cub3d)
 	cub3d->timer = ft_calloc(1, sizeof(t_timer));
 	if (!cub3d->timer)
 		return (FAILURE);
+	cub3d->countdown = ft_calloc(1, sizeof(t_lakitu));
+	if (!cub3d->countdown)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
@@ -71,7 +75,7 @@ int8_t	initialization(t_cub3d *cub3d)
 	init_cub3d_struct(cub3d);
 	if (alloc_struct(cub3d))
 		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/merio64.cub");
+	map_initialization(cub3d->map, "./map/test.cub");
 	if (cub3d->map->map_errno)
 		return (print_map_errno(cub3d->map->map_errno),
 			FAILURE);
@@ -86,6 +90,8 @@ int8_t	initialization(t_cub3d *cub3d)
 	if (init_end_screen(cub3d))
 		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
 	if (init_timer(cub3d))
+		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
+	if (init_countdown(cub3d))
 		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
 	return (SUCCESS);
 }

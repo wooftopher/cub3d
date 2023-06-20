@@ -6,13 +6,13 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 03:50:30 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/19 21:38:17 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:32:30 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
 
-inline static void smooth(uint32_t height, uint32_t width,
+inline static void	smooth(uint32_t height, uint32_t width,
 	uint8_t *image, uint8_t value)
 {
 	uint32_t	index;
@@ -42,7 +42,7 @@ void	set_end_screen_transition(t_cub3d *cub3d)
 void	end_screen(t_cub3d *cub3d)
 {
 	cub3d->end_screen->enabled = true;
-	cub3d->end = true;
+	cub3d->loop_status = 2;
 	cub3d->hud->mush3->enabled = false;
 	cub3d->hud->mush2->enabled = false;
 	cub3d->hud->mush1->enabled = false;

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/20 08:17:58 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:23:19 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,15 @@ typedef struct s_timer
 	uint8_t			*digitAddresses[10];
 }	t_timer;
 
+typedef struct s_lakitu
+{
+	mlx_image_t		*lakitu_0;
+	mlx_image_t		*lakitu_1;
+	mlx_image_t		*lakitu_2;
+	mlx_image_t		*lakitu_3;
+	mlx_image_t		*lakitu;
+}	t_lakitu;
+
 typedef struct s_racer
 {
 	mlx_image_t	*forward;
@@ -158,8 +167,10 @@ typedef struct cub3d
 	t_hud			*hud;
 	t_racer			*racer;
 	t_timer			*timer;
+	t_lakitu		*countdown;
 	mlx_image_t		*end_screen;
-	bool			end;
+	bool			fps_counter;
+	uint8_t			loop_status;
 	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;
