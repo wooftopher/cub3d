@@ -6,14 +6,14 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/06/16 22:13:17 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 16:56:40 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../../libs/MLX/include/MLX42/MLX42.h"
+# include "../../libs/MLX42/include/MLX42/MLX42.h"
 # include <errno.h>
 # include <stdlib.h>
 # include <unistd.h>

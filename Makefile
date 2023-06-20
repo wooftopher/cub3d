@@ -6,7 +6,7 @@ NAME_BONUS = cub3d_bonus
 CC = @gcc
 CFGLAGS = -Wall -Werror -Wextra
 LINUX = -ldl -lglfw -pthread -lm
-MAC = -I /include -L./libs/z/lib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+MAC = -I /include -lglfw -pthread -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 # REMOVE #
 REMOVE = @rm -f
@@ -23,9 +23,7 @@ OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
 # LIBS #
 LIBFT = libs/Libft/libft.a
-MLXM = libs/MLX/build/libmlx42.a
-MLXL = libs/MLX42/build/libmlx42.a
-GLFW = libs/GLFW/lib-x86_64/libglfw3.a
+MLX = libs/MLX42/build/libmlx42.a
 LIBS =  $(LIBFT) \
 		$(MLX) \
 		$(GLFW)
@@ -34,7 +32,7 @@ LIBS =  $(LIBFT) \
 OS = $(shell uname)
 
 # Leak #
-LEAK = leaks -atExit -- ./cub3d
+LEAK = leaks -atExit -- ./cub3d ./map/optic.cub
 LEAKB = leaks -atExit -- ./cub3d_bonus
 
 # Source file mandatory #
@@ -91,7 +89,8 @@ INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
 					./srcs_bonus/initialization/init_hud_player.c \
 					./srcs_bonus/initialization/init_timer.c \
 					./srcs_bonus/initialization/create_map.c \
-					./srcs_bonus/initialization/init_timer_digit.c
+					./srcs_bonus/initialization/init_timer_digit.c \
+					./srcs_bonus/initialization/init_end_screen.c
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 
@@ -125,7 +124,9 @@ PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations.c \
 
 FEATURES =	./srcs_bonus/features/game_clock.c \
 			./srcs_bonus/features/mushroom.c \
-			./srcs_bonus/features/animation.c
+			./srcs_bonus/features/animation.c \
+			./srcs_bonus/features/end_screen.c \
+			./srcs_bonus/features/hooks.c
 
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \
@@ -147,51 +148,91 @@ WHITE = \033[0;37m
 # CHECK WHICH OS IS RUNNING TO GET THE CORRECT COMPILATION FLAG #
 ifeq ($(OS), Linux)
 	FLAGS = $(LINUX)
-	MLX = libs/MLX/build/libmlx42L.a
 else ifeq ($(OS), Darwin)
 	FLAGS = $(MAC)
-	MLX = libs/MLX/build/libmlx42.a
 endif
 
-all: lib $(NAME)
+all: submodule lib libmlx $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-		${CC} ${CFGLAGS} ${SRC} ${OBJS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME}
-	@echo "$(GREEN)Done$(WHITE)"
+bonus: submodule lib libmlx $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
-	${CC} -g -o ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(GLFW) $(FLAGS) -o ${NAME_BONUS}
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+		${CC} ${CFGLAGS} ${SRC} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
+	@echo "$(GREEN)Mandatory Done$(WHITE)"
+
+$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX)
+	${CC} ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
 	@echo "$(GREEN)Bonus done!$(WHITE)"
+
+submodule:
+	@git submodule update --init --recursive
 
 lib:
 	@make -s -C libs/Libft
 
+libmlx:
+	@cd libs/MLX42 && cmake -B build && cmake --build build -j4
+
 clean:
 	@make clean -s -C libs/Libft
+	@make clean -s -C libs/MLX42/build
 	${REMOVE} ${OBJS} 
 	${REMOVE} ${OBJS_BONUS}
 
 fclean:clean
 	@make fclean -s -C libs/Libft
-	${REMOVE} ${NAME} ${NAME_BONUS}
+	${REMOVE} ${NAME} ${NAME_BONUS} ${MLX}
 	@echo "$(RED)Cleaning done$(WHITE)"
+
+dependency:
+	@if [ -d "$$HOME/.brew" ]; then \
+		echo "\033[0;32mBrew is already installed\033[0;37m"; \
+	else \
+		read -p "Brew is not installed. Would you like to install it? y/n: " choice; \
+		if [ "$$choice" = "y" ] || [ "$$choice" = "Y" ]; then \
+			rm -rf $$HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $$HOME/.brew && echo 'export PATH=$$HOME/.brew/bin:$$PATH' >> $$HOME/.zshrc && source $$HOME/.zshrc && brew update; \
+			echo "\033[0;36mBrew is now installed\033[0;37m"; \
+		else \
+			echo "Brew installation skipped."; \
+		fi \
+	fi
+	@if ! command -v cmake &> /dev/null; then \
+		read -p "CMake is not installed. Would you like to install it using brew? y/n: " cmake_choice; \
+		if [ "$$cmake_choice" = "y" ] || [ "$$cmake_choice" = "Y" ]; then \
+			brew install cmake; \
+			echo "\033[0;36mCMake is now installed\033[0;37m"; \
+		else \
+			echo "CMake installation skipped."; \
+		fi \
+	else \
+		echo "\033[0;32mCMake is already installed\033[0;37m"; \
+	fi
+	@if ! command -v glfw &> /dev/null; then \
+		read -p "GLFW is not installed. Would you like to install it using brew? (y/n): " glfw_choice; \
+		if [ "$$glfw_choice" = "y" ] || [ "$$glfw_choice" = "Y" ]; then \
+			brew install glfw; \
+			echo "\033[0;36mGLFW is now installed\033[0;37m"; \
+		else \
+			echo "GLFW installation skipped."; \
+		fi \
+	else \
+		echo "\033[0;32mGLFW is already installed\033[0;37m"; \
+	fi
 
 re: fclean all
 
-reb: fclean lib $(NAME_BONUS)
-
-bonus: lib $(NAME_BONUS)
+reb: fclean bonus
 
 run: all
 	${RUN}
 
-runb: lib $(NAME_BONUS)
+runb: bonus
 	${RUNB}
 
 leak: all
 	${LEAK}
 
-leakb: lib $(NAME_BONUS)
+leakb: bonus
 	${LEAKB}
 
 .PHONY: all clean fclean re lib run leak bonus reb runb leakb

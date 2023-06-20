@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/20 06:57:06 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/20 08:17:58 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# include "../../libs/MLX/include/MLX42/MLX42.h"
+# include "../../libs/MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_map
 {
@@ -158,10 +158,11 @@ typedef struct cub3d
 	t_hud			*hud;
 	t_racer			*racer;
 	t_timer			*timer;
+	mlx_image_t		*end_screen;
+	bool			end;
 	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;
-	bool			focus;
 }   t_cub3d;
 
 typedef struct wall
