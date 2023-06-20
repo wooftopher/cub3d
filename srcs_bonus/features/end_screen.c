@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 03:50:30 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/18 04:24:48 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 21:38:17 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,6 @@ void	end_screen(t_cub3d *cub3d)
 	cub3d->hud->mush1->enabled = false;
 	cub3d->hud->empty->enabled = false;
 	cub3d->hud->tig->enabled = false;
+	// system("killall afplay");
+	// system("afplay ./music/war.mp3 &");
 }

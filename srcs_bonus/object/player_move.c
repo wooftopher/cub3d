@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/19 01:48:53 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/19 15:19:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,15 +127,15 @@ void    ft_rotate(t_cub3d *cub3d)
         cub3d->player->angle += cub3d->player->rot_speed;
         animation_racer(cub3d, LEFT);
     }
-	mlx_get_mouse_pos(cub3d->mlx_s->mlx, &x, &y);
-    if (x > 700)
-	{
-		animation_racer(cub3d, RIGHT);
-        cub3d->player->angle -= (x - 700) * 0.25;
-	}
-    else if (x < 700)
-	{
-		animation_racer(cub3d, LEFT);
-        cub3d->player->angle += (700 - x) * 0.25;
-	}
+	// mlx_get_mouse_pos(cub3d->mlx_s->mlx, &x, &y);
+    // if (x > 700)
+	// {
+	// 	animation_racer(cub3d, RIGHT);
+    //     cub3d->player->angle -= (x - 700) * 0.25;
+	// }
+    // else if (x < 700)
+	// {
+	// 	animation_racer(cub3d, LEFT);
+    //     cub3d->player->angle += (700 - x) * 0.25;
+	// }
 }
