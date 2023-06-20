@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:34:38 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/15 03:04:22 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 05:42:13 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ void	free_ray(t_cub3d *cub3d, int index)
 int8_t	init_rayz(t_cub3d *cub3d)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i <= 1400)
 	{
-		cub3d->ray->ray_angle_fov_s[i] = ft_calloc(1, sizeof(t_ray_angle_fov_s));
+		cub3d->ray->ray_angle_fov_s[i]
+			= ft_calloc(1, sizeof(t_ray_angle_fov_s));
 		if (!cub3d->ray->ray_angle_fov_s[i])
 		{
 			free_ray(cub3d, i);

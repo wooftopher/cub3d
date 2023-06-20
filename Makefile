@@ -12,7 +12,7 @@ MAC = -I /include -L./libs/z/lib -framework OpenGL -framework Cocoa -framework I
 REMOVE = @rm -f
 
 # RUN #
-RUN = ./cub3d ./map/test.cub
+RUN = ./cub3d ./map/a.cub
 RUNB = ./cub3d_bonus
 
 # OBJS #

@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/14 17:09:44 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/20 05:40:47 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct ray_angle_fov_s
 
 }	t_ray_angle_fov_s;
 
-
 typedef struct ray
 {
 	float				min_dist;
@@ -63,24 +62,24 @@ typedef struct ray
 
 typedef struct player
 {
-    float		pos_x;
-    float		pos_y;
-	float		d_x;
-	float		d_y;
-	float		angle;
-	int			speed;
-	float		rot_speed;
-	bool		col_x;
-	bool		col_y;
-}   t_player;
+	float	pos_x;
+	float	pos_y;
+	float	d_x;
+	float	d_y;
+	float	angle;
+	int		speed;
+	float	rot_speed;
+	bool	col_x;
+	bool	col_y;
+}	t_player;
 
 typedef struct mlx_struc
 {
 	mlx_t			*mlx;
-	mlx_texture_t   *txt_wall_n;
-	mlx_texture_t   *txt_wall_s;
-	mlx_texture_t   *txt_wall_e;
-	mlx_texture_t   *txt_wall_w;
+	mlx_texture_t	*txt_wall_n;
+	mlx_texture_t	*txt_wall_s;
+	mlx_texture_t	*txt_wall_e;
+	mlx_texture_t	*txt_wall_w;
 	mlx_image_t		*img_back;
 	mlx_image_t		*img_wall_3d;
 }	t_mlx_struc;
@@ -89,8 +88,8 @@ typedef struct cub3d
 {
 	t_mlx_struc		*mlx_s;
 	t_player		*player;
-    t_map           *map;
+	t_map			*map;
 	t_ray			*ray;
-}   t_cub3d;
+}	t_cub3d;
 
 #endif
