@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/20 15:33:19 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 16:22:48 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void ft_loop(void *param)
 	cub3d = param;
 	if (cub3d->loop_status == 1)
 	{
+		smooth_lakitu(cub3d);
 		ft_move(cub3d);
 		ft_race(cub3d);
 		ft_rotate(cub3d);
@@ -58,6 +59,6 @@ int main(void)
 	mlx_loop(cub3d.mlx_s->mlx);
 	mlx_terminate(cub3d.mlx_s->mlx);
 	free_all(&cub3d);
-	// system("killall afplay");
+	system("killall afplay");
 	return (EXIT_SUCCESS);
 }

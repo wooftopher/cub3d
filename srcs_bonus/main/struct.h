@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/20 15:32:48 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 17:16:19 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ typedef struct s_lakitu
 	mlx_image_t		*lakitu_1;
 	mlx_image_t		*lakitu_2;
 	mlx_image_t		*lakitu_3;
-	mlx_image_t		*lakitu;
+	uint32_t		countdown;
 }	t_lakitu;
 
 typedef struct s_racer

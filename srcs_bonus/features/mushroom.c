@@ -6,11 +6,26 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 05:04:38 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 15:32:59 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 19:35:14 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
+
+static void	play_sound_effect(void)
+{
+	int	random;
+
+	random = rand() % 3;
+	if (random == 1)
+		system("afplay ./music/r1.wav &");
+	else if (random == 2)
+		system("afplay ./music/r2.wav &");
+	else if (random == 3)
+		system("afplay ./music/r3.wav &");
+	else
+		system("afplay ./music/r4.wav &");
+}
 
 static void	update_hud(t_cub3d *cub3d, mlx_image_t *to_delete,
 		mlx_image_t *new_image)
@@ -43,6 +58,7 @@ static void	use_mushroom(t_cub3d *cub3d)
 	cub3d->hud->counter++;
 	cub3d->hud->duration = MUSH_TIMER;
 	cub3d->player->speed = SPEED_BOOST;
+	play_sound_effect();
 }
 
 void	mushroom(t_cub3d *cub3d)

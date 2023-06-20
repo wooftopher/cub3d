@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:44:43 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 15:32:09 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 18:12:09 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int8_t	init_countdown(t_cub3d *cub3d)
 		return (FAILURE);
 	if (init_lakitu2(cub3d))
 		return (FAILURE);
-	//ret = mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->countdown->lakitu_0, 250, 250);
+	ret = mlx_image_to_window(cub3d->mlx_s->mlx,
+			cub3d->countdown->lakitu_0, 250, 250);
 	if (ret == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

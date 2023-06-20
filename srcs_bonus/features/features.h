@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:18 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 14:44:34 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 16:21:57 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void	fps_counter(void);
 	 **********************************
 */
 void	countdown(t_cub3d *cub3d);
+void	smooth_lakitu(t_cub3d *cub3d);
 
 #endif

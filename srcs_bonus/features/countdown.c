@@ -6,35 +6,69 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:42:11 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 15:31:15 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 19:45:09 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
 
-// static void	animation_countdown(t_cub3d *cub3d, uint8_t flag)
-// {
-// 	if (flag == 0)
-// 	ft_memcpy(cub3d->countdown->lakitu_0->pixels,
-// 			cub3d->timecountr->digitAddresses[extract_digit(timer, 1)], 8448);
-// }
+static void	animation_countdown(t_cub3d *cub3d, uint8_t flag)
+{
+	if (flag == 0)
+		ft_memcpy(cub3d->countdown->lakitu_0->pixels,
+			cub3d->countdown->lakitu_1->pixels, 349440);
+	if (flag == 1)
+		ft_memcpy(cub3d->countdown->lakitu_0->pixels,
+			cub3d->countdown->lakitu_2->pixels, 349440);
+	if (flag == 2)
+		ft_memcpy(cub3d->countdown->lakitu_0->pixels,
+			cub3d->countdown->lakitu_3->pixels, 349440);
+}
+
+void	smooth_lakitu(t_cub3d *cub3d)
+{
+	static int16_t	count = 255;
+	uint32_t		index;
+
+	if (count <= 0)
+		return ;
+	index = 3;
+	count -= 5;
+	while (index <= 349440)
+	{
+		if (cub3d->countdown->lakitu_0->pixels[index] != 0)
+			cub3d->countdown->lakitu_0->pixels[index] = count;
+		index += 4;
+	}
+}
+
+void	norm_countdown(t_cub3d *cub3d)
+{
+	if (cub3d->countdown->countdown == 0)
+		ft_calcul_render(cub3d);
+	else if (cub3d->countdown->countdown == 1)
+		animation_countdown(cub3d, 0);
+	else if (cub3d->countdown->countdown == 2)
+	{
+		system("afplay ./music/beep0.wav");
+		animation_countdown(cub3d, 1);
+	}
+	else if (cub3d->countdown->countdown == 3)
+	{
+		animation_countdown(cub3d, 2);
+		system("afplay ./music/beep1.mp3");
+	}
+	cub3d->countdown->countdown++;
+}
 
 void	countdown(t_cub3d *cub3d)
 {
-	// static uint8_t countdown = 0;
-
-	// if (countdown == 0)
-	// 	countdown++;
-	// else if (countdown == 1)
-	// {
-	// 	countdown++;
-	// 	system("afplay ./music/beep1.mp3 &");
-	// }
-	// else if (countdown < 5)
-	// {
-	// 	usleep(10000);
-	// 	countdown++;
-	// }
-	// else
+	if (cub3d->countdown->countdown < 4)
+		norm_countdown(cub3d);
+	else
+	{
+		system("afplay ./music/beep2.wav &");
 		cub3d->loop_status = 1;
+		system("afplay ./music/circuit.mp3 &");
+	}
 }
