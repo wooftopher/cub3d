@@ -90,7 +90,8 @@ INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
 					./srcs_bonus/initialization/init_timer.c \
 					./srcs_bonus/initialization/create_map.c \
 					./srcs_bonus/initialization/init_timer_digit.c \
-					./srcs_bonus/initialization/init_end_screen.c
+					./srcs_bonus/initialization/init_end_screen.c \
+					./srcs_bonus/initialization/init_countdown.c
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 
@@ -126,7 +127,9 @@ FEATURES =	./srcs_bonus/features/game_clock.c \
 			./srcs_bonus/features/mushroom.c \
 			./srcs_bonus/features/animation.c \
 			./srcs_bonus/features/end_screen.c \
-			./srcs_bonus/features/hooks.c
+			./srcs_bonus/features/hooks.c \
+			./srcs_bonus/features/fps_counter.c \
+			./srcs_bonus/features/countdown.c
 
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \

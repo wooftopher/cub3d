@@ -6,12 +6,11 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 08:10:38 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:37:45 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "features.h"
-#include <sys/time.h>
 
 static uint8_t	extract_digit(uint8_t number, uint8_t position)
 {
@@ -24,56 +23,6 @@ static uint8_t	extract_digit(uint8_t number, uint8_t position)
 	return (result);
 }
 
-// static void	on_screen_timer(t_cub3d *cub3d)
-// {
-// 	static uint8_t	ms = 0;
-// 	static uint8_t	seconds = 0;
-// 	static uint8_t	minutes = 0;
-
-// 	ms++;
-// 	if (ms == 60)
-// 	{
-// 		seconds++;
-// 		ms = 0;
-// 		if (seconds == 60)
-// 		{
-// 			seconds = 0;
-// 			minutes++;
-// 			ft_memcpy(cub3d->timer->minutesl->pixels, get_number(cub3d, extract_digit(minutes, FIRST_DIGIT)), 8448);
-// 			ft_memcpy(cub3d->timer->minutesr->pixels, get_number(cub3d, extract_digit(minutes, 0)), 8448);
-// 		}
-// 		ft_memcpy(cub3d->timer->secondsl->pixels, get_number(cub3d, extract_digit(seconds, FIRST_DIGIT)), 8448);
-// 		ft_memcpy(cub3d->timer->secondsr->pixels, get_number(cub3d, extract_digit(seconds, 0)), 8448);
-// 	}
-// 	ft_memcpy(cub3d->timer->msr->pixels, get_number(cub3d, extract_digit(ms, FIRST_DIGIT)), 8448);
-// 	ft_memcpy(cub3d->timer->msl->pixels, get_number(cub3d, extract_digit(ms, 0)), 8448);
-// }
-
-static void	on_screen_timer(t_cub3d *cub3d)
-{
-	static uint8_t	ms = 0;
-	static uint8_t	seconds = 0;
-	static uint8_t	minutes = 0;
-
-	ms++;
-	if (ms == 60)
-	{
-		seconds++;
-		ms = 0;
-		if (seconds == 60)
-		{
-			seconds = 0;
-			minutes++;
-			ft_memcpy(cub3d->timer->minutesl->pixels, cub3d->timer->digitAddresses[extract_digit(minutes, FIRST_DIGIT)], 8448);
-			ft_memcpy(cub3d->timer->minutesr->pixels, cub3d->timer->digitAddresses[extract_digit(minutes, 0)], 8448);
-		}
-		ft_memcpy(cub3d->timer->secondsl->pixels, cub3d->timer->digitAddresses[extract_digit(seconds, FIRST_DIGIT)], 8448);
-		ft_memcpy(cub3d->timer->secondsr->pixels, cub3d->timer->digitAddresses[extract_digit(seconds, 0)], 8448);
-	}
-	ft_memcpy(cub3d->timer->msr->pixels, cub3d->timer->digitAddresses[extract_digit(ms, FIRST_DIGIT)], 8448);
-	ft_memcpy(cub3d->timer->msl->pixels, cub3d->timer->digitAddresses[extract_digit(ms, 0)], 8448);
-}
-
 static void	decrease_timer(t_cub3d *cub3d)
 {
 	if (cub3d->hud->duration != 0)
@@ -84,25 +33,68 @@ static void	decrease_timer(t_cub3d *cub3d)
 	}
 }
 
+static void	copy_over(t_cub3d *cub3d, uint8_t flag, uint8_t timer)
+{
+	if (flag == MS)
+	{
+		ft_memcpy(cub3d->timer->msr->pixels,
+			cub3d->timer->digitAddresses[extract_digit(timer, 1)], 8448);
+		ft_memcpy(cub3d->timer->msl->pixels,
+			cub3d->timer->digitAddresses[extract_digit(timer, 0)], 8448);
+	}
+	else if (flag == SECONDS)
+	{
+		ft_memcpy(cub3d->timer->secondsl->pixels,
+			cub3d->timer->digitAddresses[extract_digit(timer, 1)], 8448);
+		ft_memcpy(cub3d->timer->secondsr->pixels,
+			cub3d->timer->digitAddresses[extract_digit(timer, 0)], 8448);
+	}
+	else
+	{
+		ft_memcpy(cub3d->timer->minutesr->pixels,
+			cub3d->timer->digitAddresses[extract_digit(timer, 1)], 8448);
+		ft_memcpy(cub3d->timer->minutesl->pixels,
+			cub3d->timer->digitAddresses[extract_digit(timer, 0)], 8448);
+	}
+}
+
+inline static void	on_screen_timer(t_cub3d *cub3d, uint32_t elapsed_time)
+{
+	static uint8_t	ms = 0;
+	static uint8_t	seconds = 0;
+	static uint8_t	minutes = 0;
+
+	ms += elapsed_time / 10;
+	if (ms >= 100)
+	{
+		seconds += ms / 100;
+		ms %= 100;
+		if (seconds >= 60)
+		{
+			decrease_timer(cub3d);
+			seconds %= 60;
+			minutes++;
+			copy_over(cub3d, MINUTES, minutes);
+		}
+		copy_over(cub3d, SECONDS, seconds);
+	}
+	copy_over(cub3d, MS, ms);
+}
+
 void	game_clock(t_cub3d *cub3d)
 {
 	static struct timeval	start_time = {0, 0};
 	struct timeval			current_time;
-	static uint32_t			frame_count = 0;
 	uint32_t				elapsed_time;
 
 	if (start_time.tv_sec == 0)
 		gettimeofday(&start_time, NULL);
 	gettimeofday(&current_time, NULL);
-	elapsed_time = current_time.tv_usec - start_time.tv_usec;
-	frame_count++;
+	elapsed_time = (current_time.tv_sec - start_time.tv_sec) * 1000
+		+ (current_time.tv_usec - start_time.tv_usec) / 1000;
 	if (elapsed_time >= INTERVAL)
 	{
-		on_screen_timer(cub3d);
-		decrease_timer(cub3d);
-		// printf("\rFps:%d", (int)((double)frame_count / elapsed_time));
-		// fflush(stdout);
-		frame_count = 0;
+		on_screen_timer(cub3d, elapsed_time);
 		start_time = current_time;
 	}
 }

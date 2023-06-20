@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 05:02:51 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 14:21:42 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:33:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		mushroom(cub3d);
 	if (keydata.key == MLX_KEY_Z && keydata.action == MLX_PRESS)
 		end_screen(cub3d);
+	if (keydata.key == MLX_KEY_F && keydata.action == MLX_PRESS)
+	{
+		cub3d->fps_counter = true;
+		// if (cub3d->fps_counter)
+		// 	cub3d->fps_counter = false;
+		// else
+		// 	cub3d->fps_counter = true;
+	}
 }
 
 void mouse_position(double xpos, double ypos, void *params)

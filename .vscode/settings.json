@@ -9,6 +9,13 @@
 		"struct.h": "c",
 		"initialization.h": "c",
 		"features.h": "c",
-		"cub3d.h": "c"
+		"cub3d.h": "c",
+		"__bit_reference": "c",
+		"__hash_table": "c",
+		"__split_buffer": "c",
+		"array": "c",
+		"initializer_list": "c",
+		"unordered_map": "c",
+		"vector": "c"
 	}
 }

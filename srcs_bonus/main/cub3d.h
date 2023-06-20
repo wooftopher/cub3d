@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:58:54 by christo           #+#    #+#             */
-/*   Updated: 2023/06/19 16:56:40 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:06:07 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,5 @@
 
 void	free_all(t_cub3d *cub3d);
 // int8_t	initialization(t_cub3d *cub3d);
-
-# define true 1
-# define false 0
 
 #endif
