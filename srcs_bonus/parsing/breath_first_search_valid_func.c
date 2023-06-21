@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:18:40 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/17 18:48:13 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 16:22:41 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	is_visited(const char c)
 
 bool	is_valid(const char c)
 {
-	if (c == '0' || c == '3' || c == '2')
+	if (c == '0' || c == '3' || c == '2' || c == 'C')
 		return (true);
 	return (false);
 }

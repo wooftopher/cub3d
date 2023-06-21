@@ -22,7 +22,8 @@ inline static bool	is_starting_position(const char c)
 
 inline static bool	is_map_character(const char c)
 {
-	if (c == '1' || c == '0' || c == '\n' || c == '2' || c == '3' || c == ' ')
+	if (c == '1' || c == '0' || c == '\n' || c == '2' || c == '3' || c == ' '
+		|| c == 'C')
 		return (true);
 	return (false);
 }
