@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 05:02:51 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 15:33:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 11:59:10 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ void key_hook(mlx_key_data_t keydata, void *param)
 		end_screen(cub3d);
 	if (keydata.key == MLX_KEY_F && keydata.action == MLX_PRESS)
 	{
-		cub3d->fps_counter = true;
-		// if (cub3d->fps_counter)
-		// 	cub3d->fps_counter = false;
-		// else
-		// 	cub3d->fps_counter = true;
+		if (cub3d->fps_counter)
+			cub3d->fps_counter = false;
+		else
+			cub3d->fps_counter = true;
 	}
 }
 
@@ -81,6 +80,6 @@ void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *
 void	init_hooks(t_cub3d *cub3d)
 {
 	mlx_key_hook(cub3d->mlx_s->mlx, key_hook, cub3d);
-	// mlx_cursor_hook(cub3d->mlx_s->mlx, mouse_position, cub3d);
+	mlx_cursor_hook(cub3d->mlx_s->mlx, mouse_position, cub3d);
 	// mlx_mouse_hook(cub3d->mlx_s->mlx, mouse_hook, cub3d);
 }
