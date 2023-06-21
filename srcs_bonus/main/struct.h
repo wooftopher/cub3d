@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 13:56:39 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:17:04 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_timer
 	mlx_image_t		*seven;
 	mlx_image_t		*eight;
 	mlx_image_t		*nine;
-	uint8_t			*digitAddresses[10];
+	uint8_t			*digitaddresses[10];
 }	t_timer;
 
 typedef struct s_lakitu

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 10:37:45 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:19:53 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ static void	copy_over(t_cub3d *cub3d, uint8_t flag, uint8_t timer)
 	if (flag == MS)
 	{
 		ft_memcpy(cub3d->timer->msr->pixels,
-			cub3d->timer->digitAddresses[extract_digit(timer, 1)], 8448);
+			cub3d->timer->digitaddresses[extract_digit(timer, 1)], 8448);
 		ft_memcpy(cub3d->timer->msl->pixels,
-			cub3d->timer->digitAddresses[extract_digit(timer, 0)], 8448);
+			cub3d->timer->digitaddresses[extract_digit(timer, 0)], 8448);
 	}
 	else if (flag == SECONDS)
 	{
 		ft_memcpy(cub3d->timer->secondsl->pixels,
-			cub3d->timer->digitAddresses[extract_digit(timer, 1)], 8448);
+			cub3d->timer->digitaddresses[extract_digit(timer, 1)], 8448);
 		ft_memcpy(cub3d->timer->secondsr->pixels,
-			cub3d->timer->digitAddresses[extract_digit(timer, 0)], 8448);
+			cub3d->timer->digitaddresses[extract_digit(timer, 0)], 8448);
 	}
 	else
 	{
 		ft_memcpy(cub3d->timer->minutesr->pixels,
-			cub3d->timer->digitAddresses[extract_digit(timer, 1)], 8448);
+			cub3d->timer->digitaddresses[extract_digit(timer, 1)], 8448);
 		ft_memcpy(cub3d->timer->minutesl->pixels,
-			cub3d->timer->digitAddresses[extract_digit(timer, 0)], 8448);
+			cub3d->timer->digitaddresses[extract_digit(timer, 0)], 8448);
 	}
 }
 

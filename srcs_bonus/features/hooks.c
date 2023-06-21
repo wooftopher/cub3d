@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 05:02:51 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 14:01:54 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:14:18 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,8 @@ void	mouse_position(double xpos, double ypos, void *params)
 	}
 }
 
-void	mouse_hook(mouse_key_t button, action_t action,
-	modifier_key_t mods, void *param)
-{
-	t_cub3d	*cub3d;
-
-	cub3d = param;
-	// if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_REPEAT)
-	// {
-	// 	if (cub3d->player->speed < 7)
-    //         cub3d->player->speed += 1;
-    //     animation_racer(cub3d, FORWARD);
-	// }
-	if (button == MLX_MOUSE_BUTTON_MIDDLE && action == MLX_PRESS)
-		mushroom(cub3d);
-	// if (button == MLX_MOUSE_BUTTON_RIGHT && action == MLX_PRESS)
-}
-
 void	init_hooks(t_cub3d *cub3d)
 {
 	mlx_key_hook(cub3d->mlx_s->mlx, key_hook, cub3d);
-	// mlx_cursor_hook(cub3d->mlx_s->mlx, mouse_position, cub3d);
-	// mlx_mouse_hook(cub3d->mlx_s->mlx, mouse_hook, cub3d);
+	mlx_cursor_hook(cub3d->mlx_s->mlx, mouse_position, cub3d);
 }

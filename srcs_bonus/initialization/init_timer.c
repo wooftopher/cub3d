@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 12:14:06 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/17 12:40:59 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:17:57 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ static int8_t	to_window_timer(t_cub3d *cub3d)
 
 static void	assign_array(t_cub3d *cub3d)
 {
-	cub3d->timer->digitAddresses[0] = cub3d->timer->zero->pixels;
-	cub3d->timer->digitAddresses[1] = cub3d->timer->one->pixels;
-	cub3d->timer->digitAddresses[2] = cub3d->timer->two->pixels;
-	cub3d->timer->digitAddresses[3] = cub3d->timer->three->pixels;
-	cub3d->timer->digitAddresses[4] = cub3d->timer->four->pixels;
-	cub3d->timer->digitAddresses[5] = cub3d->timer->five->pixels;
-	cub3d->timer->digitAddresses[6] = cub3d->timer->six->pixels;
-	cub3d->timer->digitAddresses[7] = cub3d->timer->seven->pixels;
-	cub3d->timer->digitAddresses[8] = cub3d->timer->eight->pixels;
-	cub3d->timer->digitAddresses[9] = cub3d->timer->nine->pixels;
+	cub3d->timer->digitaddresses[0] = cub3d->timer->zero->pixels;
+	cub3d->timer->digitaddresses[1] = cub3d->timer->one->pixels;
+	cub3d->timer->digitaddresses[2] = cub3d->timer->two->pixels;
+	cub3d->timer->digitaddresses[3] = cub3d->timer->three->pixels;
+	cub3d->timer->digitaddresses[4] = cub3d->timer->four->pixels;
+	cub3d->timer->digitaddresses[5] = cub3d->timer->five->pixels;
+	cub3d->timer->digitaddresses[6] = cub3d->timer->six->pixels;
+	cub3d->timer->digitaddresses[7] = cub3d->timer->seven->pixels;
+	cub3d->timer->digitaddresses[8] = cub3d->timer->eight->pixels;
+	cub3d->timer->digitaddresses[9] = cub3d->timer->nine->pixels;
 }
 
 static int8_t	set_timer_image(t_cub3d *cub3d)
