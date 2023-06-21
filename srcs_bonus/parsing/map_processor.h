@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 16:42:04 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 16:54:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:06:59 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ typedef enum e_map_flag
 	EAST = 0b00010000,
 	FLOOR = 0b00001000,
 	CEILING = 0b00000100,
-	MAP = 0b00000010,
+	MUSIC = 0b00000010,
 	ERROR = 0b00000001,
-	OK = 0b11111100
+	OK = 0b11111110
 }	t_map_flag;
 
 /*

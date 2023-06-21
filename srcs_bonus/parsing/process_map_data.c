@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:55:24 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/10 00:30:49 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:12:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	process_token(char *token, uint8_t *processedflags, t_map *map)
 		map->w_texture = parse_texture(token, processedflags, WEST, map);
 	else if (!return_flag(processedflags, EAST) && str_find(token, "EA "))
 		map->e_texture = parse_texture(token, processedflags, EAST, map);
+	else if (!return_flag(processedflags, MUSIC) && str_find(token, "MU "))
+		map->music_path = parse_texture(token, processedflags, MUSIC, map);
 	else if (!return_flag(processedflags, FLOOR) && str_find(token, "F "))
 		map->floor_color = parse_colors(token, processedflags, FLOOR, map);
 	else if (!return_flag(processedflags, CEILING) && str_find(token, "C "))

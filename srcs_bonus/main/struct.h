@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 14:17:04 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:25:37 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_map
 	char		*s_texture;
 	char		*w_texture;
 	char		*e_texture;
+	char		*music_path;
 	uint32_t	ceiling_color;
 	uint32_t	floor_color;
 	uint8_t		width;
@@ -34,6 +35,7 @@ typedef struct s_map
 	int			**south;
 	int			**east;
 	int			**west;
+	int			**finish;
 }	t_map;
 
 typedef struct ray_angle_fov_s

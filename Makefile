@@ -13,7 +13,7 @@ REMOVE = @rm -f
 
 # RUN #
 RUN = ./cub3d ./map/merio64.cub
-RUNB = ./cub3d_bonus ./map/race1.cub
+RUNB = ./cub3d_bonus ./map/bonus/merio64.cub
 
 # OBJS #
 OBJS = ${SRCS:.c=.o}
@@ -33,7 +33,7 @@ OS = $(shell uname)
 
 # Leak #
 LEAK = leaks -atExit -- ./cub3d ./map/optic.cub
-LEAKB = leaks -atExit -- ./cub3d_bonus ./map/optic.cub
+LEAKB = leaks -atExit -- ./cub3d_bonus ./map/bonus/merio64.cub
 
 # Source file mandatory #
 MAIN =  	./srcs/main/main.c \
@@ -91,7 +91,8 @@ INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
 					./srcs_bonus/initialization/create_map.c \
 					./srcs_bonus/initialization/init_timer_digit.c \
 					./srcs_bonus/initialization/init_end_screen.c \
-					./srcs_bonus/initialization/init_countdown.c
+					./srcs_bonus/initialization/init_countdown.c \
+					./srcs_bonus/initialization/init_end.c
 
 OBJECTB =	./srcs_bonus/object/player_move.c
 
@@ -130,7 +131,8 @@ FEATURES =	./srcs_bonus/features/game_clock.c \
 			./srcs_bonus/features/end_screen.c \
 			./srcs_bonus/features/hooks.c \
 			./srcs_bonus/features/fps_counter.c \
-			./srcs_bonus/features/countdown.c
+			./srcs_bonus/features/countdown.c \
+			./srcs_bonus/features/music.c
 
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \

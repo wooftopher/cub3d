@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:20:43 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/09 12:43:15 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:08:41 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	map_struct_destructor(t_map *map)
 		free(map->wall_px);
 	if (map->wall_py)
 		free(map->wall_py);
+	if (map->music_path)
+		free(map->music_path);
 	if (map->map)
 	{
 		while (map->map[index])
