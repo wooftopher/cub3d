@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 14:49:43 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 18:59:28 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@ void	check_col(t_cub3d *cub3d, t_map *map, t_player *player)
 	y = player->pos_y / 100;
 	if (map->map[y][x] == '1')
 		player->col_x = 1;
-	else if (map->map[y][x] == '2')
-		end_screen(cub3d);
-	if (player->d_y < 0)
-		y = (player->pos_y - 65 + player->d_y) / 100;
-	else
-		y = (player->pos_y + 65 + player->d_y) / 100;
-	x = player->pos_x / 100;
-	if (map->map[y][x] == '1')
-		player->col_y = 1;
-	else if (map->map[y][x] == '2')
-		end_screen(cub3d);
+	else if (map->map[y][x] == '2' && player->laps < player->checkpoint)
+	{
+		if (player->laps < 1)
+			player->laps++;
+		else
+			end_screen(cub3d);
+	}
+	else if (map->map[y][x] == 'C' && player->checkpoint == player->laps)
+	{
+		player->checkpoint++;
+		return ;
+	}
+	spaggetji(cub3d, x, y);
 }
 
 void	calcul_new_pos(t_player *player, int x, int y)
@@ -60,7 +62,7 @@ void	ft_move(t_cub3d *cub3d)
 {
 	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP))
 	{
-		if (cub3d->player->speed < 7)
+		if (cub3d->player->speed < MAX_SPEED)
 			cub3d->player->speed += 1;
 		animation_racer(cub3d, FORWARD);
 	}

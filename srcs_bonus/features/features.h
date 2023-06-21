@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   features.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:18 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 15:14:27 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 19:02:12 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	game_clock(t_cub3d *cub3d);
 	 **********************************
 */
 # define MUSH_TIMER 3
-# define SPEED_BOOST 20
+# define SPEED_BOOST 40
+# define MAX_SPEED 20
 
 void	mushroom(t_cub3d *cub3d);
 /*

@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:11:20 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 13:58:07 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 17:57:44 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_init_player(int x, int y, t_player *player, t_map *map)
 	player->speed = 0;
 	player->col_x = 0;
 	player->col_y = 0;
+	player->checkpoint = 0;
+	player->laps = 0;
 	return (0);
 }
 

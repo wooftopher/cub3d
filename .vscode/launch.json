@@ -30,7 +30,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "/Users/cperron/Desktop/cub3d/a.out",
-		"args": ["./map/test.cub"],
+		"args": ["./map/race2.cub"],
 		"stopAtEntry": false,
 		"cwd": "/Users/cperron/Desktop/cub3d",
 		"environment": [],
