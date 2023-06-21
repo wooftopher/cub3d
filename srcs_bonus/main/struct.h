@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 11:54:08 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:56:39 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ typedef struct s_map
 	int			**west;
 }	t_map;
 
-//remove one day
-typedef struct ray_angle_s
-{
-	float	min_dist_fov;
-	int		orientation;
-	float	pos_on_texture;
-}	t_ray_angle_s;
-
 typedef struct ray_angle_fov_s
 {
 	float	min_dist_fov;
@@ -53,39 +45,37 @@ typedef struct ray_angle_fov_s
 	float	angle;
 }	t_ray_angle_fov_s;
 
-
 typedef struct ray
 {
-	float		min_dist;
-	t_ray_angle_s		*ray_angle_s; // to remove
-	t_ray_angle_fov_s	*ray_angle_fov_s[1500]; //1400
-	float		dist;
-	float		dir_x;
-	float		dir_y;
-	float		fov_angle;
-	int			angle_count;
-	float		angle_div;
-	float		angle;
-	float		xn;
-	float		yn;
-	int			text_x;
-	int			text_y;
+	float				min_dist;
+	t_ray_angle_fov_s	*ray_angle_fov_s[1401];
+	float				dist;
+	float				dir_x;
+	float				dir_y;
+	float				fov_angle;
+	int					angle_count;
+	float				angle_div;
+	float				angle;
+	float				xn;
+	float				yn;
+	int					text_x;
+	int					text_y;
 }	t_ray;
 
 typedef struct player
 {
-    float		pos_x;
-    float		pos_y;
-	float		kart_x;
-	float		kart_y;
-	float		d_x;
-	float		d_y;
-	float		angle;
-	float		speed;
-	float		rot_speed;
-	bool		col_x;
-	bool		col_y;
-}   t_player;
+	float	pos_x;
+	float	pos_y;
+	float	kart_x;
+	float	kart_y;
+	float	d_x;
+	float	d_y;
+	float	angle;
+	float	speed;
+	float	rot_speed;
+	bool	col_x;
+	bool	col_y;
+}	t_player;
 
 typedef struct s_timer
 {
@@ -140,21 +130,12 @@ typedef struct s_hud
 typedef struct mlx_struc
 {
 	mlx_t			*mlx;
-    xpm_t           *xpm_player;
-    xpm_t			*xpm_wall;
-	mlx_texture_t   *txt_sky;
-	mlx_texture_t   *txt_floor;
-	mlx_texture_t   *txt_img;
-	mlx_texture_t   *txt_wall_n;
-	mlx_texture_t   *txt_wall_s;
-	mlx_texture_t   *txt_wall_e;
-	mlx_texture_t   *txt_wall_w;
+	mlx_texture_t	*txt_wall_n;
+	mlx_texture_t	*txt_wall_s;
+	mlx_texture_t	*txt_wall_e;
+	mlx_texture_t	*txt_wall_w;
 	mlx_image_t		*img_player;
-	// mlx_image_t		*img_sky;
 	mlx_image_t		*img_back;
-	mlx_image_t		*img_img;
-    mlx_image_t		*img_wall;
-	mlx_image_t		*img_dir_ind;
 	mlx_image_t		*img_wall_3d;
 }	t_mlx_struc;
 
@@ -162,7 +143,7 @@ typedef struct cub3d
 {
 	t_mlx_struc		*mlx_s;
 	t_player		*player;
-    t_map           *map;
+	t_map			*map;
 	t_ray			*ray;
 	t_hud			*hud;
 	t_racer			*racer;
@@ -171,22 +152,15 @@ typedef struct cub3d
 	mlx_image_t		*end_screen;
 	bool			fps_counter;
 	uint8_t			loop_status;
-	// t_xpm			*xpm_s;
 	int				tic;
 	int				vision;
-}   t_cub3d;
-
-typedef struct wall
-{
-    int		pos_x;
-    int		pos_y;
-}   t_wall;
+}	t_cub3d;
 
 typedef struct s_rgb
 {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
+	uint8_t	red;
+	uint8_t	green;
+	uint8_t	blue;
 	uint8_t	alpha;
 }	t_rgb;
 

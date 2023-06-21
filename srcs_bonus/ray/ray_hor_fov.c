@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 14:02:38 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:42:59 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
 		ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 		ray->ray_angle_fov_s[ray->angle_count]->orientation = 1;
 		ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture
-			= player->pos_x + ray->xn - ray->text_x * 100;
+				= player->pos_x + ray->xn - ray->text_x * 100;
 		}
 	}
 }
@@ -101,7 +101,7 @@ void	ray_hor_down_fov(t_player *player, t_map *map, t_ray *ray, int j)
 		ray->ray_angle_fov_s[ray->angle_count]->angle = ray->angle;
 		ray->ray_angle_fov_s[ray->angle_count]->orientation = 2;
 		ray->ray_angle_fov_s[ray->angle_count]->pos_on_texture = 100
-			- (player->pos_x - ray->xn - ray->text_x * 100);
+				- (player->pos_x - ray->xn - ray->text_x * 100);
 		}
 	}
 }

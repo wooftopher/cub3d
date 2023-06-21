@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 12:35:41 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:52:50 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_race(t_cub3d *cub3d)
 	set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 }
 
-void ft_loop(void *param)
+void	ft_loop(void *param)
 {
-	t_cub3d *cub3d;
+	t_cub3d	*cub3d;
 
 	cub3d = param;
 	if (cub3d->loop_status == 1)
@@ -48,9 +48,9 @@ void ft_loop(void *param)
 		set_end_screen_transition(cub3d);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    t_cub3d 	cub3d;
+	t_cub3d	cub3d;
 
 	if (argc != 2)
 		return (write(STDERR_FILENO, "Error argc\n", 11), EXIT_FAILURE);

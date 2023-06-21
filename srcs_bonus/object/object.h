@@ -6,12 +6,12 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:36:09 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 09:44:06 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:43:49 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
-#define OBJECT_H
+# define OBJECT_H
 
 # include "../main/struct.h"
 # include <math.h>

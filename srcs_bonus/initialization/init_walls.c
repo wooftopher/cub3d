@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:55:30 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/16 22:02:50 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:59:36 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,18 @@ void	free_ray(t_cub3d *cub3d, int index)
 		free(cub3d->ray->ray_angle_fov_s[i++]);
 		cub3d->ray->ray_angle_fov_s[i] = NULL;
 	}
-	free(cub3d->ray->ray_angle_s);
-	cub3d->ray->ray_angle_s = NULL;
 	print_error("Alloc failure\n");
 }
 
 static int8_t	init_rayz(t_cub3d *cub3d)
 {
-	int					i;
-	t_ray_angle_fov_s	*ray_angle_fov_s[1500]; // change maybe?
-	t_ray_angle_s		*ray_angle_s;
+	int	i;
 
-	ray_angle_s = ft_calloc(1, sizeof(t_ray_angle_s));
-	cub3d->ray->ray_angle_s = ray_angle_s;
-	if (!cub3d->ray->ray_angle_s)
-		return (free_ray(cub3d, 0), FAILURE);
 	i = 0;
 	while (i <= 1400)
 	{
-		ray_angle_fov_s[i] = ft_calloc(1, sizeof(t_ray_angle_fov_s));
-		cub3d->ray->ray_angle_fov_s[i] = ray_angle_fov_s[i];
+		cub3d->ray->ray_angle_fov_s[i]
+			= ft_calloc(1, sizeof(t_ray_angle_fov_s));
 		if (!cub3d->ray->ray_angle_fov_s[i])
 		{
 			free_ray(cub3d, i);
@@ -50,7 +42,6 @@ static int8_t	init_rayz(t_cub3d *cub3d)
 		i++;
 	}
 	cub3d->ray->fov_angle = 30;
-	// cub3d.ray->angle_div = 0.035714f;
 	cub3d->ray->angle_div = 0.042857f;
 	return (0);
 }
@@ -88,10 +79,11 @@ int8_t	init_walls(t_cub3d *cub3d)
 {
 	if (init_texture(cub3d, cub3d->map))
 		return (FAILURE);
-	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000); // why 1400x1000? over 1400x900?
+	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000);
 	if (!cub3d->mlx_s->img_wall_3d)
 		return (print_error("Alloc failure\n"), FAILURE);
-	if (mlx_image_to_window(cub3d->mlx_s->mlx, cub3d->mlx_s->img_wall_3d, 0 , 0) == FAILURE)
+	if (mlx_image_to_window(cub3d->mlx_s->mlx,
+			cub3d->mlx_s->img_wall_3d, 0, 0) == FAILURE)
 		return (print_error("Alloc failure\n"), FAILURE);
 	if (init_rayz(cub3d))
 		return (FAILURE);
