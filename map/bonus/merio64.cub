@@ -3,7 +3,7 @@ EA ./img/sm64/1.png
 C 100,100,200
 SO ./img/sm64/2.png
 NO ./img/sm64/3.png
-MU ./audio/music/smrpga.mp3
+MU ./audio/music/smrpg.mp3
 
 
 

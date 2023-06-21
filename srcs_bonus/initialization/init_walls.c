@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:55:30 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 13:59:36 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:49:56 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static int8_t	init_texture(t_cub3d *cub3d, t_map *map)
 int8_t	init_walls(t_cub3d *cub3d)
 {
 	if (init_texture(cub3d, cub3d->map))
+		return (FAILURE);
+	if (init_end(cub3d))
 		return (FAILURE);
 	cub3d->mlx_s->img_wall_3d = mlx_new_image(cub3d->mlx_s->mlx, 1400, 1000);
 	if (!cub3d->mlx_s->img_wall_3d)

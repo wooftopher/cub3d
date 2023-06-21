@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:38:58 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 01:43:20 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:48:47 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ int8_t	init_end_screen(t_cub3d *cub3d);
 
 // init_countdown.c
 int8_t	init_countdown(t_cub3d *cub3d);
+
+// init_end.c
+int8_t	init_end(t_cub3d *cub3d);
 
 #endif

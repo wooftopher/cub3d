@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 11:54:11 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:17:55 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int8_t	initialization(t_cub3d *cub3d, char *map_path)
 	if (init_timer(cub3d))
 		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
 	if (init_countdown(cub3d))
+		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
+	if (set_music_path(cub3d))
 		return (mlx_terminate(cub3d->mlx_s->mlx), FAILURE);
 	return (SUCCESS);
 }

@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   music.c                                            :+:      :+:    :+:   */
+/*   init_end.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 12:56:20 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 15:14:14 by ddemers          ###   ########.fr       */
+/*   Created: 2023/06/21 15:27:21 by ddemers           #+#    #+#             */
+/*   Updated: 2023/06/21 15:51:14 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "features.h"
+#include "initialization.h"
 
-int8_t	set_music_path(t_cub3d *cub3d)
+int8_t	init_end(t_cub3d *cub3d)
 {
-	char	*afplay;
-	char	*percent;
+	mlx_texture_t	*png;
 
-	afplay = ft_strjoin("afplay ", cub3d->map->music_path);
-	if (!afplay)
+	png = mlx_load_png("./img/racer/forward.png");
+	if (!png)
 		return (FAILURE);
-	free(cub3d->map->music_path);
-	cub3d->map->music_path = ft_strjoin(afplay, " &");
-	free(afplay);
-	if (!cub3d->map->music_path)
+	cub3d->map->finish = fill_int_array(png);
+	mlx_delete_texture(png);
+	if (!cub3d->map->finish)
 		return (FAILURE);
 	return (SUCCESS);
 }
