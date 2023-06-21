@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 05:04:38 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 14:13:33 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:26:39 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	play_sound_effect(void)
 
 	random = rand() % 3;
 	if (random == 1)
-		system("afplay ./music/sound/r1.wav &");
+		system("afplay ./audio/sound/r1.wav &");
 	else if (random == 2)
-		system("afplay ./music/sound/r2.wav &");
+		system("afplay ./audio/sound/r2.wav &");
 	else if (random == 3)
-		system("afplay ./music/sound/r3.wav &");
+		system("afplay ./audio/sound/r3.wav &");
 	else
-		system("afplay ./music/sound/r4.wav &");
+		system("afplay ./audio/sound/r4.wav &");
 }
 
 static void	update_hud(t_cub3d *cub3d, mlx_image_t *to_delete,

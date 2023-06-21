@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:42:11 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 14:16:29 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:26:10 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	norm_countdown(t_cub3d *cub3d)
 		animation_countdown(cub3d, 0);
 	else if (cub3d->countdown->countdown == 2)
 	{
-		system("afplay ./music/audio/beep0.wav");
+		system("afplay ./audio/sound/beep0.wav");
 		animation_countdown(cub3d, 1);
 	}
 	else if (cub3d->countdown->countdown == 3)
 	{
 		animation_countdown(cub3d, 2);
-		system("afplay ./music/audio/beep1.mp3");
+		system("afplay ./audio/sound/beep1.mp3");
 	}
 	cub3d->countdown->countdown++;
 }
@@ -67,7 +67,7 @@ void	countdown(t_cub3d *cub3d)
 		norm_countdown(cub3d);
 	else
 	{
-		system("afplay ./music/audio/beep2.wav &");
+		system("afplay ./audio/sound/beep2.wav &");
 		cub3d->loop_status = 1;
 		system("afplay ./music/circuit.mp3 &");
 	}
