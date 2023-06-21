@@ -6,14 +6,14 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 13:44:22 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:49:43 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./object.h"
 #include "../features/features.h"
 
-void	check_col(t_map *map, t_player *player)
+void	check_col(t_cub3d *cub3d, t_map *map, t_player *player)
 {
 	int	x;
 	int	y;
@@ -25,6 +25,8 @@ void	check_col(t_map *map, t_player *player)
 	y = player->pos_y / 100;
 	if (map->map[y][x] == '1')
 		player->col_x = 1;
+	else if (map->map[y][x] == '2')
+		end_screen(cub3d);
 	if (player->d_y < 0)
 		y = (player->pos_y - 65 + player->d_y) / 100;
 	else
@@ -32,6 +34,8 @@ void	check_col(t_map *map, t_player *player)
 	x = player->pos_x / 100;
 	if (map->map[y][x] == '1')
 		player->col_y = 1;
+	else if (map->map[y][x] == '2')
+		end_screen(cub3d);
 }
 
 void	calcul_new_pos(t_player *player, int x, int y)

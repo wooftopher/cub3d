@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 14:12:40 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:48:42 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_race(t_cub3d *cub3d)
 			cub3d->player->speed = 0;
 	}
 	calcul_new_pos(cub3d->player, 1, 0);
-	check_col(cub3d->map, cub3d->player);
+	check_col(cub3d, cub3d->map, cub3d->player);
 	set_new_pos(cub3d->map, cub3d->player, cub3d->mlx_s);
 }
 

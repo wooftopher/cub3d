@@ -97,7 +97,8 @@ OBJECTB =	./srcs_bonus/object/player_move.c
 
 RAYB = 		./srcs_bonus/ray/pixel_color.c \
 			./srcs_bonus/ray/ray_calcul.c \
-			./srcs_bonus/ray/ray_calcul_utils.c \
+			./srcs_bonus/ray/ray_calcul_utils_1.c \
+			./srcs_bonus/ray/ray_calcul_utils_2.c \
 			./srcs_bonus/ray/ray_hor_fov.c \
 			./srcs_bonus/ray/ray_ver_fov.c 
 

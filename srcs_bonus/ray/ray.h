@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:24:28 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 05:20:57 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:50:20 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int		fish_eye_correction(t_cub3d *cub3d, int k, float wall_height);
 void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height);
 void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height);
 int		find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height);
+
+int		check_feature_y(t_map *map, t_ray *ray, int x, int y);
+int		check_feature_x(t_map *map, t_ray *ray, int x, int y);
 
 int		**fill_int_array(mlx_texture_t *texture);
 void	free_int_array(int **array, uint32_t heigth);

@@ -6,11 +6,29 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 14:24:39 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:11:56 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ray.h"
+
+void	check_finish(t_cub3d *cub3d, int k, int i, int wall_height)
+{
+	int	x;
+	int	y;
+
+	if (cub3d->ray->ray_angle_fov_s[k]->orientation == 5)
+	{
+		y = find_y(cub3d, i, wall_height,
+				cub3d->mlx_s->txt_wall_n->height);
+		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
+				* cub3d->mlx_s->txt_wall_n->width / 100);
+		if (x >= cub3d->mlx_s->txt_wall_n->width)
+			x = cub3d->mlx_s->txt_wall_n->width - 1;
+		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
+			cub3d->map->north[y][x]);
+	}
+}
 
 void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 {
@@ -74,6 +92,7 @@ void	ft_render_fov(t_cub3d *cub3d,
 		{
 			check_orientation_1(cub3d, k, i, wall_height);
 			check_orientation_2(cub3d, k, i, wall_height);
+			check_finish(cub3d, k, i, wall_height);
 			i++;
 		}
 		k++;
