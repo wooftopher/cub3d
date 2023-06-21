@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/21 15:11:56 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 16:11:57 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	check_finish(t_cub3d *cub3d, int k, int i, int wall_height)
 	if (cub3d->ray->ray_angle_fov_s[k]->orientation == 5)
 	{
 		y = find_y(cub3d, i, wall_height,
-				cub3d->mlx_s->txt_wall_n->height);
+				cub3d->mlx_s->finish->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
-				* cub3d->mlx_s->txt_wall_n->width / 100);
-		if (x >= cub3d->mlx_s->txt_wall_n->width)
-			x = cub3d->mlx_s->txt_wall_n->width - 1;
+				* cub3d->mlx_s->finish->width / 100);
+		if (x >= cub3d->mlx_s->finish->width)
+			x = cub3d->mlx_s->finish->width - 1;
 		mlx_put_pixel(cub3d->mlx_s->img_wall_3d, 1400 - k, 450 - i,
-			cub3d->map->north[y][x]);
+			cub3d->map->finish[y][x]);
 	}
 }
 

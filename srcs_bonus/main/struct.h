@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 15:25:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 16:07:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct mlx_struc
 	mlx_texture_t	*txt_wall_s;
 	mlx_texture_t	*txt_wall_e;
 	mlx_texture_t	*txt_wall_w;
+	mlx_texture_t	*finish;
 	mlx_image_t		*img_player;
 	mlx_image_t		*img_back;
 	mlx_image_t		*img_wall_3d;

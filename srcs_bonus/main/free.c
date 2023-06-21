@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:39:41 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 15:47:32 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 16:09:30 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void	destroy_textures(t_cub3d *cub3d)
 		mlx_delete_texture(cub3d->mlx_s->txt_wall_e);
 	if (cub3d->mlx_s->txt_wall_w)
 		mlx_delete_texture(cub3d->mlx_s->txt_wall_w);
+	if (cub3d->mlx_s->finish)
+		mlx_delete_texture(cub3d->mlx_s->finish);
 }
 
 static void	free_wall_array(t_cub3d *cub3d)
@@ -56,7 +58,7 @@ static void	free_wall_array(t_cub3d *cub3d)
 	if (cub3d->map->east)
 		free_int_array(cub3d->map->east, cub3d->mlx_s->txt_wall_e->height);
 	if (cub3d->map->finish)
-		free_int_array(cub3d->map->east, cub3d->mlx_s->txt_wall_e->height);
+		free_int_array(cub3d->map->finish, cub3d->mlx_s->finish->height);
 }
 
 static void	free_ray(t_cub3d *cub3d)
