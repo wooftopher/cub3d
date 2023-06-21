@@ -13,7 +13,7 @@ REMOVE = @rm -f
 
 # RUN #
 RUN = ./cub3d ./map/merio64.cub
-RUNB = ./cub3d_bonus
+RUNB = ./cub3d_bonus ./map/merio64.cub
 
 # OBJS #
 OBJS = ${SRCS:.c=.o}
@@ -33,7 +33,7 @@ OS = $(shell uname)
 
 # Leak #
 LEAK = leaks -atExit -- ./cub3d ./map/optic.cub
-LEAKB = leaks -atExit -- ./cub3d_bonus
+LEAKB = leaks -atExit -- ./cub3d_bonus ./map/optic.cub
 
 # Source file mandatory #
 MAIN =  	./srcs/main/main.c \
@@ -161,11 +161,11 @@ bonus: submodule lib libmlx $(NAME_BONUS)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 		${CC} ${CFGLAGS} ${SRC} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
-	@echo "$(GREEN)Mandatory Done$(WHITE)"
+	@echo "$(GREEN)Mandatory Compiled$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX)
 	${CC} ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
-	@echo "$(GREEN)Bonus done!$(WHITE)"
+	@echo "$(GREEN)Bonus Compiled!$(WHITE)"
 
 submodule:
 	@git submodule update --init --recursive

@@ -1,0 +1,10 @@
+NO ./img/big.png
+SO ./img/big.png
+EA ./img/big.png
+
+F 225,100,0
+C 225,30,0
+
+111111111
+100000N01
+111111111

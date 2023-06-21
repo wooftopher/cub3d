@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 15:33:27 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 01:42:53 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	init_cub3d_struct(t_cub3d *cub3d)
 	cub3d->map = NULL;
 	cub3d->player = NULL;
 	cub3d->mlx_s = NULL;
-	cub3d->loop_status= 0;
+	cub3d->loop_status = 0;
 	cub3d->fps_counter = false;
 }
 
@@ -70,12 +70,12 @@ int8_t	init_mlx(t_cub3d *cub3d)
 	return (SUCCESS);
 }
 
-int8_t	initialization(t_cub3d *cub3d)
+int8_t	initialization(t_cub3d *cub3d, char *map_path)
 {
 	init_cub3d_struct(cub3d);
 	if (alloc_struct(cub3d))
 		return (print_error("Alloc failure\n"));
-	map_initialization(cub3d->map, "./map/test.cub");
+	map_initialization(cub3d->map, map_path);
 	if (cub3d->map->map_errno)
 		return (print_map_errno(cub3d->map->map_errno),
 			FAILURE);

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:38:58 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 13:49:25 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 01:43:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 int8_t	ft_create_map(t_map *map, t_cub3d *cub3d);
 // initialization.c
-int8_t	initialization(t_cub3d *cub3d);
+int8_t	initialization(t_cub3d *cub3d, char *map_path);
 int8_t	print_error(const char *message);
 
 // init_background.c
