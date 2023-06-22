@@ -16,6 +16,16 @@
 		"array": "c",
 		"initializer_list": "c",
 		"unordered_map": "c",
-		"vector": "c"
+		"vector": "c",
+		"features_bonus.h": "c",
+		"ray.h": "c",
+		"ray_bonus.h": "c",
+		"map_processor.h": "c",
+		"limits.h": "c",
+		"map_processor_bonus.h": "c",
+		"object.h": "c",
+		"initialization_bonus.h": "c",
+		"struct_bonus.h": "c",
+		"stdlib.h": "c"
 	}
 }

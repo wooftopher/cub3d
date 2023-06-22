@@ -4,7 +4,7 @@ NAME_BONUS = cub3d_bonus
 
 # Compile stuff #
 CC = @gcc
-CFGLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 LINUX = -ldl -lglfw -pthread -lm
 MAC = -I /include -lglfw -pthread -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
@@ -80,61 +80,61 @@ SRCS =  $(MAIN) \
 		$(PARSING)
 
 # SRCS FILE BONUS #
-MAINB =  	./srcs_bonus/main/main.c \
-			./srcs_bonus/main/free.c
+MAINB =  	./srcs_bonus/main/main_bonus.c \
+			./srcs_bonus/main/free_bonus.c
 
-INITIALIZATIONB =	./srcs_bonus/initialization/initialization.c \
-					./srcs_bonus/initialization/init_background.c \
-					./srcs_bonus/initialization/init_walls.c \
-					./srcs_bonus/initialization/init_hud_player.c \
-					./srcs_bonus/initialization/init_timer.c \
-					./srcs_bonus/initialization/create_map.c \
-					./srcs_bonus/initialization/init_timer_digit.c \
-					./srcs_bonus/initialization/init_end_screen.c \
-					./srcs_bonus/initialization/init_countdown.c \
-					./srcs_bonus/initialization/init_end.c \
-					./srcs_bonus/initialization/init_lap.c
+INITIALIZATIONB =	./srcs_bonus/initialization/initialization_bonus.c \
+					./srcs_bonus/initialization/init_background_bonus.c \
+					./srcs_bonus/initialization/init_walls_bonus.c \
+					./srcs_bonus/initialization/init_hud_player_bonus.c \
+					./srcs_bonus/initialization/init_timer_bonus.c \
+					./srcs_bonus/initialization/create_map_bonus.c \
+					./srcs_bonus/initialization/init_timer_digit_bonus.c \
+					./srcs_bonus/initialization/init_end_screen_bonus.c \
+					./srcs_bonus/initialization/init_countdown_bonus.c \
+					./srcs_bonus/initialization/init_end_bonus.c \
+					./srcs_bonus/initialization/init_lap_bonus.c
 
-OBJECTB =	./srcs_bonus/object/player_move.c
+OBJECTB =	./srcs_bonus/object/player_move_bonus.c
 
-RAYB = 		./srcs_bonus/ray/pixel_color.c \
-			./srcs_bonus/ray/ray_calcul.c \
-			./srcs_bonus/ray/ray_calcul_utils_1.c \
-			./srcs_bonus/ray/ray_calcul_utils_2.c \
-			./srcs_bonus/ray/ray_hor_fov.c \
-			./srcs_bonus/ray/ray_ver_fov.c 
+RAYB = 		./srcs_bonus/ray/pixel_color_bonus.c \
+			./srcs_bonus/ray/ray_calcul_bonus.c \
+			./srcs_bonus/ray/ray_calcul_utils_1_bonus.c \
+			./srcs_bonus/ray/ray_calcul_utils_2_bonus.c \
+			./srcs_bonus/ray/ray_hor_fov_bonus.c \
+			./srcs_bonus/ray/ray_ver_fov_bonus.c 
 
-PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations.c \
-			./srcs_bonus/parsing/breadth_first_search.c \
-			./srcs_bonus/parsing/breadth_first_search_neighbors.c \
-			./srcs_bonus/parsing/breadth_first_search_queue.c \
-			./srcs_bonus/parsing/breath_first_search_valid_func.c \
-			./srcs_bonus/parsing/character_validation.c \
-			./srcs_bonus/parsing/create_map_array.c \
-			./srcs_bonus/parsing/fill_map_data.c \
-			./srcs_bonus/parsing/ft_atoi_cube.c \
-			./srcs_bonus/parsing/load_map_routine.c \
-			./srcs_bonus/parsing/map_errno.c \
-			./srcs_bonus/parsing/map_name_validator.c \
-			./srcs_bonus/parsing/modify_map.c \
-			./srcs_bonus/parsing/open_map.c \
-			./srcs_bonus/parsing/parse_colors.c \
-			./srcs_bonus/parsing/process_map_data.c \
-			./srcs_bonus/parsing/read_map.c \
-			./srcs_bonus/parsing/substr_cube.c \
-			./srcs_bonus/parsing/texture_parsing.c \
-			./srcs_bonus/parsing/tokenize_map.c \
-			./srcs_bonus/parsing/validate_map_layout.c
+PARSINGB = 	./srcs_bonus/parsing/bit_shift_operations_bonus.c \
+			./srcs_bonus/parsing/breadth_first_search_bonus.c \
+			./srcs_bonus/parsing/breadth_first_search_neighbors_bonus.c \
+			./srcs_bonus/parsing/breadth_first_search_queue_bonus.c \
+			./srcs_bonus/parsing/breath_first_search_valid_func_bonus.c \
+			./srcs_bonus/parsing/character_validation_bonus.c \
+			./srcs_bonus/parsing/create_map_array_bonus.c \
+			./srcs_bonus/parsing/fill_map_data_bonus.c \
+			./srcs_bonus/parsing/ft_atoi_cube_bonus.c \
+			./srcs_bonus/parsing/load_map_routine_bonus.c \
+			./srcs_bonus/parsing/map_errno_bonus.c \
+			./srcs_bonus/parsing/map_name_validator_bonus.c \
+			./srcs_bonus/parsing/modify_map_bonus.c \
+			./srcs_bonus/parsing/open_map_bonus.c \
+			./srcs_bonus/parsing/parse_colors_bonus.c \
+			./srcs_bonus/parsing/process_map_data_bonus.c \
+			./srcs_bonus/parsing/read_map_bonus.c \
+			./srcs_bonus/parsing/substr_cube_bonus.c \
+			./srcs_bonus/parsing/texture_parsing_bonus.c \
+			./srcs_bonus/parsing/tokenize_map_bonus.c \
+			./srcs_bonus/parsing/validate_map_layout_bonus.c
 
-FEATURES =	./srcs_bonus/features/game_clock.c \
-			./srcs_bonus/features/mushroom.c \
-			./srcs_bonus/features/animation.c \
-			./srcs_bonus/features/end_screen.c \
-			./srcs_bonus/features/hooks.c \
-			./srcs_bonus/features/fps_counter.c \
-			./srcs_bonus/features/countdown.c \
-			./srcs_bonus/features/music.c \
-			./srcs_bonus/features/lap.c
+FEATURES =	./srcs_bonus/features/game_clock_bonus.c \
+			./srcs_bonus/features/mushroom_bonus.c \
+			./srcs_bonus/features/animation_bonus.c \
+			./srcs_bonus/features/end_screen_bonus.c \
+			./srcs_bonus/features/hooks_bonus.c \
+			./srcs_bonus/features/fps_counter_bonus.c \
+			./srcs_bonus/features/countdown_bonus.c \
+			./srcs_bonus/features/music_bonus.c \
+			./srcs_bonus/features/lap_bonus.c
 
 SRCS_BONUS =  $(MAINB) \
 		$(INITIALIZATIONB) \
@@ -165,11 +165,11 @@ all: submodule lib libmlx $(NAME)
 bonus: submodule lib libmlx $(NAME_BONUS)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-		${CC} ${CFGLAGS} ${SRC} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
+	${CC} ${CFLAGS} ${SRCS} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Mandatory Compiled$(WHITE)"
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX)
-	${CC} ${CFGLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
+	${CC} ${CFLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
 	@echo "$(GREEN)Bonus Compiled!$(WHITE)"
 
 submodule:
