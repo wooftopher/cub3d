@@ -1,13 +1,13 @@
 F 0,0,0
-EA ./img/sm64/1.png
-C 100,100,200
-SO ./img/sm64/2.png
-NO ./img/sm64/3.png
+EA ./img/castle/1.png
+C 150,0,0
+SO ./img/castle/2.png
+NO ./img/castle/3.png
 MU ./audio/music/smrpg.mp3
 
 
 
-WE ./img/sm64/4.png
+WE ./img/castle/4.png
 
      111
     10001
