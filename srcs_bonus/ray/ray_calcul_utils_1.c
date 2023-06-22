@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_calcul_utils.c                                 :+:      :+:    :+:   */
+/*   ray_calcul_utils_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/20 08:19:46 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 12:29:58 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ray.h"
 
-int	find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height)
+int	find_y(int i, int wall_h, uint32_t txt_height)
 {
-	double	normalized_position;
-	int		y_pixel_pos;
-	int		y;
+	double			normalized_position;
+	int				y_pixel_pos;
+	uint32_t		y;
 
 	if (i < 0)
 	{
@@ -38,12 +38,12 @@ int	find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height)
 
 void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 {
-	int	x;
-	int	y;
+	uint32_t	x;
+	uint32_t	y;
 
 	if (cub3d->ray->ray_angle_fov_s[k]->orientation == 1)
 	{
-		y = find_y(cub3d, i, wall_height,
+		y = find_y(i, wall_height,
 				cub3d->mlx_s->txt_wall_n->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 				* cub3d->mlx_s->txt_wall_n->width / 100);
@@ -54,7 +54,7 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 	}
 	else if (cub3d->ray->ray_angle_fov_s[k]->orientation == 2)
 	{
-		y = find_y(cub3d, i, wall_height,
+		y = find_y(i, wall_height,
 				cub3d->mlx_s->txt_wall_s->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 				* cub3d->mlx_s->txt_wall_s->width / 100);
@@ -67,12 +67,12 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 
 void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 {
-	int	x;
-	int	y;
+	uint32_t	x;
+	int			y;
 
 	if (cub3d->ray->ray_angle_fov_s[k]->orientation == 3)
 	{
-		y = find_y(cub3d, i, wall_height,
+		y = find_y(i, wall_height,
 				cub3d->mlx_s->txt_wall_e->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 				* cub3d->mlx_s->txt_wall_e->width / 100);
@@ -83,7 +83,7 @@ void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 	}
 	else if (cub3d->ray->ray_angle_fov_s[k]->orientation == 4)
 	{
-		y = find_y(cub3d, i, wall_height,
+		y = find_y(i, wall_height,
 				cub3d->mlx_s->txt_wall_w->height);
 		x = round((cub3d->ray->ray_angle_fov_s[k]->pos_on_texture)
 				* cub3d->mlx_s->txt_wall_w->width / 100);

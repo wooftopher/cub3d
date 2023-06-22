@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/21 15:53:56 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 12:21:29 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	col_left_v2(t_map *map, t_player *player, t_ray *ray)
 	return (0);
 }
 
-void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j)
+void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray)
 {
 	int	finish;
 
@@ -90,7 +90,7 @@ int	col_right_v2(t_map *map, t_player *player, t_ray *ray)
 	return (0);
 }
 
-void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j)
+void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray)
 {
 	int	finish;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/22 00:21:20 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 12:18:24 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	check_col(t_cub3d *cub3d, t_map *map, t_player *player)
 	spaggetji(cub3d, x, y);
 }
 
-void	calcul_new_pos(t_player *player, int x, int y)
+void	calcul_new_pos(t_player *player, int x)
 {
 	player->d_y = x * player->speed * cos(player->angle * M_PI / 180);
 	player->d_x = x * player->speed * sin(player->angle * M_PI / 180);
 }
 
-void	set_new_pos(t_map *map, t_player *player, t_mlx_struc *mlx_s)
+void	set_new_pos(t_player *player)
 {
 	if (player->col_x == 0)
 		player->pos_x += player->d_x;

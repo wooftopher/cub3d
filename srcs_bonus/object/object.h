@@ -6,7 +6,7 @@
 /*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:36:09 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 18:45:59 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 12:18:04 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 void	ft_move(t_cub3d *cub3d);
 void	ft_rotate(t_cub3d *cub3d);
 void	check_col(t_cub3d *cub3d, t_map *map, t_player *player);
-void	calcul_new_pos(t_player *player, int x, int y);
-void	set_new_pos(t_map *map, t_player *player, t_mlx_struc *mlx_s);
+void	calcul_new_pos(t_player *player, int x);
+void	set_new_pos(t_player *player);
 void	spaggetji(t_cub3d *cub3d, int x, int y);
 
 #endif
