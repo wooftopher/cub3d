@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:52:37 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 20:39:17 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:17:23 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int8_t	init_hud_player(t_cub3d *cub3d)
 	if (init_player(cub3d))
 		return (print_error("Racer texture\n"), FAILURE);
 	if (init_player2(cub3d))
+		return (FAILURE);
+	if (init_lap(cub3d))
 		return (FAILURE);
 	return (SUCCESS);
 }

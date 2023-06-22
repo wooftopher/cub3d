@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   features.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:18 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 19:02:12 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:38:18 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,13 @@ void	smooth_lakitu(t_cub3d *cub3d);
 	 **********************************
 */
 int8_t	set_music_path(t_cub3d *cub3d);
+/*
+	 **********************************
+	 ~	           MUSIC  	          ~
+	 **********************************
+*/
+void	lap(t_cub3d *cub3d);
+
+void	mouse_position(double xpos, double ypos, void *params);
 
 #endif

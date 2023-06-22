@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:55:49 by christo           #+#    #+#             */
-/*   Updated: 2023/06/21 17:57:12 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:32:06 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ typedef struct s_hud
 	mlx_image_t	*mush1;
 	mlx_image_t	*empty;
 	mlx_image_t	*tig;
+	mlx_image_t	*lap1;
+	mlx_image_t	*lap2;
 	uint8_t		counter;
 	uint8_t		duration;
 }	t_hud;

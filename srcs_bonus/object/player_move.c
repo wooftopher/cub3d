@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 18:59:28 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:21:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_col(t_cub3d *cub3d, t_map *map, t_player *player)
 	else if (map->map[y][x] == '2' && player->laps < player->checkpoint)
 	{
 		if (player->laps < 1)
-			player->laps++;
+			lap(cub3d);
 		else
 			end_screen(cub3d);
 	}
