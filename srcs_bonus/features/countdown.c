@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:42:11 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 15:48:14 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:41:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ void	countdown(t_cub3d *cub3d)
 		system("afplay ./audio/sound/beep2.wav &");
 		cub3d->loop_status = 1;
 		system(cub3d->map->music_path);
+		mlx_set_mouse_pos(cub3d->mlx_s->mlx, 700, 450);
+		mlx_cursor_hook(cub3d->mlx_s->mlx, mouse_position, cub3d);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 04:39:44 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 14:19:53 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 23:08:46 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	decrease_timer(t_cub3d *cub3d)
 	{
 		cub3d->hud->duration--;
 		if (cub3d->hud->duration == 0)
-			cub3d->player->speed = 10;
+			cub3d->player->speed = MAX_SPEED;
 	}
 }
 
@@ -51,9 +51,9 @@ static void	copy_over(t_cub3d *cub3d, uint8_t flag, uint8_t timer)
 	}
 	else
 	{
-		ft_memcpy(cub3d->timer->minutesr->pixels,
-			cub3d->timer->digitaddresses[extract_digit(timer, 1)], 8448);
 		ft_memcpy(cub3d->timer->minutesl->pixels,
+			cub3d->timer->digitaddresses[extract_digit(timer, 1)], 8448);
+		ft_memcpy(cub3d->timer->minutesr->pixels,
 			cub3d->timer->digitaddresses[extract_digit(timer, 0)], 8448);
 	}
 }

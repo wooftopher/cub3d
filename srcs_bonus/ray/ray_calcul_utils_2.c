@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul_utils_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:44:01 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/21 18:51:32 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:42:27 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	spaggetji(t_cub3d *cub3d, int x, int y)
 		&& cub3d->player->laps < cub3d->player->checkpoint)
 	{
 		if (cub3d->player->laps < 1)
-			cub3d->player->laps++;
+			lap(cub3d);
 		else
 			end_screen(cub3d);
 	}

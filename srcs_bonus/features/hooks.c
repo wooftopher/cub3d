@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 05:02:51 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 20:28:52 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 00:38:36 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(cub3d->mlx_s->mlx);
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		mushroom(cub3d);
-	if (keydata.key == MLX_KEY_Z && keydata.action == MLX_PRESS)
-		end_screen(cub3d);
 	if (keydata.key == MLX_KEY_F && keydata.action == MLX_PRESS)
 	{
 		if (cub3d->fps_counter)
@@ -53,5 +51,4 @@ void	mouse_position(double xpos, double ypos, void *params)
 void	init_hooks(t_cub3d *cub3d)
 {
 	mlx_key_hook(cub3d->mlx_s->mlx, key_hook, cub3d);
-	mlx_cursor_hook(cub3d->mlx_s->mlx, mouse_position, cub3d);
 }

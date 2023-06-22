@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_end.c                                         :+:      :+:    :+:   */
+/*   lap.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 15:27:21 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/22 01:13:13 by ddemers          ###   ########.fr       */
+/*   Created: 2023/06/22 00:18:22 by ddemers           #+#    #+#             */
+/*   Updated: 2023/06/22 00:32:16 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialization.h"
+#include "features.h"
 
-int8_t	init_end(t_cub3d *cub3d)
+void	lap(t_cub3d *cub3d)
 {
-	cub3d->mlx_s->finish = mlx_load_png("./img/test3.png");
-	if (!cub3d->mlx_s->finish)
-		return (FAILURE);
-	cub3d->map->finish = fill_int_array(cub3d->mlx_s->finish);
-	if (!cub3d->map->finish)
-		return (FAILURE);
-	return (SUCCESS);
+	cub3d->player->laps++;
+	ft_memcpy(cub3d->hud->lap1->pixels,
+		cub3d->hud->lap2->pixels,
+		(cub3d->hud->lap1->width * cub3d->hud->lap1->height) * 4);
+	system("afplay ./audio/sound/lap.mp3 &");
 }
