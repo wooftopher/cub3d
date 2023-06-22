@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hor_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:08:23 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/21 14:34:35 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 14:07:37 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	col_up_v2(t_map *map, t_player *player, t_ray *ray)
 
 void	ray_hor_up_fov(t_player *player, t_map *map, t_ray *ray, int j)
 {
+	(void)j;
 	ray->yn = player->pos_y - (floor((player->pos_y / 100))) * 100;
 	ray->xn = ray->yn / (tan((ray->angle - 90) * M_PI / 180));
 	if (col_up_v2(map, player, ray) == 1)
@@ -87,6 +88,7 @@ int	col_down_v2(t_map *map, t_player *player, t_ray *ray)
 
 void	ray_hor_down_fov(t_player *player, t_map *map, t_ray *ray, int j)
 {
+	(void)j;
 	ray->yn = (floor((player->pos_y / 100)) + 1) * 100 - player->pos_y;
 	ray->xn = ray->yn / (tan((ray->angle - 90) * M_PI / 180));
 	if (col_down_v2(map, player, ray) == 1)

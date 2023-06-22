@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 03:30:30 by christo           #+#    #+#             */
-/*   Updated: 2023/06/20 05:45:35 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 14:07:10 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height)
 {
-	double	normalized_position;
-	int		y_pixel_pos;
-	int		y;
+	double				normalized_position;
+	int					y_pixel_pos;
+	unsigned int		y;
 
+	(void)cub3d;
 	if (i < 0)
 	{
 		normalized_position = (double)i / -wall_h;
@@ -38,8 +39,8 @@ int	find_y(t_cub3d *cub3d, int i, int wall_h, uint32_t txt_height)
 
 void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 {
-	int	x;
-	int	y;
+	unsigned int	x;
+	unsigned int	y;
 
 	if (cub3d->ray->ray_angle_fov_s[k]->orientation == 1)
 	{
@@ -67,8 +68,8 @@ void	check_orientation_1(t_cub3d *cub3d, int k, int i, int wall_height)
 
 void	check_orientation_2(t_cub3d *cub3d, int k, int i, int wall_height)
 {
-	int	x;
-	int	y;
+	unsigned int	x;
+	unsigned int	y;
 
 	if (cub3d->ray->ray_angle_fov_s[k]->orientation == 3)
 	{

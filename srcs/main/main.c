@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:57:27 by christo           #+#    #+#             */
-/*   Updated: 2023/06/15 03:16:47 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 14:09:50 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,3 @@ int	main(int argc, char **argv)
 	free_all(&cub3d);
 	return (EXIT_SUCCESS);
 }
-
-// texture bug

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_calcul.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/20 05:50:25 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 14:06:09 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	ft_render_fov(t_cub3d *cub3d,
 	int		wall_height;
 
 	k = 0;
+	(void)mlx_s;
+	(void)player;
 	j = -ray->fov_angle;
 	memset_image(cub3d->mlx_s->img_wall_3d->width,
 		cub3d->mlx_s->img_wall_3d->height, cub3d->mlx_s->img_wall_3d->pixels);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_ver_fov.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:47 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/21 14:34:21 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/22 14:08:13 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	col_left_v2(t_map *map, t_player *player, t_ray *ray)
 
 void	ray_ver_left_fov(t_player *player, t_map *map, t_ray *ray, int j)
 {
+	(void)j;
 	ray->xn = player->pos_x - (floor(player->pos_x / 100)) * 100;
 	ray->yn = ray->xn * (tan((ray->angle - 90) * M_PI / 180));
 	if (col_left_v2(map, player, ray) == 1)
@@ -90,11 +91,7 @@ int	col_right_v2(t_map *map, t_player *player, t_ray *ray)
 
 void	ray_ver_right_fov(t_player *player, t_map *map, t_ray *ray, int j)
 {
-	float	ys;
-	float	xs;
-
-	xs = 100;
-	ys = xs * (tan((ray->angle - 90) * M_PI / 180));
+	(void)j;
 	ray->xn = ((floor(player->pos_x / 100)) + 1) * 100 - player->pos_x;
 	ray->yn = ray->xn * (tan((ray->angle - 90) * M_PI / 180));
 	if (col_right_v2(map, player, ray) == 1)

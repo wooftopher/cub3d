@@ -5,6 +5,7 @@ NAME_BONUS = cub3d_bonus
 # Compile stuff #
 CC = @gcc
 CFLAGS = -Wall -Werror -Wextra
+CFLAGSB = -Wall -Werror -Wextra
 LINUX = -ldl -lglfw -pthread -lm
 MAC = -I /include -lglfw -pthread -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
@@ -13,7 +14,7 @@ REMOVE = @rm -f
 
 # RUN #
 RUN = ./cub3d ./map/merio64.cub
-RUNB = ./cub3d_bonus ./map/race3.cub
+RUNB = ./cub3d_bonus ./map/race1.cub
 
 # OBJS #
 OBJS = ${SRCS:.c=.o}
@@ -162,14 +163,14 @@ endif
 
 all: submodule lib libmlx $(NAME)
 
-bonus: submodule lib libmlx $(NAME_BONUS)
-
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	${CC} ${CFLAGS} ${SRCS} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Mandatory Compiled$(WHITE)"
 
+bonus: submodule lib libmlx $(NAME_BONUS)
+
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX)
-	${CC} ${CFLAGS} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
+	${CC} ${CFLAGSB} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}
 	@echo "$(GREEN)Bonus Compiled!$(WHITE)"
 
 submodule:
