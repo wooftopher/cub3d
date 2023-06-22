@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:56:20 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 15:14:14 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:15:50 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int8_t	set_music_path(t_cub3d *cub3d)
 {
 	char	*afplay;
-	char	*percent;
 
 	afplay = ft_strjoin("afplay ", cub3d->map->music_path);
 	if (!afplay)

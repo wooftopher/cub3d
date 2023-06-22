@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 05:02:51 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/21 14:59:32 by cperron          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:28:52 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	mouse_position(double xpos, double ypos, void *params)
 {
 	t_cub3d	*cub3d;
 
+	(void)ypos;
 	cub3d = params;
 	if (xpos > 700)
 	{

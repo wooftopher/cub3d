@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:44:43 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/20 18:12:09 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:39:50 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int8_t	init_lakitu2(t_cub3d *cub3d)
 {
 	mlx_texture_t	*png;
-	mlx_image_t		*image;
 
 	png = mlx_load_png("./img/lakitu/lakitu2.png");
 	if (!png)
@@ -33,7 +32,6 @@ int8_t	init_lakitu2(t_cub3d *cub3d)
 int8_t	init_lakitu1(t_cub3d *cub3d)
 {
 	mlx_texture_t	*png;
-	mlx_image_t		*image;
 
 	png = mlx_load_png("./img/lakitu/lakitu0.png");
 	if (!png)

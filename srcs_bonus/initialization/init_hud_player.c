@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:52:37 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/15 16:52:12 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:39:17 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int8_t	init_player2(t_cub3d *cub3d)
 static int8_t	init_player(t_cub3d *cub3d)
 {
 	mlx_texture_t	*png;
-	mlx_image_t		*image;
 
 	png = mlx_load_png("./img/racer/forward.png");
 	if (!png)
@@ -66,7 +65,6 @@ static int8_t	init_player(t_cub3d *cub3d)
 static int8_t	init_hud2(t_cub3d *cub3d)
 {
 	mlx_texture_t	*png;
-	mlx_image_t		*image;
 
 	png = mlx_load_png("./img/box/empty.png");
 	if (!png)
@@ -89,7 +87,6 @@ static int8_t	init_hud2(t_cub3d *cub3d)
 static int8_t	init_hud(t_cub3d *cub3d)
 {
 	mlx_texture_t	*png;
-	mlx_image_t		*image;
 
 	png = mlx_load_png("./img/box/3mush.png");
 	if (!png)
