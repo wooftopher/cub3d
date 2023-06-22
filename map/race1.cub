@@ -2,7 +2,7 @@ NO ./img/sm64/1.png
 WE ./img/sm64/2.png
 SO ./img/sm64/3.png
 EA ./img/sm64/4.png
-MU ./audio/music/smrpg.mp3
+MU ./audio/music/slider.mp3
 
 F 0,0,0
 C 0,200,200
