@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mushroom_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 05:04:38 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/22 12:58:47 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 13:41:28 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	use_mushroom(t_cub3d *cub3d)
 	{
 		update_hud(cub3d, cub3d->hud->empty, cub3d->hud->tig);
 		cub3d->hud->counter++;
+		cub3d->tig *= -1;
 		return ;
 	}
 	cub3d->hud->counter++;

@@ -13,7 +13,7 @@ REMOVE = @rm -f
 
 # RUN #
 RUN = ./cub3d ./map/merio64.cub
-RUNB = ./cub3d_bonus ./map/race1.cub
+RUNB = ./cub3d_bonus ./map/race3.cub
 
 # OBJS #
 OBJS = ${SRCS:.c=.o}

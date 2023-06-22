@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:06:19 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/22 12:58:17 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 13:40:52 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	init_cub3d_struct(t_cub3d *cub3d)
 	cub3d->mlx_s = NULL;
 	cub3d->loop_status = 0;
 	cub3d->fps_counter = false;
+	cub3d->tig = 1;
 }
 
 static int8_t	alloc_struct(t_cub3d *cub3d)

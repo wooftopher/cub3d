@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: cperron <cperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:18:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/06/22 12:58:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/22 13:39:52 by cperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ void	set_new_pos(t_player *player)
 
 void	ft_move(t_cub3d *cub3d)
 {
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_UP)
+		|| mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_W))
 	{
 		if (cub3d->player->speed < MAX_SPEED)
 			cub3d->player->speed += 1;
 		animation_racer(cub3d, FORWARD);
 	}
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_DOWN)
+		|| mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_S))
 	{
 		if (cub3d->player->speed > -5)
 		{
@@ -78,14 +80,19 @@ void	ft_move(t_cub3d *cub3d)
 
 void	ft_rotate(t_cub3d *cub3d)
 {
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_RIGHT))
+	int	d;
+
+	d = cub3d->tig;
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_RIGHT)
+		|| mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_D))
 	{
-		cub3d->player->angle -= cub3d->player->rot_speed;
+		cub3d->player->angle -= d * cub3d->player->rot_speed;
 		animation_racer(cub3d, RIGHT);
 	}
-	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_LEFT)
+		|| mlx_is_key_down(cub3d->mlx_s->mlx, MLX_KEY_A))
 	{
-		cub3d->player->angle += cub3d->player->rot_speed;
+		cub3d->player->angle += d * cub3d->player->rot_speed;
 		animation_racer(cub3d, LEFT);
 	}
 }
