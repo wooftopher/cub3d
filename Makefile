@@ -161,13 +161,13 @@ else ifeq ($(OS), Darwin)
 	FLAGS = $(MAC)
 endif
 
-all: submodule lib libmlx $(NAME)
+all: lib libmlx $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	${CC} ${CFLAGS} ${OBJS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME}
 	@echo "$(GREEN)Mandatory Compiled$(WHITE)"
 
-bonus: submodule lib libmlx $(NAME_BONUS)
+bonus: lib libmlx $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX)
 	${CC} ${CFLAGSB} ${OBJS_BONUS} ${LIBFT} $(MLX) $(FLAGS) -o ${NAME_BONUS}

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:22:32 by cperron           #+#    #+#             */
-/*   Updated: 2023/06/22 12:56:38 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/06/24 14:32:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ void	check_finish(t_cub3d *cub3d, int k, int i, int wall_height)
 
 void	calcul_ray_to_wall_fov(t_player *player, t_map *map, t_ray *ray)
 {
-	int		j;
 	float	fov_angle;
 
-	j = 0;
 	ray->angle_count = 0;
 	fov_angle = -ray->fov_angle;
 	ray->angle = player->angle - ray->fov_angle;
